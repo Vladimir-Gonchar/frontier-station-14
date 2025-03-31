@@ -1,10 +1,12 @@
 using System.Linq;
 using System.Threading;
+using Content.Server._NF.Salvage; // Frontier: graceful exped spawn failures
 using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
 using Content.Server.Salvage.Expeditions;
 using Content.Server.Salvage.Expeditions.Structure;
 using Content.Shared.CCVar;
+using Content.Shared._NF.CCVar; // Frontier
 using Content.Shared.Examine;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Salvage.Expeditions;
@@ -16,13 +18,12 @@ using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Coordinates;
 using Content.Shared.Procedural;
-using System.Linq;
-using System.Threading;
 using Content.Shared.Salvage;
-using Content.Shared.Salvage.Expeditions;
 using Robust.Shared.GameStates;
 using Robust.Shared.Random;
 using Robust.Shared.Map;
+using Content.Shared.Shuttles.Components; // Frontier
+using Robust.Shared.Configuration; // Frontier
 
 namespace Content.Server.Salvage;
 
@@ -33,10 +34,11 @@ public sealed partial class SalvageSystem
      */
 
     private const int MissionLimit = 5;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
+    [Dependency] private readonly IConfigurationManager _cfgManager = default!; // Frontier
 
     private readonly JobQueue _salvageQueue = new();
     private readonly List<(SpawnSalvageMissionJob Job, CancellationTokenSource CancelToken)> _salvageJobs = new();
+    private readonly List<DifficultyRating> _missionDifficulties = [DifficultyRating.Moderate, DifficultyRating.Hazardous, DifficultyRating.Extreme]; // Frontier
     private const double SalvageJobTime = 0.002;
 
     private float _cooldown;
@@ -47,20 +49,20 @@ public sealed partial class SalvageSystem
         SubscribeLocalEvent<SalvageExpeditionConsoleComponent, ComponentInit>(OnSalvageConsoleInit);
         SubscribeLocalEvent<SalvageExpeditionConsoleComponent, EntParentChangedMessage>(OnSalvageConsoleParent);
         SubscribeLocalEvent<SalvageExpeditionConsoleComponent, ClaimSalvageMessage>(OnSalvageClaimMessage);
+        SubscribeLocalEvent<SalvageExpeditionDataComponent, ExpeditionSpawnCompleteEvent>(OnExpeditionSpawnComplete); // Frontier: more gracefully handle expedition generation failures
+        SubscribeLocalEvent<SalvageExpeditionConsoleComponent, FinishSalvageMessage>(OnSalvageFinishMessage); // Frontier: For early finish
 
         SubscribeLocalEvent<SalvageExpeditionComponent, MapInitEvent>(OnExpeditionMapInit);
-//        SubscribeLocalEvent<SalvageExpeditionDataComponent, EntityUnpausedEvent>(OnDataUnpaused);
+        // SubscribeLocalEvent<SalvageExpeditionDataComponent, EntityUnpausedEvent>(OnDataUnpaused); // Frontier
 
         SubscribeLocalEvent<SalvageExpeditionComponent, ComponentShutdown>(OnExpeditionShutdown);
-//        SubscribeLocalEvent<SalvageExpeditionComponent, EntityUnpausedEvent>(OnExpeditionUnpaused);
+        // SubscribeLocalEvent<SalvageExpeditionComponent, EntityUnpausedEvent>(OnExpeditionUnpaused); // Frontier
         SubscribeLocalEvent<SalvageExpeditionComponent, ComponentGetState>(OnExpeditionGetState);
 
         SubscribeLocalEvent<SalvageStructureComponent, ExaminedEvent>(OnStructureExamine);
 
-        _cooldown = _configurationManager.GetCVar(CCVars.SalvageExpeditionCooldown);
-        _failedCooldown = _configurationManager.GetCVar(CCVars.SalvageExpeditionFailedCooldown);
-        _configurationManager.OnValueChanged(CCVars.SalvageExpeditionCooldown, SetCooldownChange);
-        _configurationManager.OnValueChanged(CCVars.SalvageExpeditionFailedCooldown, SetFailedCooldownChange);
+        Subs.CVar(_cfgManager, CCVars.SalvageExpeditionCooldown, SetCooldownChange, true); // Frontier
+        Subs.CVar(_cfgManager, NFCCVars.SalvageExpeditionFailedCooldown, SetFailedCooldownChange, true); // Frontier
     }
 
     private void OnExpeditionGetState(EntityUid uid, SalvageExpeditionComponent component, ref ComponentGetState args)
@@ -71,11 +73,13 @@ public sealed partial class SalvageSystem
         };
     }
 
+    // Frontier
     private void ShutdownExpeditions()
     {
-        _configurationManager.UnsubValueChanged(CCVars.SalvageExpeditionCooldown, SetCooldownChange);
-        _configurationManager.UnsubValueChanged(CCVars.SalvageExpeditionFailedCooldown, SetFailedCooldownChange);
+        _cfgManager.UnsubValueChanged(CCVars.SalvageExpeditionCooldown, SetCooldownChange);
+        _cfgManager.UnsubValueChanged(NFCCVars.SalvageExpeditionFailedCooldown, SetFailedCooldownChange);
     }
+    // End Frontier
 
     private void SetCooldownChange(float obj)
     {
@@ -108,8 +112,7 @@ public sealed partial class SalvageSystem
 
     private void OnExpeditionMapInit(EntityUid uid, SalvageExpeditionComponent component, MapInitEvent args)
     {
-        var selectedFile = _audio.GetSound(component.Sound);
-        component.SelectedSong = new SoundPathSpecifier(selectedFile, component.Sound.Params);
+        component.SelectedSong = _audio.ResolveSound(component.Sound);
     }
 
     private void OnExpeditionShutdown(EntityUid uid, SalvageExpeditionComponent component, ComponentShutdown args)
@@ -131,7 +134,7 @@ public sealed partial class SalvageSystem
         // Finish mission
         if (TryComp<SalvageExpeditionDataComponent>(component.Station, out var data))
         {
-            FinishExpedition(data, uid, component, null);
+            FinishExpedition(data, uid, component, component.Station); // Frontier: null<component.Station
         }
     }
 
@@ -167,10 +170,12 @@ public sealed partial class SalvageSystem
             if (comp.NextOffer > currentTime || comp.Claimed)
                 continue;
 
-            comp.Cooldown = false;
-            comp.NextOffer += TimeSpan.FromSeconds(_cooldown);
+            if (!HasComp<FTLComponent>(_station.GetLargestGrid(Comp<StationDataComponent>(uid)))) // Frontier
+                comp.Cooldown = false;
+            //comp.NextOffer += TimeSpan.FromSeconds(_cooldown); // Frontier
+            comp.NextOffer = currentTime + TimeSpan.FromSeconds(_cooldown); // Frontier
             GenerateMissions(comp);
-            UpdateConsoles(comp);
+            UpdateConsoles(uid, comp);
         }
     }
 
@@ -222,7 +227,8 @@ public sealed partial class SalvageSystem
 
         component.ActiveMission = 0;
         component.Cooldown = true;
-        UpdateConsoles(component);
+        if (shuttle != null) // Frontier
+            UpdateConsoles(shuttle.Value, component); // Frontier
     }
 
     /// <summary>
@@ -254,10 +260,20 @@ public sealed partial class SalvageSystem
 
         // this doesn't support having more missions than types of ratings
         // but the previous system didn't do that either.
-        var allDifficulties = Enum.GetValues<DifficultyRating>();
+        var allDifficulties = _missionDifficulties; // Frontier: Enum.GetValues<DifficultyRating>() < _missionDifficulties
         _random.Shuffle(allDifficulties);
         var difficulties = allDifficulties.Take(MissionLimit).ToList();
+        // difficulties.Sort(); // Frontier: sort later
+
+        // Frontier: multiple missions per difficulty
+        // If we support more missions than there are accepted types, pick more until you're up to MissionLimit
+        while (difficulties.Count < MissionLimit)
+        {
+            var difficultyIndex = _random.Next(_missionDifficulties.Count);
+            difficulties.Add(_missionDifficulties[difficultyIndex]);
+        }
         difficulties.Sort();
+        // End Frontier: multiple missions per difficulty
 
         if (configs.Count == 0)
             return;
@@ -286,7 +302,8 @@ public sealed partial class SalvageSystem
     private SalvageExpeditionConsoleState GetState(SalvageExpeditionDataComponent component)
     {
         var missions = component.Missions.Values.ToList();
-        return new SalvageExpeditionConsoleState(component.NextOffer, component.Claimed, component.Cooldown, component.ActiveMission, missions);
+        //return new SalvageExpeditionConsoleState(component.NextOffer, component.Claimed, component.Cooldown, component.ActiveMission, missions);
+        return new SalvageExpeditionConsoleState(component.NextOffer, component.Claimed, component.Cooldown, component.CanFinish, component.ActiveMission, missions); // Frontier
     }
 
     private void SpawnMission(SalvageMissionParams missionParams, EntityUid station, EntityUid? coordinatesDisk)
@@ -302,7 +319,7 @@ public sealed partial class SalvageSystem
             _biome,
             _dungeon,
             _shuttle,
-            _stationSystem,
+            _station,
             _metaData,
             this,
             _transform,
@@ -323,11 +340,14 @@ public sealed partial class SalvageSystem
 
     private void GiveRewards(SalvageExpeditionComponent comp)
     {
+        if (!_cfgManager.GetCVar(NFCCVars.SalvageExpeditionRewardsEnabled))
+            return;
+
         var palletList = new List<EntityUid>();
-        var pallets = EntityQueryEnumerator<CargoPalletComponent>();
+        var pallets = EntityQueryEnumerator<SalvageExpeditionConsoleComponent>(); // Frontier CargoPalletComponent<SalvageExpeditionConsoleComponent
         while (pallets.MoveNext(out var pallet, out var palletComp))
         {
-            if (_stationSystem.GetOwningStation(pallet) == comp.Station)
+            if (_station.GetOwningStation(pallet) == comp.Station)
             {
                 palletList.Add(pallet);
             }
@@ -341,4 +361,16 @@ public sealed partial class SalvageSystem
             Spawn(reward, (Transform(_random.Pick(palletList)).MapPosition));
         }
     }
+
+    // Frontier: handle exped spawn job failures gracefully - reset the console
+    private void OnExpeditionSpawnComplete(EntityUid uid, SalvageExpeditionDataComponent component, ExpeditionSpawnCompleteEvent ev)
+    {
+        if (component.ActiveMission == ev.MissionIndex && !ev.Success)
+        {
+            component.ActiveMission = 0;
+            component.Cooldown = false;
+            UpdateConsoles(uid, component);
+        }
+    }
+    // End Frontier
 }

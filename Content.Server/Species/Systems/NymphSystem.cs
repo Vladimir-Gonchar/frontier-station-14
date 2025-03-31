@@ -1,6 +1,6 @@
 using Content.Server.Cargo.Components;
 using Content.Server.Mind;
-using Content.Shared.Bank.Components;
+using Content.Shared._NF.Bank.Components; // Frontier
 using Content.Shared.Species.Components;
 using Content.Shared.Body.Events;
 using Content.Shared.Zombies;
@@ -48,18 +48,12 @@ public sealed partial class NymphSystem : EntitySystem
             _mindSystem.TransferTo(mindId, nymph, mind: mind);
 
 
-            // Frontier
+            // Frontier: bank account transfer, mob setup
             EnsureComp<CargoSellBlacklistComponent>(nymph);
 
-            // Frontier
-            // bank account transfer
-            if (TryComp<BankAccountComponent>(args.OldBody, out var bank))
-            {
-                // Do this carefully since changing the value of a bank account component on a entity will save the balance immediately through subscribers.
-                var oldBankBalance = bank.Balance;
-                var newBank = EnsureComp<BankAccountComponent>(nymph);
-                newBank.Balance = oldBankBalance;
-            }
+            if (HasComp<BankAccountComponent>(args.OldBody))
+                EnsureComp<BankAccountComponent>(nymph);
+            // End Frontier
         }
 
         // Delete the old organ

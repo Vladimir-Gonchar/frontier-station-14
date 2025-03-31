@@ -1,4 +1,225 @@
 - type: entity
+  id: BlueprintReceiverBase
+  abstract: true
+  components:
+  - type: BlueprintReceiver
+    whitelist:
+      tags:
+      - BlueprintAutolathe
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      blueprint: !type:Container
+  - type: EmptyOnMachineDeconstruct
+    containers:
+    - blueprint
+
+- type: entity
+  parent: [ BlueprintReceiverBase, BaseLatheLube ]
+  id: ServiceTechFab
+  name: service techfab
+  description: Prints equipment for service staff.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: service
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: ServiceTechFabCircuitboard
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    staticPacks:
+    - NFServiceTechfabDeprecatedStatic
+    - ReportingStatic # DeltaV
+    dynamicPacks:
+    - NFServiceTechfabDeprecated
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - NFServiceTechfabDeprecatedEmagStatic
+
+- type: entity
+  parent: [ BlueprintReceiverBase, BaseLatheLube ]
+  id: EngineeringTechFab
+  name: engineering techfab
+  description: Prints equipment for engineers.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: engi
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: EngineeringTechFabCircuitboard
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    staticPacks:
+    - NFEngineeringTechfabDeprecatedStatic
+    dynamicPacks:
+    - NFEngineeringTechfabDeprecated
+
+- type: entity
+  parent: [ BlueprintReceiverBase, BaseLatheLube ]
+  id: SalvageTechfabNF
+  name: salvage techfab
+  description: Prints equipment for salvagers.
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _NF/Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: salvage
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: SalvageTechFabCircuitboardNF
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    staticPacks:
+    - NFSalvageTechfabDeprecatedStatic
+    dynamicPacks:
+    - NFSalvageTechfabDeprecated
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - NFSalvageTechfabDeprecatedEmag
+
+- type: entity
+  id: NfsdTechFab
+  parent: [ BlueprintReceiverBase, SecurityTechFab ]
+  name: NFSD techfab
+  description: Prints equipment for use by NFSD.
+  components:
+  - type: Sprite
+    sprite: _NF/Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: nfsd
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: NfsdTechFabCircuitboard
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    staticPacks:
+    - NFNfsdTechfabDeprecatedStatic
+    - ReportingStatic # DeltaV
+    dynamicPacks:
+    - NFNfsdTechfabDeprecated
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - NFNfsdTechfabDeprecatedEmag
+
+- type: entity
+  id: MercenaryTechFab
+  parent: [ BlueprintReceiverBase, BaseLatheLube ]
+  name: mercenary techfab
+  description: Prints the bare minimum of tools of the trade that any budget mercenary or private security could need. Nothing fancy.
+  components:
+  - type: Sprite
+    sprite: _NF/Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: mercenary
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: MercenaryTechFabCircuitboardNF
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    staticPacks:
+    - NFMercenaryTechfabDeprecatedStatic
+    dynamicPacks:
+    - NFMercenaryTechfabDeprecated
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - NFMercenaryTechfabDeprecatedEmag
+
+- type: entity
+  id: MercenaryTechFabHacked
+  parent:
+  - MercenaryTechFab
+  - BaseHyperlathe
+  - PunkHoloGraffitiOverlay # Prototype can be located at /Resources/Prototypes/_NF/Entities/Structures/Holographic/graffiti.yml
+  name: hacked mercenary techfab
+  description: Prints the bare minimum of tools of the trade that any budget mercenary or private security could need. Nothing fancy.
+  components:
+  - type: Sprite
+    sprite: _NF/Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: mercenary
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - sprite: _NF/Structures/Holo/graffiti/simple.rsi
+      state: holograffiti01
+      map: [ "graffiti" ]
+      shader: unshaded
+      scale: 0.7, 0.7
+  - type: Machine
+    board: MercenaryTechFabCircuitboardHackedNF
+  - type: PointLight
+    radius: 1.5
+    energy: 2
+  - type: RgbLightController
+    layers: [ 0 ]
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    staticPacks:
+    - NFHackedMercenaryTechfabDeprecatedStatic
+    dynamicPacks:
+    - NFHackedMercenaryTechfabDeprecated
+
+- type: entity
   parent: [BaseStructureDisableToolUse, BaseLathe]
   id: PrizeCounter
   name: prize counter
@@ -36,211 +257,57 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    staticRecipes:
-      - PrizeBallRecipe
-      - PlushieHampterRecipe
-      - PlushieVulpRecipe
-      - PlushieBeeRecipe
-      - PlushieLizardRecipe
-      - PlushieSpaceLizardRecipe
-      - PlushieVoxRecipe
-      - PlushieMoffRecipe
-      - PlushieMoffsicianRecipe
-      - PlushieMoffbarRecipe
-      - PlushieDionaRecipe
-      - PlushieSharkGreyRecipe
-      - PlushieSharkBlueRecipe
-      - PlushieSharkPinkRecipe
-      - PlushieRatvarRecipe
-      - PlushieNarRecipe
-      - PlushieSlimeRecipe
-      - PlushieSnakeRecipe
-      - PlushieCarpRecipe
-      - PlasticBananaRecipe
-      - BeachBallRecipe
-      - BasketballRecipe
-      - FootballRecipe
-      - ToyHammerRecipe
-      - WhoopieCushionRecipe
-      - ClownRecorderRecipe
-      - PonderingOrbRecipe
-      - CrayonBoxRecipe
-      - CrayonRainbowRecipe
-      - PlushieLampRecipe
-      - PlushieAtmosianRecipe
-      - PlushieRounyRecipe
-      - PlushieXenoRecipe
-      - FoamCrossbowRecipe
-      - BoxDonkSoftBoxRecipe
-      - RevolverCapGunRecipe
-      - BoxCartridgeCapRecipe
-      - ToyAmongPequenoRecipe
-      - FoamCutlassRecipe
-      - FoamBladeRecipe
-      - ToyRubberDuckRecipe
-      - ToyMouseRecipe
-      - ToyAiRecipe
-      - ToyGriffinRecipe
-      - ToyHonkRecipe
-      - ToyIanRecipe
-      - ToyMarauderRecipe
-      - ToyGygaxRecipe
-      - ToyOdysseusRecipe
-      - ToyOwlmanRecipe
-      - ToyPhazonRecipe
-      - ToyFireRipleyRecipe
-      - ToyReticenceRecipe
-      - ToyRipleyRecipe
-      - ToySeraphRecipe
-      - ToyDurandRecipe
-      - ToySkeletonRecipe
-      - FaceHuggerPlushieRecipe
-      - PetRockCarrierkRecipe
-      - PlushieGnomeRecipe
-      - PlushieLoveableRecipe
-      - PlushieDeerRecipe
-      - PlushieIpcRecipe
-      - PlushieGreyRecipe
-      - PlushieRedFoxRecipe
-      - PlushiePurpleFoxRecipe
-      - PlushiePinkFoxRecipe
-      - PlushieOrangeFoxRecipe
-      - PlushieMarbleFoxRecipe
-      - PlushieCrimsonFoxRecipe
-      - PlushieCoffeeFoxRecipe
-      - PlushieBlueFoxRecipe
-      - PlushieBlackFoxRecipe
-      - PlushieCorgiRecipe
-      - PlushieGirlyCorgiRecipe
-      - PlushieRobotCorgiRecipe
-      - PlushieCatBlackRecipe
-      - PlushieCatOrangeRecipe
-      - PlushieCatSiamesRecipe
-      - PlushieCatTabbyRecipe
-      - PlushieCatTuxedoRecipe
-      - PlushieCatWhiteRecipe
+    staticPacks:
+    - NFPrizeCounterStatic
   - type: EmagLatheRecipes
-    emagStaticRecipes:
-      - PlushieJesterRecipe
-      - PlushieTrystanRecipe
-      - PlushieSlipsRecipe
-      - PlushieNukeRecipe
-      - PlushieRGBeeRecipe
-      - BalloonCorgiRecipe
-      - BalloonSynRecipe
-      - ToyNukeRecipe
-      - ToyMaulerRecipe
-      - PlushieAbductorRecipe
-      - PlushieAbductorAgentRecipe
+    emagStaticPacks:
+    - NFPrizeCounterEmag
   - type: MaterialStorage
     whitelist:
       tags:
         - PrizeTicket
 
 - type: entity
-  parent: BaseLathe
-  id: TilePrinterNF
-  name: tile-meister 5000
-  description: Prints floor tiles. No mercy.
+  id: BlueprintLithograph
+  parent: BaseLatheLube
+  name: blueprint lithograph
+  description: Prints blueprints.
   components:
   - type: Sprite
-    sprite: Structures/Machines/sheetifier.rsi
-    layers:
-    - state: base_machine
-      map: ["enum.LatheVisualLayers.IsRunning"]
-    - state: buttons_on
-      shader: unshaded
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-  - type: Machine
-    board: TilePrinterNFMachineCircuitboard
-  - type: MaterialStorage
-    dropOnDeconstruct: true
-    ignoreColor: true
-    canEjectStoredMaterials: false
-    whitelist:
-      tags:
-      - Raw
-      - Wooden
-      - Sheet
-      - RawMaterial
-      - Ingot
-  - type: Lathe
-    idleState: base_machine
-    runningState: base_machine_processing
-    staticRecipes:
-    - FloorTileItemSteel
-    - FloorTileItemSteelCheckerLight
-    - FloorTileItemSteelCheckerDark
-    - FloorTileItemMetalDiamond
-    - FloorTileItemWood
-    - FloorTileItemWhite
-    - FloorTileItemDark
-    - FloorTileItemTechmaint
-    - FloorTileItemFreezer
-    - FloorTileItemShowroom
-    - FloorTileItemGCircuit
-    - FloorTileItemBCircuit
-    - FloorTileItemGold
-    - FloorTileItemReinforced
-    - FloorTileItemMono
-    - FloorTileItemLino
-    - FloorTileItemHydro
-    - FloorTileItemLime
-    - FloorTileItemShuttleWhite
-#    - FloorTileStackShuttleBlue
-#    - FloorTileStackShuttleOrange
-    - FloorTileItemShuttlePurple
-#    - FloorTileStackShuttleRed
-    - FloorTileItemEighties
-    - FloorTileItemArcadeBlue
-    - FloorTileItemArcadeBlue2
-    - FloorTileItemArcadeRed
-    - FloorTileItemBoxing
-    - FloorTileItemGym
-    - FloorTileItemBlue
-    - FloorTileItemMining
-    - FloorTileItemMiningDark
-    - FloorTileItemMiningLight
-    - FloorTileItemBar
-    - FloorTileItemClown
-    - FloorTileItemMime
-    - FloorTileItemKitchen
-    - FloorTileItemLaundry
-    - FloorTileItemSilver
-    - FloorTileItemSteelMaint
-    - FloorTileItemGratingMaint
-    - SheetPaper
-    - FloorCarpetItemRed
-    - FloorCarpetItemBlack
-    - FloorCarpetItemBlue
-    - FloorCarpetItemGreen
-    - FloorCarpetItemOrange
-    - FloorCarpetItemSkyBlue
-    - FloorCarpetItemPurple
-    - FloorCarpetItemPink
-    - FloorTileItemCarpetClown
-    - FloorTileItemCarpetOffice
-    dynamicRecipes:
-    - FauxTileAstroGrass
-    - FauxTileAstroIce
-  - type: EmagLatheRecipes
-    emagStaticRecipes:    
-    - MaterialSheetMeat
-
-- type: entity
-  parent: Protolathe
-  id: SalvageTechfabNF
-  name: salvage techfab
-  description: Prints equipment for salvagers.
-  components:
-  - type: Sprite
-    netsync: false
-    sprite: Structures/Machines/techfab.rsi
+    sprite: _NF/Structures/Machines/blueprint_printer.rsi
+    snapCardinals: true
     layers:
     - state: icon
       map: ["enum.LatheVisualLayers.IsRunning"]
-    - state: cargo
     - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: BlueprintLithographMachineCircuitboard
+  - type: Lathe
+    producingSound: /Audio/Machines/circuitprinter.ogg
+    idleState: icon
+    runningState: building
+    staticPacks:
+    - PowerCellsStatic
+    dynamicPacks:
+    - NFBlueprints
+  - type: RequireProjectileTarget
+
+- type: entity
+  id: ScrapProcessor
+  parent: BaseLatheLube
+  name: scrap processor
+  description: It produces sheets and ingots using scrap.
+  components:
+  - type: Sprite
+    sprite: _NF/Structures/Machines/scrap_processor.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: unshaded
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
     - state: inserting
@@ -248,143 +315,27 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Machine
-    board: SalvageTechFabCircuitboardNF
+    board: NFScrapProcessorCircuitboard
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Ore
   - type: Lathe
     idleState: icon
-    runningState: icon
-    staticRecipes:
-      #- Durathread
-      #- Plasteel
-      #- SheetSteel
-      #- SheetPlasteel
-      #- SheetPlasma30
-      #- SheetUranium30
-      #- SheetGlass30
-      #- SheetRGlass
-      #- SheetPlastic
-      - ClothingOuterSuitEmergency
-      - ClothingHeadHelmetEVA
-      - ClothingOuterHardsuitEVA
-      - Wirecutter
-      - Signaller
-      - Screwdriver
-      - Welder
-      - Wrench
-      - Crowbar
-      - Multitool
-      - NetworkConfigurator
-      - FlashlightLantern
-      - HandheldGPSBasic
-      - TRayScanner
-      - AirTank
-      - GasAnalyzer
-      - ClothingBeltSalvageWebbing
-      - Pickaxe
-      - AppraisalTool
-      - HandLabeler
-      - LightTube
-      - SodiumLightTube
-      - ExteriorLightTube
-      - LightBulb
-      - DrinkMugMetal
-      - PowerCellSmall
-      - PowerCellMedium
-      - EmergencyRollerBedSpawnFolded
-      - CableStack
-      - ConveyorBeltAssembly
-      - DoorElectronics
-      - StationMapElectronics
-      - CellRechargerCircuitboard
-      - BorgChargerCircuitboard
-      - WeaponCapacitorRechargerCircuitboard
-      - RadioHandheld
-      - Floodlight
-      - FlareLathe
-      - GlowstickBlue
-      - GlowstickBase
-      - GlowstickPurple
-      - GlowstickRedLathe
-      - GlowstickYellow
-      - OreBag
-      - MiningDrill
-      - WeaponProtoKineticAccelerator
-      - ClothingNeckIFFNeutral
-      - ClothingNeckIFFGreen
-      - ClothingNeckIFFRed
-      - ClothingNeckIFFBlue
-      - ClothingNeckIFFOrange
-      - ClothingNeckIFFPurple
-    dynamicRecipes:
-      - Bucket
-      - MopItem
-      - SprayBottle
-      - FireExtinguisher
-      - CableMVStack
-      - CableHVStack
-      - PowerCellHigh
-      - PowerCellMicroreactor
-      - WeaponCrusher
-      - WeaponCrusherDagger
-      - WeaponCrusherGlaive
-      - WeaponGrapplingGun
-      - ClothingBackpackHolding
-      - ClothingBackpackSatchelHolding
-      - ClothingBackpackDuffelHolding
-      - ClothingBackpackMessengerHolding
-      - OreBagOfHolding
-      - WelderExperimental
-      - JawsOfLife
-      - JetpackVoid
-      - ClothingOuterHardsuitBasic
-      - ClothingOuterHardsuitSpatio
-      - ClothingOuterHardsuitSalvage
-      - ClothingOuterHardsuitLuxury
-      - ClothingOuterHardsuitMaximPrototype
-      - ClothingHeadHelmetAncient
-      - ClothingOuterHardsuitAncientEVA
-  - type: EmagLatheRecipes
-    emagStaticRecipes:
-#       - CartridgePistol
-#       - CartridgeMagnum
-#       - ShellShotgun
-#       - ShellShotgunFlare
-       - ShellTranquilizer
-#       - CartridgeLightRifle
-#       - CartridgeRifle
-       - MagazineBoxPistol
-       - MagazineBoxMagnum
-       - MagazineBoxRifle
-       - MagazineBoxLightRifle
-       - GrenadeBlast
-       - ClothingHeadHelmetCosmonaut
-#       - ClothingHeadHelmetSyndicate # Frontier
-#       - ClothingOuterHardsuitSyndicate # Frontier
-  - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
-#        - Ore
+    runningState: building
+    unlitIdleState: unshaded
+    unlitRunningState: building-unshaded
+    defaultProductionAmount: 10
+    productValueModifier: null
+    staticPacks:
+    - NFScrapStatic
 
 - type: entity
-  id: NfsdTechFab
-  parent: SecurityTechFab
-  name: nfsd techfab
-  description: Prints equipment for use by nfsd.
+  id: BiogeneratorFill
+  parent: Biogenerator
+  name: biogenerator
+  suffix: Biomass, 50
   components:
-  - type: Sprite
-    sprite: _NF/Structures/Machines/techfab.rsi
-    layers:
-    - state: icon
-      map: ["enum.LatheVisualLayers.IsRunning"]
-    - state: nfsd
-    - state: unlit
-      shader: unshaded
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-    - state: inserting
-      map: ["enum.MaterialStorageVisualLayers.Inserting"]
-    - state: panel
-      map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: Machine
-    board: NfsdTechFabCircuitboard
+  - type: MaterialStorage
+    storage:
+      Biomass: 50

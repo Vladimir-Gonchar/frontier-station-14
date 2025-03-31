@@ -1,5 +1,6 @@
 - type: vessel
   id: Hospitaller
+  parent: BaseVessel
   name: NSF Hospitaller
   description: A small security medical craft designed for emergency response and search and rescue operations.
   price: 28220
@@ -7,6 +8,11 @@
   group: Security
   access: Security
   shuttlePath: /Maps/_NF/Shuttles/Nfsd/hospitaller.yml
+  guidebookPage: Null
+  class:
+  - Medical
+  engine:
+  - APU
 
 - type: gameMap
   id: Hospitaller

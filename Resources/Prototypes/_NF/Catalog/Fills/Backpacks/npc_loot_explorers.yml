@@ -4,7 +4,7 @@
   id: ExplorerDuffelGiftBox
   name: explorer's bundle
   abstract: true
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   suffix: NPC Loot
   components:
   - type: Sprite
@@ -16,7 +16,7 @@
 - type: entity
   parent: ExplorerDuffelGiftBox
   id: ClothingBackpackExplorerMeleeT1
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -45,7 +45,7 @@
 - type: entity
   parent: ExplorerDuffelGiftBox
   id: ClothingBackpackExplorerRangedT1
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -76,7 +76,7 @@
 - type: entity
   parent: ExplorerDuffelGiftBox
   id: ClothingBackpackExplorerMeleeT2
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -115,7 +115,7 @@
 - type: entity
   parent: ExplorerDuffelGiftBox
   id: ClothingBackpackExplorerRangedT2
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -145,7 +145,7 @@
     # Bonus Loot T1
     - id: SpaceCash500
       prob: 0.9
-    - id: SpawnDungeonLootMaterialsBasicFull
+    - id: SpaceCash1000
       prob: 0.7
     - id: SpawnDungeonLootPartsEngi
       prob: 0.7
@@ -156,7 +156,7 @@
 - type: entity
   parent: ExplorerDuffelGiftBox
   id: ClothingBackpackExplorerMeleeT3
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -187,7 +187,7 @@
       prob: 0.9
     - id: SpawnDungeonLootMaterialsBasicFull
       prob: 0.7
-    - id: SpawnDungeonLootMaterialsValuableFull
+    - id: SpaceCash1000
       prob: 0.7
     - id: SpawnDungeonLootPartsEngi
       amount: 2
@@ -202,7 +202,7 @@
 - type: entity
   parent: ExplorerDuffelGiftBox
   id: ClothingBackpackExplorerRangedT3
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -233,7 +233,7 @@
     # Bonus Loot T2
     - id: SpaceCash1000
       prob: 0.9
-    - id: SpawnDungeonLootMaterialsBasicFull
+    - id: SpaceCash1000
       prob: 0.7
     - id: SpawnDungeonLootMaterialsValuableFull
       prob: 0.7
@@ -251,7 +251,7 @@
 - type: entity
   parent: ExplorerDuffelGiftBox
   id: ClothingBackpackExplorerBoss
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -263,9 +263,12 @@
     - id: SpaceCash2500
       prob: 0.2
     # Weapons
-    - id: WeaponProtoKineticAcceleratorSawn
-      prob: 0.4
-      amount: 2
+    - id: NFEnergyPickaxe
+      prob: 0.3
+      amount: 1
+    - id: NFBlueprintEnergyPickaxe
+      prob: 0.3
+      amount: 1
     # Armor
     - id: ClothingOuterHardsuitMaximPrototype
       prob: 0.1
@@ -284,7 +287,7 @@
       prob: 0.9
     - id: SpaceCash500
       prob: 0.9
-    - id: SpawnDungeonLootMaterialsBasicFull
+    - id: SpaceCash1000
       prob: 0.7
     - id: SpawnDungeonLootMaterialsValuableFull
       prob: 0.7

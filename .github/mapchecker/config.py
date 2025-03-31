@@ -1,6 +1,7 @@
 # List of matchers that are always illegal to use. These always supercede CONDITIONALLY_ILLEGAL_MATCHES.
 ILLEGAL_MATCHES = [
     "DO NOT MAP",
+    "DoNotMap",
     "DEBUG",
     "Admeme",
     "CaptainSabre",
@@ -19,35 +20,51 @@ ILLEGAL_MATCHES = [
     "SalvageShuttleMarker",
     "FTLPoint",
 ]
+# List of specific legal entities that override the above.  Does not check suffixes.
+LEGAL_OVERRIDES = [
+    "ButtonFrameCautionSecurity", # red button
+    "PosterLegitPDAAd",
+    "ShowcaseRobot" # decoration
+]
 # List of matchers that are illegal to use, unless the map is a ship and the ship belongs to the keyed shipyard.
 CONDITIONALLY_ILLEGAL_MATCHES = {
-    "Civilian": [
-		"ButtonFrameCautionSecurity",  # Decal.
+    "Shipyard": [
     ],
     "Scrap": [
-		"ButtonFrameCautionSecurity",  # Decal.
     ],
     "Expedition": [
-		"ButtonFrameCautionSecurity",  # Decal.
     ],
     "Custom": [
-		"ButtonFrameCautionSecurity",  # Decal.
     ],
     "Security": [  # These matchers are illegal unless the ship is part of the security shipyard.
         "Security",  # Anything with the word security in it should also only be appearing on security ships.
         "Plastitanium",  # Plastitanium walls should only be appearing on security ships.
         "Kammerer", # Opportunity
         "HighSecDoor",
-		"ShuttleGun",
+        "ShuttleGun",
     ],
     "Syndicate": [
         "Plastitanium",  # And also on blackmarket ships cause syndicate.
-		"ButtonFrameCautionSecurity",  # Decal.
-		"ShuttleGun",
+        "ShuttleGun",
     ],
-	"BlackMarket": [
+    "BlackMarket": [
         "Plastitanium",  # And also on blackmarket ships cause syndicate.
-        "ButtonFrameCautionSecurity",  # Decal.
-		"ShuttleGun",
-	]
+        "ShuttleGun",
+    ],
+    "Sr": [
+    ],
+    "Medical": [
+    ],
+    # It is assumed that mapped instances of plastitanium, security gear, etc. are deemed acceptable
+    "PointOfInterest": [
+        "Plastitanium",
+        "Security",
+        "HighSecDoor",
+        "WallPlastitaniumIndestructible",
+        "WallPlastitaniumDiagonalIndestructible",
+        "PlastititaniumWindowIndestructible",
+        "PlastititaniumWindowDiagonalIndestructible",
+        "ClosetMaintenanceFilledRandom",
+        "ClosetWallMaintenanceFilledRandom",
+    ]
 }

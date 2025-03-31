@@ -4,8 +4,9 @@
   id: ShuttleGunSvalinnMachineGunCircuitboard
   parent: BaseMachineCircuitboard
   name: LSE-400c "Svalinn machine gun" machine board
-  description: A machine printed circuit board for an LSE-400c "Svalinn machine gun"
+  description: A machine printed circuit board for an LSE-400c "Svalinn machine gun".
   suffix: DO NOT MAP, Machine Board
+  categories: [ DoNotMap ]
   components:
   - type: Sprite
     state: security
@@ -22,8 +23,9 @@
   id: ShuttleGunPerforatorCircuitboard
   parent: BaseMachineCircuitboard
   name: LSE-1200c "Perforator" machine board
-  description: A machine printed circuit board for an LSE-1200c "Perforator"
+  description: A machine printed circuit board for an LSE-1200c "Perforator".
   suffix: DO NOT MAP, Machine Board
+  categories: [ DoNotMap ]
   components:
   - type: Sprite
     state: security
@@ -40,8 +42,9 @@
   id: ShuttleGunFriendshipCircuitboard
   parent: BaseMachineCircuitboard
   name: EXP-320g "Friendship" machine board
-  description: A machine printed circuit board for an EXP-320g "Friendship"
+  description: A machine printed circuit board for an EXP-320g "Friendship".
   suffix: DO NOT MAP, Machine Board
+  categories: [ DoNotMap ]
   components:
   - type: Sprite
     state: security
@@ -58,8 +61,9 @@
   id: ShuttleGunDusterCircuitboard
   parent: BaseMachineCircuitboard
   name: EXP-2100g "Duster" machine board
-  description: A machine printed circuit board for an EXP-2100g "Duster"
+  description: A machine printed circuit board for an EXP-2100g "Duster".
   suffix: DO NOT MAP, Machine Board
+  categories: [ DoNotMap ]
   components:
   - type: Sprite
     state: security
@@ -76,9 +80,10 @@
 - type: entity
   id: ShuttleGunKineticCircuitboard
   parent: BaseMachineCircuitboard
-  name: PTK-800 "Matter Dematerializer" machine board
-  description: A machine printed circuit board for an PTK-800 "Matter Dematerializer"
+  name: PTK-1500e "Matter Dematerializer" machine board # Frontier: 800<1500e
+  description: A machine printed circuit board for an PTK-1500e "Matter Dematerializer". # Frontier: 800<1500e
   suffix: DO NOT MAP, Machine Board
+  categories: [ DoNotMap ]
   components:
   - type: Sprite
     state: security

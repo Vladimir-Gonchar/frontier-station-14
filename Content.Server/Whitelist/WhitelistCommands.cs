@@ -10,7 +10,7 @@ using Robust.Shared.Network;
 
 namespace Content.Server.Whitelist;
 
-[AdminCommand(AdminFlags.Ban)]
+[AdminCommand(AdminFlags.Whitelist)] // DeltaV - Custom permission for whitelist
 public sealed class AddWhitelistCommand : LocalizedCommands
 {
     [Dependency] private readonly JobWhitelistManager _jobWhitelist = default!; // Frontier
@@ -29,7 +29,7 @@ public sealed class AddWhitelistCommand : LocalizedCommands
         var loc = IoCManager.Resolve<IPlayerLocator>();
 
         var name = string.Join(' ', args).Trim();
-        var data = await loc.LookupIdByNameAsync(name);
+        var data = await loc.LookupIdByNameOrIdAsync(name);
 
         if (data != null)
         {
@@ -80,7 +80,7 @@ public sealed class RemoveWhitelistCommand : LocalizedCommands
         var loc = IoCManager.Resolve<IPlayerLocator>();
 
         var name = string.Join(' ', args).Trim();
-        var data = await loc.LookupIdByNameAsync(name);
+        var data = await loc.LookupIdByNameOrIdAsync(name);
 
         if (data != null)
         {

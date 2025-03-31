@@ -20,10 +20,13 @@
     - SpawnDungeonLootPartsEngi
     - SpawnDungeonLootPartsEngi
     - SpawnDungeonLootPartsEngi
+    - SpawnDungeonLootPartsEngi
+    - SpawnDungeonLootToolsBasicEngineering
     - SpawnDungeonLootToolsBasicEngineering
     - SpawnDungeonLootMaterialsValuableSingle
     - SpawnDungeonLootMaterialsBasicSingle
     - SpawnDungeonLootClothesEngi
+    - SpawnDungeonLootVendingRestocks
     chance: 1
     offset: 0.0
     rarePrototypes:
@@ -44,9 +47,9 @@
     layers:
       - state: green
         scale: 0.7, 0.7
-      - sprite: Objects/Tools/wrench.rsi
+      - sprite: _NF/Objects/Tools/wrench.rsi # Frontier: separate sprites (add _NF folder)
         state: icon
-      - sprite: Objects/Tools/crowbar.rsi
+      - sprite: _NF/Objects/Tools/crowbar.rsi # Frontier: separate sprites (add _NF folder)
         state: icon
       - sprite: _NF/Markers/general.rsi
         state: questionmark
@@ -57,7 +60,7 @@
     - Screwdriver
     - Crowbar
     - Multitool
-    - NetworkConfigurator
+    #- NetworkConfigurator
     - trayScanner
     - WelderIndustrial
     - SprayPainter
@@ -68,7 +71,7 @@
     - ClothingHandsGlovesColorYellow
     - GeigerCounter
     - Lantern
-    - SpawnDungeonLootVendingRestocks
+    #- SpawnDungeonLootVendingRestocks
     chance: 0.95
     offset: 0.0
     rarePrototypes:
@@ -228,6 +231,8 @@
     prototypes:
     - SuitStorageBase
     - SuitStorageEVAAlternate
+    - SuitStorageEVAEngineer
+    - SuitStorageEVAAtmosTech
     - SuitStorageBasic
     - SuitStorageEngi
     - SuitStorageAtmos
@@ -237,6 +242,124 @@
     - SuitStorageNTSRA
     - SuitStorageCE
     rareChance: 0.05
+
+- type: entity
+  name: random crate
+  id: SpawnDungeonLootCrateEngi
+  parent: MarkerBase
+  suffix: "Dungeon, Engineering"
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Structures/Storage/Crates/engineering.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: RandomSpawner
+    prototypes:
+    # Empty crates
+    - CratePlasma
+    - CrateEngineering
+    - CrateElectrical
+    - CrateRadiation
+    - CrateUranium
+    # Restocks
+    - CrateVendingMachineRestockEngineeringFilled
+    - CrateVendingMachineRestockVendomatFilled
+    - CrateVendingMachineRestockRoboticsFilled
+    - CrateVendingMachineRestockAstroVendFilled
+    - CrateVendingMachineRestockTankDispenserFilled
+    # Mats
+    - CrateMaterialGlass
+    - CrateMaterialSteel
+    - CrateMaterialPlastic
+    - CrateMaterialWood
+    - CrateMaterialPlasteel
+    - CrateMaterialPlasma
+    - CrateMaterialUranium
+    - CrateMaterialTextiles
+    - CrateMaterialBrass
+    - WeldingFuelTankFull
+    # Filled crates
+    - CrateEngineeringGear
+    - CrateEngineeringElectricalSupplies
+    - CrateEngineeringCableLV
+    - CrateEngineeringCableMV
+    - CrateEngineeringCableHV
+    - CrateEngineeringCableBulk
+    - CrateEngineeringToolbox
+    - CrateEngineeringShuttle
+    - CrateEngineeringFoamGrenade
+    - CrateEngineeringMiniJetpack
+    - CrateAirlockKit
+    - CrateEngineeringSpaceHeater
+    - CrateEngineeringSolar
+    - CrateTools
+    - CrateEngineerHardsuit
+    - CrateAtmosTechHardsuit
+    - CrateEngineeringThruster
+    - CrateEngineeringGyroscope
+    chance: 0.9
+    offset: 0.0
+    rarePrototypes:
+    # Mats
+    - WeldingFuelTankHighCapacity
+    # Filled crates
+    - CrateEngineeringKitShipyardRcd
+    - CrateEngineeringKitRtg
+    - CrateEngineeringKitFabrication
+    - CrateEngineerChiefHardsuit
+    rareChance: 0.01
+
+- type: entity
+  name: random crate (empty)
+  id: SpawnDungeonLootCrateEmptyEngi
+  parent: MarkerBase
+  suffix: "Dungeon, Engineering"
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Structures/Storage/Crates/engineering.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: RandomSpawner
+    prototypes:
+    - CratePlasma
+    - CrateEngineering
+    - CrateElectrical
+    - CrateRadiation
+    - CrateUranium
+    chance: 1.0
+    offset: 0.0
+
+- type: entity
+  name: random crate (restock)
+  id: SpawnDungeonLootCrateRestockEngi
+  parent: MarkerBase
+  suffix: "Dungeon, Engineering"
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Structures/Storage/Crates/engineering.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: RandomSpawner
+    prototypes:
+    - CrateVendingMachineRestockEngineeringFilled
+    - CrateVendingMachineRestockVendomatFilled
+    - CrateVendingMachineRestockRoboticsFilled
+    - CrateVendingMachineRestockAstroVendFilled
+    # - CrateVendingMachineRestockTankDispenserFilled
+    chance: 1.0
+    offset: 0.0
 
 # Machines
 - type: entity
@@ -262,14 +385,14 @@
     - EngineeringTechFab
     - EngineeringTechFab
     - EngineeringTechFab
-    - EngineeringTechFab
     - CircuitImprinter
     - MachineFlatpacker
     - SpawnDungeonMachineFrame
+    - SpawnDungeonLootFlatpacksEngi
     chance: 1
     offset: 0.0
     rarePrototypes:
-    - TilePrinterNF
+    - CutterMachine
     - AutolatheHyperConvection
     - ProtolatheHyperConvection
     rareChance: 0.01
@@ -298,7 +421,7 @@
     chance: 1
     offset: 0.0
     rarePrototypes:
-#    - VendingMachineSyndieContraband # A bit less Syndicate loot
+    - VendingMachineSyndieContraband
 #    - VendingMachineSyndieDrobe # A bit less Syndicate loot
     - VendingMachineRobotics
     rareChance: 0.01
@@ -314,7 +437,7 @@
     layers:
       - state: green
         scale: 0.7, 0.7
-      - sprite: Objects/Misc/stock_parts.rsi
+      - sprite: _NF/Objects/Misc/stock_parts.rsi
         state: bluespace_matter_bin
       - sprite: _NF/Markers/general.rsi
         state: questionmark
@@ -406,7 +529,7 @@
     - ProtolatheMachineCircuitboard
     - AutolatheMachineCircuitboard
     - FlatpackerMachineCircuitboard
-    - TilePrinterNFMachineCircuitboard
+    - CutterMachineCircuitboard
     # Machines
     - ShredderMachineCircuitboard
     - SpaceHeaterMachineCircuitBoard
@@ -456,17 +579,19 @@
     - CircuitImprinterFlatpack
     - EngineeringTechFabFlatpack
     - MaterialReclaimerFlatpack
-    - TilePrinterNFFlatpack
+    - CutterMachineFlatpack
     - PowerCellRechargerFlatpack
     - WeaponCapacitorRechargerFlatpack
     - BorgChargerFlatpack
     - MachineFlatpackerFlatpack
-    chance: 0.95
-    offset: 0.0
-    rarePrototypes:
     - PortableGeneratorJrPacmanFlatpack
     - PortableGeneratorPacmanFlatpack
     - PortableGeneratorSuperPacmanFlatpack
+    - GeneratorRTGFlatpack
+    chance: 0.95
+    offset: 0.0
+    rarePrototypes:
+    - GeneratorRTGDamagedFlatpack
     - AmeControllerUnanchoredFlatpack
     - RadiationCollectorFullTankFlatpack
-    rareChance: 0.01
+    rareChance: 0.05

@@ -39,6 +39,9 @@
             "name": "nfsdsheriff"
         },
         {
+            "name": "nfmsdoc"
+        },
+        {
             "name": "pilot"
         },
         {
@@ -49,6 +52,9 @@
         },
         {
             "name": "piratefirstmate"
+        },
+        {
+            "name": "publicaffairsliaison"
         },
         {
             "name": "stationtrafficcontroller"

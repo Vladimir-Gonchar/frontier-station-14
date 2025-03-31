@@ -7,6 +7,7 @@
     snap:
     - Wallmount
   components:
+  - type: StationAiWhitelist
   - type: WallMount
     arc: 360
   - type: Clickable
@@ -14,7 +15,7 @@
   - type: Physics
     canCollide: false
   - type: Sprite
-    drawdepth: SmallObjects
+    drawdepth: WallMountedItems # Frontier: SmallObjects<WallMountedItems
     sprite: Structures/Wallmounts/switch.rsi
     state: on
   - type: SignalSwitch
@@ -36,6 +37,9 @@
     - Status
     lastSignals:
       Status: false
+  - type: Tag
+    tags:
+    - Structure
 
 - type: entity
   id: SignalButton
@@ -46,6 +50,7 @@
     snap:
     - Wallmount
   components:
+  - type: StationAiWhitelist
   - type: WallMount
     arc: 360
   - type: Clickable
@@ -53,7 +58,7 @@
   - type: Physics
     canCollide: false
   - type: Sprite
-    drawdepth: SmallObjects
+    drawdepth: WallMountedItems # Frontier: SmallObjects<WallMountedItems
     sprite: Structures/Wallmounts/switch.rsi
     state: dead
   - type: UseDelay
@@ -96,6 +101,9 @@
               collection: MetalBreak
               params:
                 volume: -8
+  - type: Tag
+    tags:
+    - Structure
 
 - type: entity
   id: ApcNetSwitch
@@ -115,7 +123,7 @@
     - type: Transform
       anchored: true
     - type: Sprite
-      drawdepth: SmallObjects
+      drawdepth: WallMountedItems # Frontier: SmallObjects<WallMountedItems
       sprite: Structures/Wallmounts/switch.rsi
       state: on
     - type: Rotatable
@@ -129,6 +137,9 @@
       graph: LightSwitchGraph
       node: LightSwitchNode
     - type: Fixtures
+    - type: Tag
+      tags:
+      - Structure
 
 - type: entity
   id: TwoWayLever
@@ -137,10 +148,11 @@
   placement:
     mode: SnapgridCenter
   components:
+    - type: StationAiWhitelist
     - type: Clickable
     - type: InteractionOutline
     - type: Sprite
-      drawdepth: FloorObjects
+      drawdepth: HighFloorObjects
       sprite: Structures/conveyor.rsi
       layers:
         - state: switch-off
@@ -179,6 +191,9 @@
         - Left
         - Right
         - Middle
+    - type: Tag
+      tags:
+      - Structure
 
 #directional
 
@@ -224,7 +239,7 @@
   id: LockableButton
   name: lockable button
   parent: SignalButtonDirectional
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Appearance
   - type: Lock
@@ -479,12 +494,20 @@
   - type: AccessReader
     access: [["Atmospherics"]]
 
+- type: entity
+  id: LockableButtonCentcomm
+  suffix: CentComm
+  parent: LockableButton
+  components:
+  - type: AccessReader
+    access: [["CentralCommand"]]
+
 # button frames
 
 - type: entity
   id: ButtonFrame
   name: button frame
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   description: It's a frame to help distinguish switches visually.
   placement:
     mode: SnapgridCenter
@@ -512,6 +535,11 @@
     drawdepth: SmallObjects
     sprite: Structures/Wallmounts/switch_frame.rsi
     state: grey
+  # Frontier: constructible button frames
+  - type: Construction
+    graph: ButtonFrameGraph
+    node: ButtonFrameGreyNode
+  # End Frontier
 
 - type: entity
   id: ButtonFrameCaution
@@ -522,6 +550,11 @@
     drawdepth: SmallObjects
     sprite: Structures/Wallmounts/switch_frame.rsi
     state: caution
+  # Frontier: constructible button frames
+  - type: Construction
+    graph: ButtonFrameGraph
+    node: ButtonFrameCautionNode
+  # End Frontier
 
 - type: entity
   id: ButtonFrameCautionSecurity
@@ -532,6 +565,11 @@
     drawdepth: SmallObjects
     sprite: Structures/Wallmounts/switch_frame.rsi
     state: caution_security
+  # Frontier: constructible button frames
+  - type: Construction
+    graph: ButtonFrameGraph
+    node: ButtonFrameCautionSecurityNode
+  # End Frontier
 
 - type: entity
   id: ButtonFrameExit
@@ -542,6 +580,11 @@
     drawdepth: SmallObjects
     sprite: Structures/Wallmounts/switch_frame.rsi
     state: exit
+  # Frontier: constructible button frames
+  - type: Construction
+    graph: ButtonFrameGraph
+    node: ButtonFrameExitNode
+  # End Frontier
 
 - type: entity
   id: ButtonFrameJanitor
@@ -552,3 +595,8 @@
     drawdepth: SmallObjects
     sprite: Structures/Wallmounts/switch_frame.rsi
     state: janitor
+  # Frontier: constructible button frames
+  - type: Construction
+    graph: ButtonFrameGraph
+    node: ButtonFrameJanitorNode
+  # End Frontier

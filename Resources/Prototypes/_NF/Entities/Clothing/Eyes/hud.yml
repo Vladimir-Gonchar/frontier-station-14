@@ -1,7 +1,7 @@
 - type: entity
   parent: ClothingEyesHudSecurity
   id: ClothingEyesHudNfsd
-  name: nfsd hud
+  name: NFSD hud
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status and criminal records.
   components:
   - type: Sprite
@@ -38,10 +38,20 @@
 - type: entity
   parent: ClothingEyesHudSecurity
   id: ClothingEyesHudNfsdPatch
-  name: nfsd hud eyepatch
+  name: NFSD hud eyepatch
   description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status and criminal records.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Eyes/Hud/nfsd_patch.rsi
   - type: Clothing
     sprite: _NF/Clothing/Eyes/Hud/nfsd_patch.rsi
+
+- type: entity
+  parent: ClothingEyesHudSecurity
+  id: ClothingEyesHudBountyHunter
+  name: bounty hunter hud
+  description: A heads-up display that scans the humanoids in view and provides accurate data about their ID status, criminal records and health status.
+  components:
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological

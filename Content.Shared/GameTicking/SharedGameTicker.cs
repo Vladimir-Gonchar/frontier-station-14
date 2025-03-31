@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Roles;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
@@ -5,12 +6,16 @@ using Robust.Shared.Replays;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using Robust.Shared.Serialization.Markdown.Value;
+using Robust.Shared.Timing;
+using Robust.Shared.Audio;
+using Robust.Shared.Utility; // Frontier
 
 namespace Content.Shared.GameTicking
 {
     public abstract class SharedGameTicker : EntitySystem
     {
         [Dependency] private readonly IReplayRecordingManager _replay = default!;
+        [Dependency] private readonly IGameTiming _gameTiming = default!;
 
         // See ideally these would be pulled from the job definition or something.
         // But this is easier, and at least it isn't hardcoded.
@@ -39,7 +44,15 @@ namespace Content.Shared.GameTicking
 
         private void OnRecordingStart(MappingDataNode metadata, List<object> events)
         {
-            metadata["roundId"] = new ValueDataNode(RoundId.ToString());
+            if (RoundId != 0)
+            {
+                metadata["roundId"] = new ValueDataNode(RoundId.ToString());
+            }
+        }
+
+        public TimeSpan RoundDuration()
+        {
+            return _gameTiming.CurTime.Subtract(RoundStartTimeSpan);
         }
     }
 
@@ -128,18 +141,44 @@ namespace Content.Shared.GameTicking
         }
     }
 
+    /**
+     * Frontier addition
+     * This data cannot be retrieved locally since you cannot access the station entity from the client.
+     * <param name="stationName">The name of the station.</param>
+     * <param name="jobsAvailable">A dictionary of job prototypes and the number of jobs positions available for it.</param>
+     * <param name="isLateJoinStation">Whether or not this station is a late join station (== not a player ship) this is
+     * based on if it has the extra information component value set to true or false.</param>
+     * <param name="lobbySortOrder">The order in which this station should be displayed in the station picker.</param>
+     * <param name="stationSubtext">The subtext that is shown under the station name.</param>
+     * <param name="stationDescription">A longer description of the station, describing what the player can do there.</param>
+     * <param name="stationIcon">The icon that represents the station and is shown next to the name.</param>
+     */
+    [Serializable, NetSerializable]
+    public sealed class StationJobInformation(
+        string stationName,
+        Dictionary<ProtoId<JobPrototype>, int?> jobsAvailable,
+        bool isLateJoinStation,
+        int lobbySortOrder,
+        LocId? stationSubtext,
+        LocId? stationDescription,
+        ResPath? stationIcon
+        )
+    {
+        public string StationName { get; } = stationName;
+        public Dictionary<ProtoId<JobPrototype>, int?> JobsAvailable { get; } = jobsAvailable;
+        public bool IsLateJoinStation { get; } = isLateJoinStation;
+        public int LobbySortOrder { get; } = lobbySortOrder;
+        public LocId? StationSubtext { get; } = stationSubtext;
+        public LocId? StationDescription { get; } = stationDescription;
+        public ResPath? StationIcon { get; } = stationIcon;
+    }
+
     [Serializable, NetSerializable]
     public sealed class TickerJobsAvailableEvent(
-        Dictionary<NetEntity, string> stationNames,
-        Dictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>> jobsAvailableByStation)
-        : EntityEventArgs
+        Dictionary<NetEntity, StationJobInformation> stationJobList // Frontier addition, replaced with StationJobInformation
+    ) : EntityEventArgs
     {
-        /// <summary>
-        /// The Status of the Player in the lobby (ready, observer, ...)
-        /// </summary>
-        public Dictionary<NetEntity, Dictionary<ProtoId<JobPrototype>, int?>> JobsAvailableByStation { get; } = jobsAvailableByStation;
-
-        public Dictionary<NetEntity, string> StationNames { get; } = stationNames;
+        public Dictionary<NetEntity, StationJobInformation> StationJobList { get; } = stationJobList;
     }
 
     [Serializable, NetSerializable, DataDefinition]
@@ -186,7 +225,7 @@ namespace Content.Shared.GameTicking
         /// <summary>
         /// Sound gets networked due to how entity lifecycle works between client / server and to avoid clipping.
         /// </summary>
-        public string? RestartSound;
+        public ResolvedSoundSpecifier? RestartSound;
 
         public RoundEndMessageEvent(
             string gamemodeTitle,
@@ -195,7 +234,7 @@ namespace Content.Shared.GameTicking
             int roundId,
             int playerCount,
             RoundEndPlayerInfo[] allPlayersEndInfo,
-            string? restartSound)
+            ResolvedSoundSpecifier? restartSound)
         {
             GamemodeTitle = gamemodeTitle;
             RoundEndText = roundEndText;

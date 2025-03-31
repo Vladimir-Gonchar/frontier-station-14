@@ -1,13 +1,13 @@
 - type: entity
-  parent: BaseItem
-  id: Demag
+  parent: [BaseItem, BaseCommandContraband]
+  id: DemagUnlimited
   name: cryptographic resequencer
-  description: The all-in-one unhacking solution. The thinking man's lock. The iconic DEMAG fixer.
+  suffix: Unlimited
+  description: The all-in-one unhacking solution. The last bastion of order. The iconic DEMAG.
   components:
   - type: Emag
+    emagType: [Interaction, Access, StationBound]
     demag: true
-  - type: LimitedCharges
-  - type: AutoRecharge
   - type: Sprite
     sprite: _NF/Objects/Tools/demag.rsi
     state: icon
@@ -15,16 +15,32 @@
     sprite: _NF/Objects/Tools/demag.rsi
 
 - type: entity
-  parent: BaseItem
-  id: DemagUnlimited
+  parent: DemagUnlimited
+  id: Demag
+  suffix: Limited
+  components:
+  - type: LimitedCharges
+  - type: AutoRecharge
+
+- type: entity
+  parent: [BaseItem, BaseC3PirateContraband]
+  id: PmagUnlimited
+  name: machine liberator
   suffix: Unlimited
-  name: cryptographic resequencer
-  description: The all-in-one unhacking solution. The thinking man's lock. The iconic DEMAG fixer.
+  description: A portable package for machine DRM removal. Freebooter approved and tested.
   components:
   - type: Emag
-    demag: true
+    emagType: [StationBound]
   - type: Sprite
-    sprite: _NF/Objects/Tools/demag.rsi
+    sprite: _NF/Objects/Tools/pmag.rsi
     state: icon
   - type: Item
-    sprite: _NF/Objects/Tools/demag.rsi
+    sprite: _NF/Objects/Tools/pmag.rsi
+
+- type: entity
+  parent: PmagUnlimited
+  id: Pmag
+  suffix: Limited
+  components:
+  - type: LimitedCharges
+  - type: AutoRecharge

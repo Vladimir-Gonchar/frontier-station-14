@@ -24,7 +24,7 @@
 	
 	[color=#a4885c]IFF Console:[/color] None
 	
-  "The Gasbender is a medium-sized engineering vessel outfitted for deep space construction projects and gas collection on planets. Features atmospherics setup with mixing/ignition chamber. Designed to work in pair with smaller salvage ship."
+  "The Gasbender is a medium-sized engineering vessel outfitted for deep space construction projects and gas collection on planets. Features atmospherics setup with mixing/ignition chamber. Designed to work in pair with smaller salvage ship. Manufactured by Langstad-Voigt Heavy Industries."
     
     # PREFLIGHT CHECKLIST
   
@@ -97,6 +97,6 @@
   
   ## Sidenotes
   
-  * - Gasbender-class engineering ships are equipped with a five APC units that can be used to appraise the ship's total power consumption. Unmodifued Gasbender-class ship requires 40 kW of power to remain operational.
+  * - Gasbender-class engineering ships are equipped with a five APC units that can be used to appraise the ship's total power consumption. Unmodified Gasbender-class ship requires 40 kW of power to remain operational.
 
 </Document>

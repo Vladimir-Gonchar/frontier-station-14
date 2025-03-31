@@ -2,6 +2,7 @@
   id: BaseEmotionalGhost
   abstract: true
   components:
+  - type: GhostTakeoverAvailable
   - type: GhostRole
     name: ghost-role-information-emotional-support-name
     description: ghost-role-information-emotional-support-description
@@ -9,20 +10,20 @@
     makeSentient: true
     allowSpeech: true
     allowMovement: true
-  - type: GhostTakeoverAvailable
-  - type: CombatMode
-    combatToggleAction: ActionCombatModeToggleOff
+    prototype: EmotionalSupportPet
+    mindRoles:
+    - MindRoleGhostRoleEmotionalSupportPet
   - type: Grammar
     attributes:
+      proper: true
       gender: epicene
   - type: IdExaminable
+  - type: InventorySlots
   - type: Strippable
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
-  - type: Inventory
-    templateId: emotionalsupportpet
   - type: Tag
     tags:
     - CannotSuicide
@@ -30,11 +31,16 @@
     - VimPilot
   - type: Puller
     needsHands: false
+  - type: Inventory
+    templateId: nfpet
 
 - type: entity
   id: BaseEmotionalGhostCat
+  parent: BaseEmotionalGhost
   abstract: true
   components:
+  - type: RandomMetadata
+    nameSegments: [NamesCat]
   - type: ReplacementAccent
     accent: cat
   - type: Vocal
@@ -43,6 +49,7 @@
       Female: Cat
       Unsexed: Cat
   - type: Inventory
+    templateId: nfcat
     speciesId: cat
   - type: RotationVisuals
     defaultRotation: 90
@@ -50,8 +57,12 @@
 
 - type: entity
   id: BaseEmotionalGhostDog
+  parent: BaseEmotionalGhost
   abstract: true
   components:
+  - type: RandomMetadata
+    nameSegments:
+      - NamesDog
   - type: ReplacementAccent
     accent: dog
   - type: Vocal
@@ -64,11 +75,9 @@
 
 - type: entity
   suffix: Ghost
-  parent: [BaseEmotionalGhost, BaseEmotionalGhostCat, MobCat]
+  parent: [BaseEmotionalGhostCat, MobCat]
   id: MobCatGhost
   components:
-  - type: RandomMetadata
-    nameSegments: [names_cat]
   - type: DamageStateVisuals
     states:
       Alive:
@@ -76,11 +85,11 @@
 
 - type: entity
   suffix: Ghost
+  parent: [BaseEmotionalGhostCat, MobCatCalico]
   id: MobCatCalicoGhost
-  parent: [BaseEmotionalGhost, BaseEmotionalGhostCat, MobCatCalico]
   components:
   - type: RandomMetadata
-    nameSegments: [names_cat_calico]
+    nameSegments: [NamesCatCalico]
   - type: DamageStateVisuals
     states:
       Alive:
@@ -88,35 +97,11 @@
 
 - type: entity
   suffix: Ghost
-  id: MobCatCaracalGhost
-  parent: [BaseEmotionalGhost, BaseEmotionalGhostCat, MobCatCaracal]
-  components:
-  - type: RandomMetadata
-    nameSegments: [names_cat_caracal]
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: caracal_flop
-
-- type: entity
-  suffix: Ghost
-  parent: [BaseEmotionalGhost, BaseEmotionalGhostCat, MobCatSpace]
-  id: MobCatSpaceGhost
-  components:
-  - type: RandomMetadata
-    nameSegments: [names_cat_space]
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: spacecat
-
-- type: entity
-  suffix: Ghost
-  parent: [BaseEmotionalGhost, BaseEmotionalGhostCat, MobBingus]
+  parent: [BaseEmotionalGhostCat, MobBingus]
   id: MobBingusGhost
   components:
   - type: RandomMetadata
-    nameSegments: [names_cat_bingus]
+    nameSegments: [NamesCatBingus]
   - type: DamageStateVisuals
     states:
       Alive:
@@ -124,29 +109,62 @@
 
 - type: entity
   suffix: Ghost
-  parent: [BaseEmotionalGhost, BaseEmotionalGhostDog, MobCorgi]
-  id: MobCorgiGhost
+  parent: [BaseEmotionalGhostCat, MobCatCaracal]
+  id: MobCatCaracalGhost
   components:
   - type: RandomMetadata
-    nameSegments: [names_corgi]
+    nameSegments: [NamesCatCaracal]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: caracal_flop
+  - type: Inventory # Broken hats
+    templateId: nfpet # Broken hats
 
 - type: entity
   suffix: Ghost
-  parent: [BaseEmotionalGhost, BaseEmotionalGhostDog, MobCorgiPuppy]
+  parent: [BaseEmotionalGhostCat, MobCatSpace]
+  id: MobCatSpaceGhost
+  components:
+  - type: RandomMetadata
+    nameSegments: [NamesCatSpace]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: spacecat
+  - type: Inventory # Broken hats
+    templateId: nfpet # Broken hats
+
+- type: entity
+  suffix: Ghost
+  parent: [BaseEmotionalGhostDog, MobCorgi]
+  id: MobCorgiGhost
+
+- type: entity
+  suffix: Ghost
+  parent: [BaseEmotionalGhostDog, MobCorgiPuppy]
   id: MobCorgiPuppyGhost
   components:
   - type: Inventory
     speciesId: puppy
-  - type: RandomMetadata
-    nameSegments: [names_corgi]
 
 - type: entity
   suffix: Ghost
-  parent: [BaseEmotionalGhost, BaseEmotionalGhostDog, MobPibble]
+  parent: [BaseEmotionalGhostDog, MobMcGriff]
+  id: MobPugGhost
+  name: pug # Just for the spawn menu.
+  description: A stocky dog with a little smushed-in face. Adorable? # The default description doesn't really fit.
+  components:
+  - type: RandomMetadata
+    nameSegments: [NamesDogPug]
+  - type: Inventory
+    speciesId: puppy
+
+- type: entity
+  suffix: Ghost
+  parent: [BaseEmotionalGhostDog, MobPibble]
   id: MobPibbleGhost
   components:
-  - type: CombatMode
-    combatToggleAction: ActionCombatModeToggle
   - type: Inventory
     speciesId: pitbull
 
@@ -163,13 +181,23 @@
       Female: Chicken
       Unsexed: Chicken
   - type: RandomMetadata
-    nameSegments: [names_chicken]
-  - type: Inventory # Frontier
+    nameSegments: [NamesChicken]
+  - type: Inventory
     speciesId: chicken
-    templateId: pet
-  - type: InventorySlots
-  - type: Strippable
-  - type: UserInterface
-    interfaces:
-      enum.StrippingUiKey.Key:
-        type: StrippableBoundUserInterface
+
+- type: entity
+  suffix: Ghost
+  parent: [BaseEmotionalGhost, MobFox]
+  id: MobFoxGhost
+  components:
+  - type: ReplacementAccent
+    accent: fox
+  - type: Vocal
+    sounds:
+      Male: Fox
+      Female: Fox
+      Unsexed: Fox
+  - type: RandomMetadata
+    nameSegments: [NamesFox]
+  - type: Inventory
+    speciesId: fox

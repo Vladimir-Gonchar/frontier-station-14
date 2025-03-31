@@ -92,6 +92,25 @@
       - PosterContrabandInterdyne
       - PosterContrabandWaffleCorp
       - PosterContrabandMissingSpacepen
+        # Frontier: Start
+      - NFPosterContrabandLvhiStation
+      - NFPosterContrabandLvhiShuttle
+      - NFPosterContrabandLvhiSpace
+      - NFPosterContrabandLvhiMountains
+      - NFPosterContrabandLvhiPlanetCore
+      - NFPosterContrabandLvhiLogo
+      - NFPosterContrabandFsbLogo
+      - NFPosterContrabandFsbStasis
+      - NFPosterContrabandFsbApothecary
+      - NFPosterContrabandEatShrooms
+      - NFPosterContrabandKillerFashion
+      - NFPosterContrabandGoblinFront
+      - NFPosterContrabandGoblinate
+      - NFPosterContrabandFsbRubicon
+      - NFPosterContrabandWyvernShipyards
+      - NFPosterContrabandRatvarLives
+      - NFPosterContrabandFsbNightlight
+        # Frontier: Ending
     chance: 1
 
 - type: entity
@@ -150,5 +169,20 @@
       - PosterLegitPeriodicTable
       - PosterLegitRenault
       - PosterLegitNTTGC
+      - PosterLegitSafetyMothDelam
+      - PosterLegitSafetyMothEpi
+      - PosterLegitSafetyMothPiping
+      - PosterLegitSafetyMothMeth
+      - PosterLegitSafetyMothHardhat
+      - PosterLegitSafetyMothSSD
+      - PosterLegitOppenhopper
+        # Frontier: Start
       - NFPosterLegitMagnusWatching
+      - NFPosterLegitGoblinTinkerer
+      - NFPosterLegitBahamaMama
+      - NFPosterLegitWinnerWinner
+      - NFPosterLegitWantedClarpy
+      - NFPosterLegitMothPlease
+      - NFPosterLegitHaveYouSeenThisEgg
+        # Frontier: Ending
     chance: 1

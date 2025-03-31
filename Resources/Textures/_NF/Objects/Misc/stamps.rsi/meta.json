@@ -8,7 +8,28 @@
   },
   "states": [
     {
+      "name": "stamp-doctor"
+    },
+    {
+      "name": "stamp-engineer"
+    },
+    {
+      "name": "stamp-doc"
+    },
+    {
+      "name": "stamp-pal"
+    },
+    {
+      "name": "stamp-psychologist"
+    },
+    {
       "name": "stamp-sheriff"
+    },
+    {
+      "name": "stamp-stc"
+    },
+    {
+      "name": "stamp-bailiff"
     }
   ]
 }

@@ -4,7 +4,7 @@
   name: mail teleporter
   description: Teleports mail addressed to the crew of this station.
   components:
-  - type: MailTeleporter 
+  - type: MailTeleporter
   - type: InteractionOutline
   - type: Physics
     bodyType: Static
@@ -29,7 +29,7 @@
         damage: 0
   - type: ApcPowerReceiver
     powerLoad: 1000 # TODO if we keep this make it spike power draw when teleporting
-    powerDisabled: true
+    powerDisabled: false # Frontier - true<false Start on
   - type: ExtensionCableReceiver
   - type: Appearance
   - type: GenericVisualizer
@@ -39,3 +39,9 @@
           True: {visible: true}
           False: {visible: false}
   - type: PowerSwitch
+  - type: ShipyardSellCondition # Frontier
+    blockSale: true # Frontier
+    reason: shipyard-console-station-resources # Frontier
+    allowedShipyardTypes: # Frontier: mail profits removed, sector in shambles
+    - Syndicate # Frontier
+    - BlackMarket # Frontier

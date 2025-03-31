@@ -36,7 +36,7 @@
   - type: StorageFill
     contents:
       - id: ClothingEyesGlassesSunglasses
-      - id: SpaceCash30000
+      - id: SpaceCashCounterfeit200000 # Frontier SpaceCash30000<SpaceCashCounterfeit200000
         amount: 1
       - id: EncryptionKeySyndie
       - id: RubberStampTrader
@@ -57,8 +57,5 @@
       - id: ClothingEyesGlassesSunglasses
       - id: SpaceCash20000
         amount: 1
-      - id: ClothingUniformJumpsuitTacticool
       - id: ClothingOuterCoatJensen
-      - id: ClothingHandsGlovesCombat
-      - id: ClothingMaskNeckGaiter
-      - id: ToyFigurineThief
+      - id: ClothingHandsGlovesColorBlack

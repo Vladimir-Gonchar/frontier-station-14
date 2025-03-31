@@ -7,18 +7,20 @@ tilemap:
   35: FloorDarkMono
   57: FloorHull
   90: FloorSteel
+  2: FloorTechMaint
   1: FloorTechMaint2
   109: FloorWhite
   114: FloorWhiteMono
   121: Lattice
   122: Plating
+  3: PlatingDamaged
 entities:
 - proto: ""
   entities:
   - uid: 1
     components:
     - type: MetaData
-      name: grid
+      name: Eagle
     - type: Transform
       pos: -0.58333296,-0.43749917
       parent: invalid
@@ -26,19 +28,19 @@ entities:
       chunks:
         0,0:
           ind: 0,0
-          tiles: WgAAAAAAWgAAAAABcgAAAAACbQAAAAADbQAAAAABbQAAAAADcgAAAAAAbQAAAAAAbQAAAAACbQAAAAADbQAAAAAAbQAAAAABegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWgAAAAADWgAAAAAAegAAAAAAbQAAAAAAbQAAAAABbQAAAAABegAAAAAAbQAAAAACbQAAAAACbQAAAAAAbQAAAAADegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIwAAAAAAegAAAAAAegAAAAAAegAAAAAAcgAAAAABegAAAAAAegAAAAAAbQAAAAACbQAAAAACbQAAAAACegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAADegAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAbQAAAAAAegAAAAAAbQAAAAAAegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAADegAAAAAAbQAAAAADbQAAAAAAbQAAAAAAbQAAAAACegAAAAAAegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAADegAAAAAAbQAAAAACbQAAAAABbQAAAAABbQAAAAABegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIwAAAAABegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAACHgAAAAADHgAAAAACHgAAAAACegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAACHgAAAAADHgAAAAACegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAABHgAAAAABHgAAAAABegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAABegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          tiles: WgAAAAABWgAAAAAAbQAAAAABbQAAAAACbQAAAAACbQAAAAACbQAAAAACbQAAAAABbQAAAAADbQAAAAADbQAAAAAAbQAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWgAAAAADWgAAAAADegAAAAAAbQAAAAABbQAAAAACbQAAAAACegAAAAAAbQAAAAADbQAAAAACbQAAAAABbQAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAACegAAAAAAegAAAAAAegAAAAAAbQAAAAACegAAAAAAegAAAAAAbQAAAAABbQAAAAACegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAABegAAAAAAbQAAAAABbQAAAAAAbQAAAAAAbQAAAAABegAAAAAAbQAAAAADbQAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAABegAAAAAAbQAAAAADbQAAAAABbQAAAAAAbQAAAAACegAAAAAAegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAACegAAAAAAbQAAAAABbQAAAAADbQAAAAABbQAAAAACegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAABHgAAAAABHgAAAAAAHgAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAACHgAAAAAAHgAAAAACegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAHgAAAAACHgAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAABegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
           version: 6
         0,-1:
           ind: 0,-1
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAbQAAAAADegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAegAAAAAAbQAAAAAAbQAAAAADegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAegAAAAAAbQAAAAABegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAHgAAAAADegAAAAAAAAAAAAAAWgAAAAABWgAAAAADegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAbQAAAAABHgAAAAADHgAAAAACegAAAAAAAAAAAAAAWgAAAAADWgAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAbQAAAAADbQAAAAABegAAAAAAHgAAAAACegAAAAAAAAAAAAAAWgAAAAAAWgAAAAACegAAAAAAeQAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAbQAAAAABegAAAAAAbQAAAAAAbQAAAAABbQAAAAABegAAAAAAeQAAAAAAAAAAAAAAWgAAAAABWgAAAAACegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAbQAAAAABbQAAAAADbQAAAAABbQAAAAAAbQAAAAADbQAAAAADegAAAAAAAAAAAAAAAAAAAAAAWgAAAAABWgAAAAABegAAAAAAbQAAAAABbQAAAAAAbQAAAAADegAAAAAAbQAAAAABbQAAAAABegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAA
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAbQAAAAACegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAegAAAAAAbQAAAAADbQAAAAABegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAegAAAAAAbQAAAAACegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAHgAAAAADegAAAAAAAAAAAAAAWgAAAAACWgAAAAABegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAbQAAAAACbQAAAAABHgAAAAACegAAAAAAAAAAAAAAWgAAAAABWgAAAAADegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAbQAAAAADbQAAAAACegAAAAAAHgAAAAACegAAAAAAAAAAAAAAWgAAAAABWgAAAAAAegAAAAAAeQAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAbQAAAAACegAAAAAAbQAAAAADbQAAAAADbQAAAAACegAAAAAAeQAAAAAAAAAAAAAAWgAAAAABWgAAAAABegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAbQAAAAABbQAAAAAAbQAAAAAAbQAAAAADbQAAAAADbQAAAAADegAAAAAAAAAAAAAAAAAAAAAAWgAAAAACWgAAAAABegAAAAAAbQAAAAABbQAAAAACbQAAAAADegAAAAAAbQAAAAAAbQAAAAADegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAA
           version: 6
         -1,-1:
           ind: -1,-1
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAbQAAAAABAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAbQAAAAACbQAAAAADAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAbQAAAAACAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAWgAAAAABAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAAQAAAAAAegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAWgAAAAABAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAegAAAAAAAQAAAAAAegAAAAAAHgAAAAAAegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAeQAAAAAAegAAAAAAWgAAAAACAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAegAAAAAAHgAAAAADHgAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAWgAAAAACWgAAAAADAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAegAAAAAAIwAAAAAAegAAAAAAHgAAAAADHgAAAAACegAAAAAAegAAAAAAWgAAAAACWgAAAAADWgAAAAABWgAAAAAB
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAbQAAAAABAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAbQAAAAACbQAAAAADAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAAgAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAbQAAAAAAAAAAAAAAAAAAAAAAegAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAWgAAAAABAAAAAAAAAAAAAAAAegAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAegAAAAAAegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAWgAAAAADAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAAgAAAAAAegAAAAAAHgAAAAACHgAAAAAAegAAAAAAegAAAAAAeQAAAAAAAAAAAAAAeQAAAAAAegAAAAAAWgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAAgAAAAAAAgAAAAAAHgAAAAAAHgAAAAABHgAAAAADHgAAAAABegAAAAAAegAAAAAAegAAAAAAegAAAAAAWgAAAAACWgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAAwAAAAAAAgAAAAAAHgAAAAACHgAAAAADHgAAAAABHgAAAAAAHgAAAAAAegAAAAAAWgAAAAACWgAAAAACWgAAAAADWgAAAAAD
           version: 6
         -1,0:
           ind: -1,0
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAHgAAAAAAHgAAAAACHgAAAAABHgAAAAAAHgAAAAACIwAAAAABWgAAAAAAWgAAAAABWgAAAAABWgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAHgAAAAACHgAAAAAAHgAAAAAAHgAAAAAAHgAAAAABegAAAAAAWgAAAAACWgAAAAACWgAAAAAAWgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAHgAAAAABHgAAAAAAHgAAAAADegAAAAAAHgAAAAADIwAAAAADegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAHgAAAAAAHgAAAAAAHgAAAAADHgAAAAACHgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAHgAAAAABHgAAAAADHgAAAAADHgAAAAADHgAAAAACHgAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAHgAAAAABHgAAAAAAHgAAAAABHgAAAAABHgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAHgAAAAABHgAAAAADHgAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAHgAAAAABHgAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAHgAAAAABHgAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAHgAAAAACHgAAAAAAHgAAAAACHgAAAAAAHgAAAAABHgAAAAADWgAAAAAAWgAAAAADWgAAAAADWgAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAHgAAAAADHgAAAAAAHgAAAAABHgAAAAABHgAAAAABegAAAAAAWgAAAAAAWgAAAAACWgAAAAABWgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAegAAAAAAAgAAAAAAAgAAAAAAegAAAAAAegAAAAAAHgAAAAABegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAAgAAAAAAAgAAAAAAegAAAAAAHgAAAAABHgAAAAACHgAAAAADHgAAAAAAHgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAHgAAAAACHgAAAAABHgAAAAADHgAAAAADHgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAHgAAAAABHgAAAAADHgAAAAAAHgAAAAACHgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAHgAAAAACHgAAAAADHgAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAHgAAAAACHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAegAAAAAAHgAAAAABHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAegAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
           version: 6
     - type: Broadphase
     - type: Physics
@@ -62,347 +64,203 @@ entities:
         nodes:
         - node:
             color: '#FFFFFFFF'
-            id: Bot
+            id: BoxGreyscale
           decals:
-            58: 3,7
-            205: -3,7
-        - node:
-            cleanable: True
-            color: '#FFFFFFFF'
-            id: Box
-          decals:
-            60: 0,9
+            249: 0,9
         - node:
             color: '#52B4E996'
             id: BrickTileWhiteCornerNe
           decals:
-            201: 12,-2
+            275: 10,1
+            276: 8,3
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteCornerNe
           decals:
-            65: -6,1
-            66: -7,2
+            180: -6,1
+        - node:
+            color: '#52B4E996'
+            id: BrickTileWhiteCornerNw
+          decals:
+            270: 7,3
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteCornerNw
           decals:
-            69: -9,2
+            181: -10,1
+        - node:
+            color: '#EFB34196'
+            id: BrickTileWhiteCornerSe
+          decals:
+            437: -7,-2
+            438: -6,-1
+            515: -8,-3
         - node:
             color: '#52B4E996'
             id: BrickTileWhiteCornerSw
           decals:
-            10: 10,-4
-            11: 11,-5
+            282: 7,-2
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteCornerSw
           decals:
-            200: -8,-3
+            514: -9,-3
+        - node:
+            color: '#52B4E996'
+            id: BrickTileWhiteEndE
+          decals:
+            273: 11,0
+        - node:
+            color: '#52B4E996'
+            id: BrickTileWhiteEndS
+          decals:
+            283: 8,-3
         - node:
             color: '#52B4E996'
             id: BrickTileWhiteInnerNe
           decals:
-            17: 11,-5
-            213: 10,-2
-        - node:
-            color: '#EFB34196'
-            id: BrickTileWhiteInnerNe
-          decals:
-            67: -7,1
-        - node:
-            color: '#52B4E996'
-            id: BrickTileWhiteInnerNw
-          decals:
-            18: 13,-5
-        - node:
-            color: '#EFB34196'
-            id: BrickTileWhiteInnerNw
-          decals:
-            70: -9,1
+            274: 10,0
+            281: 8,1
         - node:
             color: '#52B4E996'
             id: BrickTileWhiteInnerSe
           decals:
-            204: 11,-3
+            289: 8,0
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteInnerSe
           decals:
-            72: -10,-1
+            344: -7,-1
+            402: -8,-2
         - node:
             color: '#52B4E996'
             id: BrickTileWhiteInnerSw
           decals:
-            13: 11,-4
-            14: 10,-3
-            19: 13,-5
+            284: 8,-2
+        - node:
+            color: '#EFB34196'
+            id: BrickTileWhiteInnerSw
+          decals:
+            345: -9,-2
         - node:
             color: '#52B4E996'
             id: BrickTileWhiteLineE
           decals:
-            12: 11,-4
-        - node:
-            color: '#EFB34196'
-            id: BrickTileWhiteLineE
-          decals:
-            64: -7,-2
+            279: 8,2
+            286: 8,-1
         - node:
             color: '#52B4E996'
             id: BrickTileWhiteLineN
           decals:
-            15: 12,-5
-            202: 11,-2
+            280: 9,1
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteLineN
           decals:
-            68: -8,2
+            182: -9,1
         - node:
             color: '#52B4E996'
             id: BrickTileWhiteLineS
           decals:
-            16: 12,-5
+            287: 10,0
+            288: 9,0
+        - node:
+            color: '#EFB34196'
+            id: BrickTileWhiteLineS
+          decals:
+            187: -10,-2
         - node:
             color: '#52B4E996'
             id: BrickTileWhiteLineW
           decals:
-            20: 13,-4
-            21: 13,-6
+            277: 7,2
+            278: 7,1
+            285: 7,-1
+            538: 13,-6
+            556: 13,-5
+            557: 13,-4
         - node:
             color: '#EFB34196'
             id: BrickTileWhiteLineW
           decals:
-            22: 12,0
-            23: -3,8
-            63: -8,-2
-            71: -10,-1
+            21: 12,0
+            22: -3,8
+        - node:
+            color: '#FFFFFFFF'
+            id: Caution
+          decals:
+            195: -8,1
+            196: -7,1
+        - node:
+            angle: 1.5707963267948966 rad
+            color: '#FFFFFFFF'
+            id: Caution
+          decals:
+            200: -10,-2
+            201: -10,-1
+        - node:
+            color: '#52B4E996'
+            id: CheckerNESW
+          decals:
+            476: 11,-5
+            477: 11,-4
+            478: 10,-4
+            479: 10,-3
+            480: 11,-3
+            481: 10,-2
+            482: 11,-2
+            483: 12,-2
+            484: 12,-3
+            486: 9,-2
+            487: 12,-5
         - node:
             color: '#EDB14293'
             id: CheckerNESW
           decals:
-            32: 3,3
-            33: 4,3
-            34: 4,4
-            35: 3,4
-            36: 5,3
-            37: 5,4
-            38: 4,5
-            39: 3,5
-            40: 5,5
+            30: 3,3
+            31: 4,3
+            32: 4,4
+            33: 3,4
+            34: 5,3
+            35: 5,4
+            36: 4,5
+            37: 3,5
+            38: 5,5
         - node:
             color: '#EFB34196'
             id: CheckerNESW
           decals:
-            74: 2,3
-            75: 2,4
-            76: 2,5
+            55: 2,3
+            56: 2,4
+            57: 2,5
         - node:
-            cleanable: True
             color: '#FFFFFFFF'
-            id: Dirt
+            id: Delivery
           decals:
-            86: -10,-1
-            87: -11,-3
-            88: -13,-4
+            174: -8,3
+            175: -7,3
         - node:
-            cleanable: True
+            color: '#96DAFFFF'
+            id: DeliveryGreyscale
+          decals:
+            177: -13,-4
+        - node:
+            color: '#FF5C5CFF'
+            id: DeliveryGreyscale
+          decals:
+            178: -13,-5
+        - node:
             color: '#FFFFFFFF'
-            id: DirtHeavy
+            id: DeliveryGreyscale
           decals:
-            83: -10,-1
-            85: -8,2
-            89: -12,-3
-            90: -12,-4
-            91: -12,-5
-            97: -4,3
-            98: 0,3
-            103: -1,7
-            104: -2,7
-            105: -2,8
-            113: 3,1
-            114: 5,-1
-            115: 11,0
-            116: 10,1
-            117: 10,0
-            126: 4,4
-            127: 3,4
-            144: -4,0
-            154: -6,0
-            155: -12,-3
-            156: -12,-4
-            158: -3,3
-            162: 0,8
-            167: 13,-6
-            168: 13,-4
-            169: 12,-5
-            188: 1,7
-        - node:
-            cleanable: True
-            angle: 1.5707963267948966 rad
-            color: '#FFFFFFFF'
-            id: DirtHeavy
-          decals:
-            189: -5,4
-            195: 1,-1
-        - node:
-            cleanable: True
-            angle: 3.141592653589793 rad
-            color: '#FFFFFFFF'
-            id: DirtHeavy
-          decals:
-            185: -4,1
-            186: -4,5
-            187: -2,8
-        - node:
-            cleanable: True
-            angle: 4.71238898038469 rad
-            color: '#FFFFFFFF'
-            id: DirtHeavy
-          decals:
-            183: -1,-2
-            184: -3,-1
-            194: 0,-1
-        - node:
-            cleanable: True
-            color: '#FFFFFFFF'
-            id: DirtHeavyMonotile
-          decals:
-            99: 0,5
-            100: -1,4
-            106: -1,8
-            112: 5,1
-            128: 3,3
-            129: 2,3
-            130: 2,4
-            142: -3,-1
-            143: -4,-1
-            150: -1,1
-            151: 0,1
-            152: 0,0
-            153: 1,1
-            164: 10,-4
-            165: 11,-5
-            166: 13,-5
-        - node:
-            cleanable: True
-            angle: 1.5707963267948966 rad
-            color: '#FFFFFFFF'
-            id: DirtHeavyMonotile
-          decals:
-            196: -2,-1
-        - node:
-            cleanable: True
-            angle: 3.141592653589793 rad
-            color: '#FFFFFFFF'
-            id: DirtHeavyMonotile
-          decals:
-            197: -1,-1
-            198: 1,0
-            199: -2,1
-        - node:
-            cleanable: True
-            color: '#FFFFFFFF'
-            id: DirtLight
-          decals:
-            101: -3,4
-            110: 3,-1
-            111: 4,1
-            118: 9,1
-            119: 7,1
-            120: 7,2
-            136: -1,-3
-            137: -1,-5
-            138: 0,-5
-            139: -1,-2
-            140: -2,-2
-            141: -1,-1
-            147: -2,1
-            148: -2,0
-            149: -3,0
-            163: 11,-4
-        - node:
-            cleanable: True
-            color: '#FFFFFFFF'
-            id: DirtMedium
-          decals:
-            84: -8,1
-            92: -10,-4
-            93: -11,-4
-            94: -11,-5
-            95: -6,0
-            96: -8,0
-            102: -4,4
-            107: 1,8
-            108: 4,-1
-            109: 3,0
-            121: 8,2
-            122: 8,1
-            123: 5,0
-            124: 4,3
-            125: 3,3
-            131: 5,4
-            132: 1,-3
-            133: 1,-4
-            134: 1,-5
-            135: -1,-4
-            145: -4,1
-            146: -3,1
-            157: -12,-4
-            159: 0,4
-            160: 1,7
-            161: 0,7
-            170: 13,-6
-            171: 13,-4
-            172: 13,-5
-            173: 11,-5
-            174: -2,-7
-            175: 2,-7
-            181: 1,-8
-        - node:
-            cleanable: True
-            angle: 1.5707963267948966 rad
-            color: '#FFFFFFFF'
-            id: DirtMedium
-          decals:
-            176: 1,-7
-            177: -1,-7
-            180: 1,-6
-            192: 0,-2
-        - node:
-            cleanable: True
-            angle: 3.141592653589793 rad
-            color: '#FFFFFFFF'
-            id: DirtMedium
-          decals:
-            178: -1,-8
-            179: -1,-6
-        - node:
-            cleanable: True
-            angle: 4.71238898038469 rad
-            color: '#FFFFFFFF'
-            id: DirtMedium
-          decals:
-            182: 0,-4
-            193: 1,-2
-        - node:
-            color: '#52B4E996'
-            id: FullTileOverlayGreyscale
-          decals:
-            51: 7,3
-            57: 11,0
-            203: 12,-3
-            209: 8,-3
+            176: -11,-5
+            247: -3,7
+            248: 3,7
         - node:
             color: '#334E6DC8'
             id: HalfTileOverlayGreyscale
           decals:
-            79: -2,1
-        - node:
-            color: '#52B4E996'
-            id: HalfTileOverlayGreyscale
-          decals:
-            8: 8,2
+            511: -2,1
         - node:
             color: '#52B4E996'
             id: HalfTileOverlayGreyscale180
@@ -412,131 +270,120 @@ entities:
             color: '#EDB14293'
             id: HalfTileOverlayGreyscale180
           decals:
-            42: -3,-1
-        - node:
-            color: '#52B4E996'
-            id: HalfTileOverlayGreyscale270
-          decals:
-            9: 7,1
-            211: 7,-1
+            40: -3,-1
         - node:
             color: '#EDB14293'
             id: HalfTileOverlayGreyscale270
           decals:
-            44: -1,-3
-            45: -1,-4
-            46: -1,-5
+            42: -1,-3
+            43: -1,-4
+            44: -1,-5
         - node:
             color: '#52B4E996'
             id: HalfTileOverlayGreyscale90
           decals:
-            25: 1,-3
-            26: 1,-4
-            27: 1,-5
-            28: 1,1
-            190: 1,-2
-            191: 1,-1
+            24: 1,-3
+            25: 1,-4
+            26: 1,-5
+            150: 1,-2
+            151: 1,-1
         - node:
             color: '#334E6DC8'
             id: QuarterTileOverlayGreyscale
           decals:
-            77: -1,1
+            513: -1,1
         - node:
             color: '#52B4E996'
             id: QuarterTileOverlayGreyscale180
           decals:
-            50: 0,-5
-        - node:
-            color: '#52B4E996'
-            id: QuarterTileOverlayGreyscale270
-          decals:
-            212: 8,-2
+            48: 0,-5
         - node:
             color: '#EDB14293'
             id: QuarterTileOverlayGreyscale270
           decals:
-            43: -2,-1
-            48: -1,-2
+            41: -2,-1
+            46: -1,-2
         - node:
             color: '#EFB34196'
             id: QuarterTileOverlayGreyscale270
           decals:
-            49: 0,-5
+            47: 0,-5
         - node:
             color: '#334E6DC8'
             id: QuarterTileOverlayGreyscale90
           decals:
-            78: -3,1
+            512: -3,1
         - node:
-            color: '#52B4E996'
-            id: QuarterTileOverlayGreyscale90
+            color: '#FFFFFFFF'
+            id: StandClear
           decals:
-            56: 9,1
+            250: -7,2
+            251: -8,2
         - node:
             color: '#52B4E996'
             id: ThreeQuarterTileOverlayGreyscale
           decals:
             0: 3,1
-            52: 7,2
         - node:
             color: '#52B4E996'
             id: ThreeQuarterTileOverlayGreyscale180
           decals:
             1: 5,-1
-            54: 10,0
         - node:
             color: '#52B4E996'
             id: ThreeQuarterTileOverlayGreyscale270
           decals:
             2: 3,-1
-            210: 7,-2
         - node:
             color: '#EDB14293'
             id: ThreeQuarterTileOverlayGreyscale270
           decals:
-            41: -4,-1
-            47: -2,-2
+            39: -4,-1
+            45: -2,-2
         - node:
             color: '#52B4E996'
             id: ThreeQuarterTileOverlayGreyscale90
           decals:
             3: 5,1
-            53: 9,2
-            55: 10,1
         - node:
-            color: '#EDB142C9'
+            color: '#FFFFFFFF'
             id: WarnBox
           decals:
-            30: -10,1
+            173: -10,0
         - node:
-            color: '#EFB34196'
-            id: WarnCornerGreyscaleSW
+            color: '#334E6DC8'
+            id: WarnCornerGreyscaleNE
           decals:
-            214: -10,0
+            448: 1,1
         - node:
-            color: '#EFB34196'
-            id: WarnFullGreyscale
+            color: '#FFFFFFFF'
+            id: WarnCornerSmallNE
           decals:
-            218: -8,-1
-            219: -7,-1
+            192: -9,1
+        - node:
+            color: '#FFFFFFFF'
+            id: WarnCornerSmallNW
+          decals:
+            191: -6,1
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleE
           decals:
             7: 5,0
-            29: 1,0
-            208: 8,-2
+            28: 1,0
+            256: 8,-2
         - node:
             color: '#EFB34196'
             id: WarnLineGreyscaleE
           decals:
-            73: -6,0
+            54: -6,0
         - node:
             color: '#334E6DC8'
             id: WarnLineGreyscaleN
           decals:
-            24: 0,5
-            82: 0,1
+            23: 0,5
+            63: 0,1
+            510: -4,1
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleN
@@ -546,48 +393,113 @@ entities:
             color: '#EFB34196'
             id: WarnLineGreyscaleN
           decals:
-            217: -10,-2
+            190: -11,-4
         - node:
             color: '#334E6DC8'
             id: WarnLineGreyscaleS
           decals:
-            62: 0,7
-            81: 0,3
+            53: 0,7
+            307: -4,3
+            308: 0,3
         - node:
             color: '#EFB34196'
             id: WarnLineGreyscaleS
           decals:
-            80: 4,3
+            61: 4,3
+            494: -11,-2
         - node:
             color: '#52B4E996'
             id: WarnLineGreyscaleW
           decals:
             6: 3,0
-            206: 7,0
-            207: 10,-2
+            255: 7,0
         - node:
             color: '#EDB14293'
             id: WarnLineGreyscaleW
           decals:
-            31: -4,0
+            29: -4,0
         - node:
-            color: '#EFB34196'
-            id: WarnLineN
+            color: '#FFFFFFFF'
+            id: WarnLineS
           decals:
-            215: -8,0
-            216: -7,0
+            172: -10,-1
+            193: -10,-2
+        - node:
+            color: '#FFFFFFFF'
+            id: WarnLineW
+          decals:
+            197: -7,1
+            198: -8,1
         - node:
             cleanable: True
             color: '#FFFFFFFF'
             id: body
           decals:
-            59: -5,4
+            516: -4,4
+        - node:
+            cleanable: True
+            color: '#FFFFFFFF'
+            id: engie
+          decals:
+            202: -12,-5
+        - node:
+            color: '#FFFFFFFF'
+            id: guy
+          decals:
+            492: -11,-1
         - node:
             cleanable: True
             color: '#FFFFFFFF'
             id: med
           decals:
-            61: 0,-5
+            52: 0,-5
+        - node:
+            color: '#FFFFFFFF'
+            id: pawprint
+          decals:
+            493: -12,-2
+        - node:
+            cleanable: True
+            angle: 4.71238898038469 rad
+            color: '#1D1D2172'
+            id: splatter
+          decals:
+            558: 13,-4
+            559: 13,-5
+        - node:
+            cleanable: True
+            color: '#311D1D72'
+            id: splatter
+          decals:
+            563: 13.25,-4.9375
+        - node:
+            cleanable: True
+            angle: 3.141592653589793 rad
+            color: '#311D1D72'
+            id: splatter
+          decals:
+            560: 13.28125,-3.875
+            561: 12.96875,-4.28125
+        - node:
+            cleanable: True
+            angle: 4.71238898038469 rad
+            color: '#311D1D72'
+            id: splatter
+          decals:
+            562: 13.09375,-4.28125
+        - node:
+            cleanable: True
+            color: '#4F1D1D72'
+            id: splatter
+          decals:
+            565: 12.96875,-4.34375
+        - node:
+            cleanable: True
+            angle: 4.71238898038469 rad
+            color: '#4F1D1D72'
+            id: splatter
+          decals:
+            564: 13.25,-4.4375
     - type: GridAtmosphere
       version: 2
       data:
@@ -596,7 +508,7 @@ entities:
             0: 53695
           0,-1:
             0: 45875
-            2: 128
+            1: 128
           -1,0:
             0: 61951
           0,1:
@@ -607,91 +519,73 @@ entities:
             0: 375
           -1,2:
             0: 204
-            2: 16
+            1: 16
           0,3:
-            1: 1
+            2: 1
           1,0:
             0: 47551
           1,1:
             0: 51
-            2: 128
+            1: 128
           1,2:
-            2: 16
+            1: 16
           1,-1:
             0: 47104
-            2: 40
+            1: 40
           2,0:
-            0: 895
-            2: 18432
+            0: 4479
+            1: 18432
           2,-1:
             0: 8156
           2,1:
-            2: 2
+            1: 2
           0,-2:
             0: 12898
           -1,-2:
             0: 35016
-            2: 17
+            1: 17
           -1,-1:
             0: 64648
-            2: 32
+            1: 32
           1,-2:
-            2: 17
+            1: 17
           2,-2:
             0: 32768
-            2: 128
+            1: 128
           3,-2:
             0: 12800
-            2: 66
+            1: 66
           3,-1:
             0: 274
-            2: 64
+            1: 64
           -4,-2:
-            2: 200
+            1: 200
             0: 32768
           -4,-1:
-            2: 32832
+            1: 64
             0: 8
           -3,-2:
-            2: 49
+            1: 49
             0: 12544
           -3,-1:
-            0: 18295
-            2: 4096
+            0: 61347
           -3,0:
-            2: 16913
-            0: 2254
+            0: 204
+            1: 16912
           -2,-1:
-            0: 784
-            2: 130
+            0: 29456
+            1: 130
           -2,0:
-            0: 33663
-          -3,1:
-            2: 8
+            0: 45183
           -2,1:
-            2: 32
-            0: 140
+            1: 32
+            0: 136
         uniqueMixes:
         - volume: 2500
           temperature: 293.15
           moles:
           - 21.824879
           - 82.10312
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-        - volume: 2500
-          temperature: 293.15
-          moles:
-          - 0
-          - 0
           - 0
           - 0
           - 0
@@ -717,79 +611,89 @@ entities:
           - 0
           - 0
           - 0
+        - volume: 2500
+          temperature: 293.15
+          moles:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: BecomesStation
-      id: eagle
+      id: Eagle
 - proto: AirAlarm
   entities:
   - uid: 6
     components:
     - type: Transform
+      rot: -1.5707963267948966 rad
       pos: 6.5,-0.5
       parent: 1
     - type: DeviceList
       devices:
-      - 516
-      - 428
-      - 435
-      - 667
-      - 3
-      - 432
-      - 207
-      - 253
-      - 4
-      - 451
       - 571
       - 573
       - 574
       - 48
-  - uid: 196
-    components:
-    - type: Transform
-      pos: -1.5,-2.5
-      parent: 1
-    - type: DeviceList
-      devices:
-      - 672
-      - 455
-      - 41
-      - 673
+      - 207
+      - 403
+      - 3
+      - 428
+      - 435
+      - 432
+      - 365
+      - 451
+      - 64
   - uid: 266
     components:
     - type: Transform
+      rot: 3.141592653589793 rad
       pos: 1.5,6.5
       parent: 1
     - type: DeviceList
       devices:
-      - 475
       - 251
-      - 532
+      - 475
+      - 218
       - 108
-      - 545
-      - 179
-  - uid: 568
+      - 406
+      - 716
+      - 8
+  - uid: 402
     components:
     - type: Transform
-      pos: -6.5,3.5
+      rot: -1.5707963267948966 rad
+      pos: -4.5,1.5
       parent: 1
     - type: DeviceList
       devices:
-      - 665
-      - 239
-      - 630
+      - 312
+      - 436
       - 666
-      - 412
+      - 455
+      - 41
+      - 718
+      - 8
+      - 218
+      - 571
       - 673
-      - 489
-      - 237
+      - 530
 - proto: AirlockAtmospherics
   entities:
-  - uid: 131
+  - uid: 605
     components:
     - type: Transform
-      pos: -9.5,-0.5
+      pos: -10.5,-2.5
       parent: 1
 - proto: AirlockChemistryGlass
   entities:
@@ -797,16 +701,6 @@ entities:
     components:
     - type: Transform
       pos: 4.5,2.5
-      parent: 1
-  - uid: 18
-    components:
-    - type: Transform
-      pos: 2.5,0.5
-      parent: 1
-  - uid: 49
-    components:
-    - type: Transform
-      pos: 6.5,0.5
       parent: 1
 - proto: AirlockCommandGlass
   entities:
@@ -824,11 +718,6 @@ entities:
       parent: 1
 - proto: AirlockExternal
   entities:
-  - uid: 186
-    components:
-    - type: Transform
-      pos: -10.5,0.5
-      parent: 1
   - uid: 187
     components:
     - type: Transform
@@ -856,7 +745,6 @@ entities:
   - uid: 43
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -3.5,2.5
       parent: 1
 - proto: AirlockGlassShuttle
@@ -873,82 +761,43 @@ entities:
       parent: 1
 - proto: AirlockMedical
   entities:
-  - uid: 8
+  - uid: 47
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 12.5,-4.5
       parent: 1
-  - uid: 418
+  - uid: 73
     components:
     - type: Transform
       pos: 9.5,-1.5
       parent: 1
-- proto: AirSensor
+- proto: AirlockMedicalGlass
   entities:
-  - uid: 4
+  - uid: 18
     components:
     - type: Transform
-      pos: 8.5,-1.5
+      pos: 2.5,0.5
+      parent: 1
+  - uid: 49
+    components:
+    - type: Transform
+      pos: 6.5,0.5
+      parent: 1
+- proto: AirSensor
+  entities:
+  - uid: 64
+    components:
+    - type: Transform
+      pos: 13.5,-3.5
       parent: 1
     - type: DeviceNetwork
       deviceLists:
       - 6
-  - uid: 64
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 13.5,-3.5
-      parent: 1
-  - uid: 179
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 2.5,8.5
-      parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 266
   - uid: 516
     components:
     - type: Transform
       pos: 2.5,4.5
       parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 6
-  - uid: 532
-    components:
-    - type: Transform
-      pos: -0.5,5.5
-      parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 266
-  - uid: 665
-    components:
-    - type: Transform
-      pos: -9.5,-3.5
-      parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 568
-  - uid: 666
-    components:
-    - type: Transform
-      pos: -8.5,0.5
-      parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 568
-  - uid: 667
-    components:
-    - type: Transform
-      pos: 7.5,3.5
-      parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 6
   - uid: 668
     components:
     - type: Transform
@@ -959,27 +808,26 @@ entities:
     - type: Transform
       pos: -1.5,-1.5
       parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 196
   - uid: 681
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -2.5,5.5
       parent: 1
+  - uid: 718
+    components:
+    - type: Transform
+      pos: -1.5,5.5
+      parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 402
 - proto: APCBasic
   entities:
-  - uid: 47
+  - uid: 20
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -2.5,-1.5
-      parent: 1
-  - uid: 247
-    components:
-    - type: Transform
-      pos: -7.5,3.5
       parent: 1
   - uid: 257
     components:
@@ -987,44 +835,50 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -2.5,8.5
       parent: 1
-  - uid: 592
+  - uid: 299
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 9.5,-0.5
+      pos: 9.5,2.5
       parent: 1
-- proto: AtmosDeviceFanTiny
+  - uid: 497
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -6.5,-2.5
+      parent: 1
+- proto: AtmosDeviceFanDirectional
   entities:
-  - uid: 472
+  - uid: 77
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 1.5,-7.5
-      parent: 1
-  - uid: 482
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
       pos: -0.5,-7.5
       parent: 1
-  - uid: 588
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -11.5,-5.5
-      parent: 1
-  - uid: 589
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -10.5,0.5
-      parent: 1
-- proto: AtmosFixBlockerMarker
-  entities:
   - uid: 138
     components:
     - type: Transform
-      pos: -12.5,-0.5
+      pos: 1.5,-7.5
+      parent: 1
+  - uid: 698
+    components:
+    - type: Transform
+      pos: -11.5,-5.5
+      parent: 1
+- proto: AtmosFixBlockerMarker
+  entities:
+  - uid: 81
+    components:
+    - type: Transform
+      pos: 9.5,4.5
+      parent: 1
+  - uid: 481
+    components:
+    - type: Transform
+      pos: 10.5,3.5
+      parent: 1
+  - uid: 543
+    components:
+    - type: Transform
+      pos: -11.5,1.5
       parent: 1
   - uid: 547
     components:
@@ -1086,21 +940,6 @@ entities:
     - type: Transform
       pos: -11.5,-7.5
       parent: 1
-  - uid: 561
-    components:
-    - type: Transform
-      pos: -11.5,0.5
-      parent: 1
-  - uid: 562
-    components:
-    - type: Transform
-      pos: -11.5,1.5
-      parent: 1
-  - uid: 563
-    components:
-    - type: Transform
-      pos: -8.5,4.5
-      parent: 1
   - uid: 564
     components:
     - type: Transform
@@ -1116,15 +955,15 @@ entities:
     - type: Transform
       pos: 4.5,9.5
       parent: 1
-  - uid: 567
-    components:
-    - type: Transform
-      pos: 9.5,4.5
-      parent: 1
   - uid: 627
     components:
     - type: Transform
       pos: 7.5,-3.5
+      parent: 1
+  - uid: 629
+    components:
+    - type: Transform
+      pos: -9.5,3.5
       parent: 1
   - uid: 646
     components:
@@ -1161,11 +1000,6 @@ entities:
     - type: Transform
       pos: 11.5,2.5
       parent: 1
-  - uid: 658
-    components:
-    - type: Transform
-      pos: 10.5,3.5
-      parent: 1
   - uid: 659
     components:
     - type: Transform
@@ -1175,11 +1009,6 @@ entities:
     components:
     - type: Transform
       pos: -6.5,5.5
-      parent: 1
-  - uid: 661
-    components:
-    - type: Transform
-      pos: -9.5,3.5
       parent: 1
   - uid: 662
     components:
@@ -1203,30 +1032,23 @@ entities:
     - type: Transform
       pos: -3.5,-0.5
       parent: 1
-- proto: BannerMedical
-  entities:
-  - uid: 11
-    components:
-    - type: Transform
-      pos: 1.5,1.5
-      parent: 1
 - proto: BedsheetMedical
   entities:
+  - uid: 80
+    components:
+    - type: Transform
+      pos: 8.5,3.5
+      parent: 1
   - uid: 102
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 10.5,1.5
       parent: 1
-  - uid: 401
+  - uid: 634
     components:
     - type: Transform
-      pos: 9.5,2.5
-      parent: 1
-  - uid: 450
-    components:
-    - type: Transform
-      pos: 8.5,2.5
+      pos: 9.5,1.5
       parent: 1
 - proto: BenchSofaCorpLeft
   entities:
@@ -1235,8 +1057,6 @@ entities:
     - type: Transform
       pos: -0.5,5.5
       parent: 1
-    - type: Physics
-      bodyType: Static
 - proto: BenchSofaCorpMiddle
   entities:
   - uid: 583
@@ -1244,8 +1064,6 @@ entities:
     - type: Transform
       pos: -1.5,5.5
       parent: 1
-    - type: Physics
-      bodyType: Static
 - proto: BenchSofaCorpRight
   entities:
   - uid: 484
@@ -1253,8 +1071,6 @@ entities:
     - type: Transform
       pos: -2.5,5.5
       parent: 1
-    - type: Physics
-      bodyType: Static
 - proto: BlockGameArcade
   entities:
   - uid: 460
@@ -1263,13 +1079,26 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,3.5
       parent: 1
-- proto: ButtonFrameCaution
+- proto: BoxFolderMedicalDoctor
   entities:
-  - uid: 135
+  - uid: 196
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,-0.5
+      pos: 7.5,-0.5
+      parent: 1
+- proto: BoxInflatable
+  entities:
+  - uid: 287
+    components:
+    - type: Transform
+      pos: -12.5,-6.5
+      parent: 1
+- proto: ButtonFrameCaution
+  entities:
+  - uid: 152
+    components:
+    - type: Transform
+      pos: -5.5,2.5
       parent: 1
   - uid: 184
     components:
@@ -1279,35 +1108,50 @@ entities:
       parent: 1
 - proto: CableApcExtension
   entities:
+  - uid: 26
+    components:
+    - type: Transform
+      pos: -8.5,-0.5
+      parent: 1
   - uid: 30
     components:
     - type: Transform
       pos: -2.5,-0.5
-      parent: 1
-  - uid: 54
-    components:
-    - type: Transform
-      pos: -9.5,-0.5
       parent: 1
   - uid: 72
     components:
     - type: Transform
       pos: -2.5,-1.5
       parent: 1
+  - uid: 88
+    components:
+    - type: Transform
+      pos: 8.5,-0.5
+      parent: 1
+  - uid: 89
+    components:
+    - type: Transform
+      pos: -9.5,-1.5
+      parent: 1
   - uid: 99
     components:
     - type: Transform
       pos: -10.5,-4.5
+      parent: 1
+  - uid: 100
+    components:
+    - type: Transform
+      pos: -10.5,-1.5
       parent: 1
   - uid: 111
     components:
     - type: Transform
       pos: -0.5,3.5
       parent: 1
-  - uid: 146
+  - uid: 132
     components:
     - type: Transform
-      pos: -7.5,3.5
+      pos: 8.5,-1.5
       parent: 1
   - uid: 154
     components:
@@ -1319,40 +1163,45 @@ entities:
     - type: Transform
       pos: 9.5,-1.5
       parent: 1
+  - uid: 174
+    components:
+    - type: Transform
+      pos: -8.5,1.5
+      parent: 1
   - uid: 177
     components:
     - type: Transform
       pos: 11.5,-1.5
       parent: 1
-  - uid: 178
+  - uid: 213
     components:
     - type: Transform
-      pos: -7.5,2.5
+      pos: -7.5,1.5
       parent: 1
-  - uid: 240
+  - uid: 239
     components:
     - type: Transform
-      pos: -9.5,-1.5
+      pos: -8.5,-1.5
       parent: 1
   - uid: 241
     components:
     - type: Transform
-      pos: -9.5,-2.5
+      pos: -8.5,0.5
       parent: 1
   - uid: 242
     components:
     - type: Transform
-      pos: -9.5,-3.5
+      pos: -7.5,-1.5
       parent: 1
   - uid: 243
     components:
     - type: Transform
       pos: -10.5,-3.5
       parent: 1
-  - uid: 246
+  - uid: 245
     components:
     - type: Transform
-      pos: -7.5,0.5
+      pos: -6.5,-1.5
       parent: 1
   - uid: 258
     components:
@@ -1398,16 +1247,6 @@ entities:
     components:
     - type: Transform
       pos: 2.5,8.5
-      parent: 1
-  - uid: 269
-    components:
-    - type: Transform
-      pos: -7.5,1.5
-      parent: 1
-  - uid: 299
-    components:
-    - type: Transform
-      pos: 8.5,-0.5
       parent: 1
   - uid: 300
     components:
@@ -1597,37 +1436,27 @@ entities:
   - uid: 349
     components:
     - type: Transform
-      pos: -8.5,0.5
-      parent: 1
-  - uid: 350
-    components:
-    - type: Transform
-      pos: -10.5,0.5
-      parent: 1
-  - uid: 351
-    components:
-    - type: Transform
-      pos: -7.5,0.5
+      pos: 10.5,1.5
       parent: 1
   - uid: 353
     components:
     - type: Transform
-      pos: -6.5,0.5
+      pos: -9.5,1.5
       parent: 1
   - uid: 354
     components:
     - type: Transform
-      pos: -9.5,0.5
+      pos: -11.5,-5.5
       parent: 1
   - uid: 355
     components:
     - type: Transform
       pos: -11.5,-4.5
       parent: 1
-  - uid: 356
+  - uid: 368
     components:
     - type: Transform
-      pos: -11.5,-5.5
+      pos: -10.5,-2.5
       parent: 1
   - uid: 374
     components:
@@ -1644,10 +1473,10 @@ entities:
     - type: Transform
       pos: 3.5,0.5
       parent: 1
-  - uid: 477
+  - uid: 418
     components:
     - type: Transform
-      pos: 9.5,-0.5
+      pos: -6.5,-2.5
       parent: 1
   - uid: 492
     components:
@@ -1658,16 +1487,6 @@ entities:
     components:
     - type: Transform
       pos: 0.5,6.5
-      parent: 1
-  - uid: 539
-    components:
-    - type: Transform
-      pos: -6.5,-0.5
-      parent: 1
-  - uid: 541
-    components:
-    - type: Transform
-      pos: -6.5,-1.5
       parent: 1
   - uid: 575
     components:
@@ -1684,59 +1503,79 @@ entities:
     - type: Transform
       pos: 9.5,1.5
       parent: 1
-  - uid: 695
+  - uid: 651
     components:
     - type: Transform
       pos: 9.5,2.5
       parent: 1
+  - uid: 704
+    components:
+    - type: Transform
+      pos: -6.5,1.5
+      parent: 1
 - proto: CableHV
   entities:
-  - uid: 60
-    components:
-    - type: Transform
-      pos: -9.5,-1.5
-      parent: 1
-  - uid: 229
-    components:
-    - type: Transform
-      pos: -6.5,-1.5
-      parent: 1
-  - uid: 502
-    components:
-    - type: Transform
-      pos: -7.5,-1.5
-      parent: 1
-  - uid: 503
-    components:
-    - type: Transform
-      pos: -7.5,-2.5
-      parent: 1
-  - uid: 543
-    components:
-    - type: Transform
-      pos: -9.5,-2.5
-      parent: 1
-  - uid: 559
-    components:
-    - type: Transform
-      pos: -8.5,-2.5
-      parent: 1
-  - uid: 628
+  - uid: 61
     components:
     - type: Transform
       pos: -11.5,-1.5
       parent: 1
-  - uid: 629
+  - uid: 62
+    components:
+    - type: Transform
+      pos: -10.5,-0.5
+      parent: 1
+  - uid: 219
+    components:
+    - type: Transform
+      pos: -7.5,1.5
+      parent: 1
+  - uid: 327
+    components:
+    - type: Transform
+      pos: -8.5,-0.5
+      parent: 1
+  - uid: 395
+    components:
+    - type: Transform
+      pos: -7.5,3.5
+      parent: 1
+  - uid: 407
+    components:
+    - type: Transform
+      pos: -9.5,-0.5
+      parent: 1
+  - uid: 430
+    components:
+    - type: Transform
+      pos: -6.5,3.5
+      parent: 1
+  - uid: 437
+    components:
+    - type: Transform
+      pos: -7.5,0.5
+      parent: 1
+  - uid: 501
+    components:
+    - type: Transform
+      pos: -7.5,-0.5
+      parent: 1
+  - uid: 535
     components:
     - type: Transform
       pos: -10.5,-1.5
       parent: 1
-- proto: CableMV
-  entities:
-  - uid: 34
+  - uid: 628
     components:
     - type: Transform
-      pos: -10.5,-1.5
+      pos: -7.5,2.5
+      parent: 1
+- proto: CableMV
+  entities:
+  - uid: 4
+    components:
+    - type: Transform
+      pos: 8.5,1.5
       parent: 1
   - uid: 57
     components:
@@ -1748,65 +1587,45 @@ entities:
     - type: Transform
       pos: -2.5,-0.5
       parent: 1
-  - uid: 100
-    components:
-    - type: Transform
-      pos: -7.5,1.5
-      parent: 1
   - uid: 147
     components:
     - type: Transform
-      pos: -7.5,3.5
+      pos: -6.5,-1.5
+      parent: 1
+  - uid: 172
+    components:
+    - type: Transform
+      pos: -8.5,-1.5
       parent: 1
   - uid: 217
     components:
     - type: Transform
       pos: 0.5,8.5
       parent: 1
-  - uid: 218
-    components:
-    - type: Transform
-      pos: -11.5,-1.5
-      parent: 1
-  - uid: 219
-    components:
-    - type: Transform
-      pos: -9.5,0.5
-      parent: 1
   - uid: 221
     components:
     - type: Transform
       pos: -0.5,0.5
+      parent: 1
+  - uid: 223
+    components:
+    - type: Transform
+      pos: -6.5,-2.5
       parent: 1
   - uid: 225
     components:
     - type: Transform
       pos: -0.5,8.5
       parent: 1
-  - uid: 230
-    components:
-    - type: Transform
-      pos: -9.5,-1.5
-      parent: 1
   - uid: 232
     components:
     - type: Transform
-      pos: -6.5,0.5
-      parent: 1
-  - uid: 233
-    components:
-    - type: Transform
-      pos: -5.5,0.5
+      pos: 9.5,1.5
       parent: 1
   - uid: 234
     components:
     - type: Transform
       pos: -4.5,0.5
-      parent: 1
-  - uid: 245
-    components:
-    - type: Transform
-      pos: -7.5,2.5
       parent: 1
   - uid: 272
     components:
@@ -1913,37 +1732,53 @@ entities:
     - type: Transform
       pos: 8.5,0.5
       parent: 1
-  - uid: 302
+  - uid: 356
     components:
     - type: Transform
-      pos: 8.5,-0.5
+      pos: -6.5,-0.5
       parent: 1
-  - uid: 560
+  - uid: 404
     components:
     - type: Transform
-      pos: -9.5,-0.5
+      pos: -10.5,-1.5
       parent: 1
-  - uid: 572
+  - uid: 412
     components:
     - type: Transform
-      pos: -8.5,0.5
+      pos: -11.5,-1.5
+      parent: 1
+  - uid: 415
+    components:
+    - type: Transform
+      pos: -6.5,0.5
+      parent: 1
+  - uid: 477
+    components:
+    - type: Transform
+      pos: 9.5,2.5
+      parent: 1
+  - uid: 489
+    components:
+    - type: Transform
+      pos: -5.5,0.5
+      parent: 1
+  - uid: 590
+    components:
+    - type: Transform
+      pos: -9.5,-1.5
       parent: 1
   - uid: 619
     components:
     - type: Transform
-      pos: -7.5,0.5
-      parent: 1
-  - uid: 622
-    components:
-    - type: Transform
-      pos: 9.5,-0.5
+      pos: -7.5,-1.5
       parent: 1
 - proto: CableTerminal
   entities:
-  - uid: 515
+  - uid: 131
     components:
     - type: Transform
-      pos: -7.5,-1.5
+      rot: -1.5707963267948966 rad
+      pos: -9.5,-0.5
       parent: 1
 - proto: Catwalk
   entities:
@@ -1972,58 +1807,30 @@ entities:
     - type: Transform
       pos: -12.5,-7.5
       parent: 1
-  - uid: 174
-    components:
-    - type: Transform
-      pos: -11.5,0.5
-      parent: 1
   - uid: 175
     components:
     - type: Transform
       pos: -11.5,1.5
-      parent: 1
-  - uid: 676
-    components:
-    - type: Transform
-      pos: -10.5,-3.5
-      parent: 1
-  - uid: 701
-    components:
-    - type: Transform
-      pos: -12.5,-4.5
-      parent: 1
-  - uid: 704
-    components:
-    - type: Transform
-      pos: -9.5,-3.5
-      parent: 1
-  - uid: 705
-    components:
-    - type: Transform
-      pos: -10.5,-4.5
-      parent: 1
-  - uid: 706
-    components:
-    - type: Transform
-      pos: -11.5,-4.5
       parent: 1
   - uid: 707
     components:
     - type: Transform
       pos: -11.5,-5.5
       parent: 1
-  - uid: 708
-    components:
-    - type: Transform
-      pos: -10.5,0.5
-      parent: 1
 - proto: Chair
   entities:
-  - uid: 640
+  - uid: 178
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 5.5,-0.5
+      parent: 1
+- proto: ChairOfficeDark
+  entities:
+  - uid: 522
+    components:
+    - type: Transform
+      pos: 4.5,4.5
       parent: 1
 - proto: ChairOfficeLight
   entities:
@@ -2047,12 +1854,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 0.5,9.5
       parent: 1
-  - uid: 235
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,4.5
-      parent: 1
 - proto: ChemDispenser
   entities:
   - uid: 208
@@ -2074,72 +1875,63 @@ entities:
     - type: Transform
       pos: 4.5,5.5
       parent: 1
+- proto: ClosetFireFilled
+  entities:
+  - uid: 696
+    components:
+    - type: Transform
+      pos: -1.5,-6.5
+      parent: 1
+- proto: ClosetO2N2FilledRandom
+  entities:
+  - uid: 697
+    components:
+    - type: Transform
+      pos: 2.5,-6.5
+      parent: 1
 - proto: ClosetRadiationSuitFilled
   entities:
-  - uid: 591
+  - uid: 653
     components:
     - type: Transform
-      pos: -5.5,1.5
+      pos: -9.5,1.5
       parent: 1
-- proto: ClosetWallEmergencyFilledRandom
+- proto: ClosetToolFilled
   entities:
-  - uid: 689
+  - uid: 592
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,-3.5
+      pos: -6.5,-0.5
       parent: 1
-- proto: ClosetWallFireFilledRandom
+- proto: ClothingBackpackDuffelSurgeryFilled
   entities:
-  - uid: 690
+  - uid: 706
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,-2.5
+      pos: 8.5,-2.5
       parent: 1
-- proto: ClothingEyesGlassesThermal
+- proto: Cobweb1
   entities:
-  - uid: 80
+  - uid: 144
     components:
     - type: Transform
-      pos: -10.5,-1.3
+      pos: -12.5,-3.5
       parent: 1
-    - type: GroupExamine
-      group:
-      - hoverMessage: ""
-        contextText: verb-examine-group-other
-        icon: /Textures/Interface/examine-star.png
-        components:
-        - Armor
-        - ClothingSpeedModifier
-        entries:
-        - message: >-
-            It provides the following protection:
-
-            - [color=yellow]Heat[/color] damage reduced by [color=lightblue]5%[/color].
-          priority: 0
-          component: Armor
-        title: null
-- proto: ClothingHeadHatCone
+- proto: ComfyChair
   entities:
-  - uid: 231
+  - uid: 561
     components:
     - type: Transform
-      pos: -6.2,1.7
+      rot: 1.5707963267948966 rad
+      pos: -4.5,4.5
       parent: 1
-- proto: ClothingOuterWinterEngi
+- proto: ComputerTabletopBodyScanner
   entities:
-  - uid: 89
+  - uid: 459
     components:
     - type: Transform
-      pos: -10.5,-1.5
-      parent: 1
-- proto: ClothingShoesBootsWinterEngi
-  entities:
-  - uid: 481
-    components:
-    - type: Transform
-      pos: -10.5,-1.5
+      rot: 1.5707963267948966 rad
+      pos: 7.5,-1.5
       parent: 1
 - proto: ComputerTabletopCrewMonitoring
   entities:
@@ -2179,19 +1971,11 @@ entities:
       parent: 1
 - proto: ComputerWallmountWithdrawBankATM
   entities:
-  - uid: 145
+  - uid: 447
     components:
     - type: Transform
-      pos: -1.5,2.5
+      pos: 1.5,2.5
       parent: 1
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        board: !type:Container
-          ents: []
-        bank-ATM-cashSlot: !type:ContainerSlot {}
-    - type: ItemSlots
 - proto: DefibrillatorCabinetFilled
   entities:
   - uid: 13
@@ -2213,6 +1997,57 @@ entities:
     - type: Transform
       pos: -1.5,3.5
       parent: 1
+- proto: EmergencyLight
+  entities:
+  - uid: 34
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -1.5,8.5
+      parent: 1
+  - uid: 179
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.5,-4.5
+      parent: 1
+  - uid: 215
+    components:
+    - type: Transform
+      pos: 9.5,1.5
+      parent: 1
+  - uid: 222
+    components:
+    - type: Transform
+      pos: 3.5,5.5
+      parent: 1
+  - uid: 228
+    components:
+    - type: Transform
+      pos: -1.5,5.5
+      parent: 1
+  - uid: 494
+    components:
+    - type: Transform
+      pos: -1.5,1.5
+      parent: 1
+  - uid: 513
+    components:
+    - type: Transform
+      pos: 12.5,-1.5
+      parent: 1
+  - uid: 670
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -9.5,0.5
+      parent: 1
+  - uid: 701
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 5.5,-0.5
+      parent: 1
 - proto: EmergencyRollerBed
   entities:
   - uid: 638
@@ -2227,10 +2062,10 @@ entities:
       parent: 1
 - proto: EngineeringTechFab
   entities:
-  - uid: 172
+  - uid: 539
     components:
     - type: Transform
-      pos: -8.5,2.5
+      pos: -7.5,-2.5
       parent: 1
 - proto: ExtinguisherCabinetFilled
   entities:
@@ -2240,10 +2075,11 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 2.5,-4.5
       parent: 1
-  - uid: 709
+  - uid: 674
     components:
     - type: Transform
-      pos: -5.5,3.5
+      rot: 1.5707963267948966 rad
+      pos: -9.5,-3.5
       parent: 1
 - proto: FaxMachineShip
   entities:
@@ -2252,26 +2088,8 @@ entities:
     - type: Transform
       pos: 2.5,9.5
       parent: 1
-- proto: filingCabinetRandom
-  entities:
-  - uid: 678
-    components:
-    - type: Transform
-      pos: 2.5,7.5
-      parent: 1
 - proto: FireAlarm
   entities:
-  - uid: 9
-    components:
-    - type: Transform
-      pos: -10.5,-0.5
-      parent: 1
-    - type: DeviceList
-      devices:
-      - 239
-      - 673
-      - 489
-      - 237
   - uid: 576
     components:
     - type: Transform
@@ -2284,8 +2102,38 @@ entities:
       - 573
       - 574
       - 48
+      - 207
+- proto: Firelock
+  entities:
+  - uid: 207
+    components:
+    - type: Transform
+      pos: 12.5,-4.5
+      parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 6
+      - 576
+  - uid: 530
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -10.5,-2.5
+      parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 402
 - proto: FirelockGlass
   entities:
+  - uid: 8
+    components:
+    - type: Transform
+      pos: -3.5,2.5
+      parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 402
+      - 266
   - uid: 48
     components:
     - type: Transform
@@ -2296,36 +2144,15 @@ entities:
       deviceLists:
       - 6
       - 576
-  - uid: 237
+  - uid: 218
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -11.5,-5.5
+      pos: 0.5,2.5
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 9
-      - 568
-  - uid: 239
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -10.5,0.5
-      parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 9
-      - 568
-  - uid: 489
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -9.5,-0.5
-      parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 9
-      - 568
+      - 402
+      - 266
   - uid: 571
     components:
     - type: Transform
@@ -2336,6 +2163,7 @@ entities:
       deviceLists:
       - 576
       - 6
+      - 402
   - uid: 573
     components:
     - type: Transform
@@ -2363,9 +2191,15 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 9
-      - 568
-      - 196
+      - 402
+  - uid: 716
+    components:
+    - type: Transform
+      pos: 0.5,6.5
+      parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 266
 - proto: Floodlight
   entities:
   - uid: 719
@@ -2382,12 +2216,12 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-- proto: GasMixerOnFlipped
+- proto: GasMixerOn
   entities:
-  - uid: 10
+  - uid: 220
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
+      rot: 1.5707963267948966 rad
       pos: -11.5,-3.5
       parent: 1
     - type: GasMixer
@@ -2399,8 +2233,6 @@ entities:
   entities:
   - uid: 500
     components:
-    - type: MetaData
-      name: waste vent
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,1.5
@@ -2409,11 +2241,27 @@ entities:
       color: '#990000FF'
 - proto: GasPipeBend
   entities:
-  - uid: 114
+  - uid: 59
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 0.5,7.5
+      rot: -1.5707963267948966 rad
+      pos: -6.5,0.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
+  - uid: 65
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -8.5,-2.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
+  - uid: 87
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -11.5,-4.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
@@ -2440,11 +2288,11 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 274
+  - uid: 279
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -10.5,2.5
+      rot: 3.141592653589793 rad
+      pos: 10.5,-3.5
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
@@ -2455,37 +2303,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 298
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 10.5,-1.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#990000FF'
-  - uid: 368
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -9.5,0.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 371
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 8.5,-2.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 373
-    components:
-    - type: Transform
-      pos: 11.5,-1.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#990000FF'
   - uid: 375
     components:
     - type: Transform
@@ -2493,50 +2310,27 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 405
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -9.5,-3.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 406
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,-0.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
   - uid: 408
     components:
     - type: Transform
-      pos: -2.5,0.5
+      rot: -1.5707963267948966 rad
+      pos: -6.5,-1.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 409
+  - uid: 411
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -10.5,1.5
+      rot: 1.5707963267948966 rad
+      pos: 0.5,9.5
       parent: 1
     - type: AtmosPipeColor
-      color: '#990000FF'
+      color: '#0055CCFF'
   - uid: 422
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 5.5,-0.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 436
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,7.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
@@ -2548,10 +2342,27 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 633
+  - uid: 461
     components:
     - type: Transform
-      pos: -8.5,2.5
+      rot: 1.5707963267948966 rad
+      pos: -10.5,-1.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 661
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -9.5,-2.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
+  - uid: 665
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -9.5,-3.5
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
@@ -2565,6 +2376,13 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
+  - uid: 54
+    components:
+    - type: Transform
+      pos: -10.5,-2.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
   - uid: 76
     components:
     - type: Transform
@@ -2573,10 +2391,32 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 114
+    components:
+    - type: Transform
+      pos: 0.5,8.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
   - uid: 120
     components:
     - type: Transform
       pos: 5.5,3.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 121
+    components:
+    - type: Transform
+      pos: -8.5,-0.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
+  - uid: 134
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.5,-1.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
@@ -2619,6 +2459,22 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
+  - uid: 186
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -3.5,-0.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 194
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -4.5,-0.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
   - uid: 199
     components:
     - type: Transform
@@ -2641,6 +2497,14 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 246
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 9.5,-1.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
   - uid: 248
     components:
     - type: Transform
@@ -2664,6 +2528,21 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 252
+    components:
+    - type: Transform
+      pos: 10.5,-2.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
+  - uid: 253
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -7.5,0.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
   - uid: 254
     components:
     - type: Transform
@@ -2675,6 +2554,14 @@ entities:
     components:
     - type: Transform
       pos: 0.5,4.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 269
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 10.5,-1.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
@@ -2693,21 +2580,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 279
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 9.5,-2.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 287
-    components:
-    - type: Transform
-      pos: -9.5,-0.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
   - uid: 346
     components:
     - type: Transform
@@ -2716,14 +2588,14 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 352
+  - uid: 350
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -6.5,0.5
+      rot: -1.5707963267948966 rad
+      pos: -9.5,1.5
       parent: 1
     - type: AtmosPipeColor
-      color: '#0055CCFF'
+      color: '#990000FF'
   - uid: 369
     components:
     - type: Transform
@@ -2732,11 +2604,34 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 382
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -5.5,-0.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 384
+    components:
+    - type: Transform
+      pos: 10.5,-1.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
+  - uid: 397
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -10.5,1.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
   - uid: 399
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -3.5,0.5
+      pos: -2.5,-0.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
@@ -2744,37 +2639,6 @@ entities:
     components:
     - type: Transform
       pos: 8.5,-0.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 403
-    components:
-    - type: Transform
-      pos: 11.5,-2.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#990000FF'
-  - uid: 407
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -9.5,-1.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 411
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -5.5,0.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 413
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -4.5,0.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
@@ -2828,31 +2692,7 @@ entities:
   - uid: 433
     components:
     - type: Transform
-      pos: 1.5,8.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 437
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,1.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 441
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -9.5,2.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#990000FF'
-  - uid: 449
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -8.5,0.5
+      pos: 0.5,7.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
@@ -2919,18 +2759,26 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 480
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -5.5,1.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#990000FF'
   - uid: 495
     components:
     - type: Transform
       pos: -0.5,2.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
+  - uid: 563
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -8.5,-1.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 568
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.5,1.5
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
@@ -2942,6 +2790,13 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
+  - uid: 633
+    components:
+    - type: Transform
+      pos: -8.5,-1.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
 - proto: GasPipeTJunction
   entities:
   - uid: 66
@@ -2952,6 +2807,14 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 86
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -10.5,-3.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
   - uid: 133
     components:
     - type: Transform
@@ -2968,15 +2831,7 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 312
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-1.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 314
+  - uid: 233
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -2984,14 +2839,28 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 327
+  - uid: 298
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -6.5,1.5
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 314
+    components:
+    - type: Transform
+      pos: -7.5,1.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#990000FF'
+  - uid: 364
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 8.5,-1.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
   - uid: 370
     components:
     - type: Transform
@@ -2999,19 +2868,18 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 372
+  - uid: 371
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,0.5
+      pos: -8.5,0.5
       parent: 1
     - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 404
+      color: '#990000FF'
+  - uid: 413
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -10.5,-3.5
+      rot: 1.5707963267948966 rad
+      pos: -6.5,-0.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
@@ -3023,14 +2891,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 430
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -8.5,1.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#990000FF'
   - uid: 431
     components:
     - type: Transform
@@ -3064,15 +2924,31 @@ entities:
       color: '#990000FF'
 - proto: GasPort
   entities:
-  - uid: 236
+  - uid: 122
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -9.5,1.5
+      pos: -9.5,0.5
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 395
+  - uid: 240
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -12.5,-4.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 405
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -10.5,-4.5
+      parent: 1
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 480
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -3080,39 +2956,23 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 397
-    components:
-    - type: Transform
-      pos: -11.5,-2.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 402
-    components:
-    - type: Transform
-      pos: -10.5,-2.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
 - proto: GasPressurePumpOn
   entities:
-  - uid: 414
+  - uid: 464
     components:
-    - type: MetaData
-      name: distro pump
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -9.5,-2.5
+      rot: 1.5707963267948966 rad
+      pos: -9.5,-1.5
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
 - proto: GasPressurePumpOnMax
   entities:
-  - uid: 634
+  - uid: 689
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: -7.5,1.5
+      pos: -8.5,1.5
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
@@ -3136,7 +2996,7 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 196
+      - 402
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 251
@@ -3150,25 +3010,36 @@ entities:
       - 266
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 253
+  - uid: 312
+    components:
+    - type: Transform
+      pos: -6.5,0.5
+      parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 402
+    - type: AtmosPipeColor
+      color: '#0055CCFF'
+  - uid: 403
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: 10.5,-2.5
+      pos: 11.5,-1.5
       parent: 1
     - type: DeviceNetwork
       deviceLists:
       - 6
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 412
+  - uid: 406
     components:
     - type: Transform
-      pos: -7.5,2.5
+      rot: -1.5707963267948966 rad
+      pos: 1.5,9.5
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 568
+      - 266
     - type: AtmosPipeColor
       color: '#0055CCFF'
   - uid: 428
@@ -3179,16 +3050,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 6
-    - type: AtmosPipeColor
-      color: '#0055CCFF'
-  - uid: 545
-    components:
-    - type: Transform
-      pos: 1.5,9.5
-      parent: 1
-    - type: DeviceNetwork
-      deviceLists:
-      - 266
     - type: AtmosPipeColor
       color: '#0055CCFF'
 - proto: GasVentScrubber
@@ -3203,11 +3064,10 @@ entities:
       - 266
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 207
+  - uid: 365
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 10.5,-3.5
+      pos: 11.5,-2.5
       parent: 1
     - type: DeviceNetwork
       deviceLists:
@@ -3236,6 +3096,17 @@ entities:
       - 6
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 436
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -7.5,0.5
+      parent: 1
+    - type: DeviceNetwork
+      deviceLists:
+      - 402
+    - type: AtmosPipeColor
+      color: '#990000FF'
   - uid: 451
     components:
     - type: Transform
@@ -3255,7 +3126,7 @@ entities:
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 196
+      - 402
     - type: AtmosPipeColor
       color: '#990000FF'
   - uid: 475
@@ -3269,14 +3140,15 @@ entities:
       - 266
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 630
+  - uid: 666
     components:
     - type: Transform
-      pos: -6.5,2.5
+      rot: 1.5707963267948966 rad
+      pos: -10.5,-3.5
       parent: 1
     - type: DeviceNetwork
       deviceLists:
-      - 568
+      - 402
     - type: AtmosPipeColor
       color: '#990000FF'
 - proto: GravityGeneratorMini
@@ -3288,6 +3160,11 @@ entities:
       parent: 1
 - proto: Grille
   entities:
+  - uid: 9
+    components:
+    - type: Transform
+      pos: 10.5,2.5
+      parent: 1
   - uid: 46
     components:
     - type: Transform
@@ -3375,10 +3252,20 @@ entities:
     - type: Transform
       pos: -0.5,6.5
       parent: 1
+  - uid: 256
+    components:
+    - type: Transform
+      pos: -9.5,2.5
+      parent: 1
   - uid: 321
     components:
     - type: Transform
       pos: -2.5,10.5
+      parent: 1
+  - uid: 373
+    components:
+    - type: Transform
+      pos: 2.5,-2.5
       parent: 1
   - uid: 381
     components:
@@ -3392,6 +3279,11 @@ entities:
       rot: 3.141592653589793 rad
       pos: -1.5,-7.5
       parent: 1
+  - uid: 449
+    components:
+    - type: Transform
+      pos: 11.5,-5.5
+      parent: 1
   - uid: 462
     components:
     - type: Transform
@@ -3403,23 +3295,36 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -1.5,2.5
       parent: 1
-  - uid: 499
+  - uid: 491
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,5.5
+      pos: 3.5,9.5
       parent: 1
-  - uid: 509
+  - uid: 510
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -4.5,1.5
+      pos: -2.5,9.5
+      parent: 1
+  - uid: 532
+    components:
+    - type: Transform
+      pos: 8.5,4.5
+      parent: 1
+  - uid: 540
+    components:
+    - type: Transform
+      pos: -10.5,1.5
       parent: 1
   - uid: 570
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 4.5,-1.5
+      parent: 1
+  - uid: 589
+    components:
+    - type: Transform
+      pos: -7.5,-3.5
       parent: 1
   - uid: 598
     components:
@@ -3458,6 +3363,11 @@ entities:
     - type: Transform
       pos: 1.5,4.5
       parent: 1
+  - uid: 695
+    components:
+    - type: Transform
+      pos: -3.5,-1.5
+      parent: 1
 - proto: Gyroscope
   entities:
   - uid: 519
@@ -3479,13 +3389,34 @@ entities:
     - type: Transform
       pos: 5.502689,4.3462105
       parent: 1
-- proto: IntercomMedical
+- proto: HospitalCurtainsOpen
   entities:
-  - uid: 743
+  - uid: 82
     components:
     - type: Transform
-      pos: 11.5,-0.5
+      pos: 8.5,2.5
       parent: 1
+  - uid: 483
+    components:
+    - type: Transform
+      pos: 7.5,2.5
+      parent: 1
+  - uid: 699
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 8.5,-2.5
+      parent: 1
+- proto: IntercomMedical
+  entities:
+  - uid: 231
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,-0.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
 - proto: KitchenReagentGrinder
   entities:
   - uid: 421
@@ -3500,41 +3431,48 @@ entities:
     - type: Transform
       pos: 2.5,4.5
       parent: 1
-- proto: LockerChiefMedicalOfficer
+- proto: LockerEngineerFilledHardsuit
   entities:
-  - uid: 227
+  - uid: 562
+    components:
+    - type: Transform
+      pos: -6.5,-1.5
+      parent: 1
+- proto: LockerPilotFilled
+  entities:
+  - uid: 545
     components:
     - type: Transform
       pos: -1.5,7.5
       parent: 1
-- proto: LockerEngineerFilledHardsuit
+- proto: LockerWallColorMedicalFilled
   entities:
-  - uid: 590
+  - uid: 667
     components:
     - type: Transform
-      pos: -12.5,-4.5
-      parent: 1
-- proto: LockerMedicalFilled
-  entities:
-  - uid: 445
-    components:
-    - type: Transform
-      pos: 10.5,-2.5
-      parent: 1
-- proto: LockerParamedicFilledHardsuit
-  entities:
-  - uid: 447
-    components:
-    - type: Transform
-      pos: 10.5,-3.5
-      parent: 1
-- proto: LockerWallMedicalFilled
-  entities:
-  - uid: 448
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
+      rot: 1.5707963267948966 rad
       pos: 9.5,-2.5
+      parent: 1
+- proto: LockerWallEVAColorMedicalFilled
+  entities:
+  - uid: 401
+    components:
+    - type: Transform
+      pos: 10.5,-0.5
+      parent: 1
+- proto: LockerWallEVAColorParamedicFilled
+  entities:
+  - uid: 472
+    components:
+    - type: Transform
+      pos: 11.5,-0.5
+      parent: 1
+- proto: LockerWallMaterialsFuelUraniumFilled2
+  entities:
+  - uid: 10
+    components:
+    - type: Transform
+      pos: -8.5,2.5
       parent: 1
 - proto: MachineCentrifuge
   entities:
@@ -3550,22 +3488,36 @@ entities:
     - type: Transform
       pos: 5.5,4.5
       parent: 1
+- proto: MachineFlatpacker
+  entities:
+  - uid: 84
+    components:
+    - type: Transform
+      pos: -8.5,-2.5
+      parent: 1
+- proto: MedicalAssembler
+  entities:
+  - uid: 509
+    components:
+    - type: Transform
+      pos: 3.5,1.5
+      parent: 1
 - proto: MedicalBed
   entities:
+  - uid: 135
+    components:
+    - type: Transform
+      pos: 8.5,3.5
+      parent: 1
   - uid: 452
     components:
     - type: Transform
       pos: 10.5,1.5
       parent: 1
-  - uid: 579
+  - uid: 631
     components:
     - type: Transform
-      pos: 9.5,2.5
-      parent: 1
-  - uid: 580
-    components:
-    - type: Transform
-      pos: 8.5,2.5
+      pos: 9.5,1.5
       parent: 1
 - proto: MedicalTechFab
   entities:
@@ -3576,10 +3528,10 @@ entities:
       parent: 1
 - proto: MedkitFilled
   entities:
-  - uid: 595
+  - uid: 145
     components:
     - type: Transform
-      pos: 7.5,-1.5
+      pos: 10.50416,-2.3501134
       parent: 1
 - proto: Morgue
   entities:
@@ -3594,19 +3546,61 @@ entities:
       rot: 3.141592653589793 rad
       pos: 13.5,-5.5
       parent: 1
+- proto: NFHolopadShip
+  entities:
+  - uid: 678
+    components:
+    - type: Transform
+      pos: 2.5,7.5
+      parent: 1
+- proto: NFSignDock
+  entities:
+  - uid: 632
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -2.5,-7.5
+      parent: 1
+  - uid: 640
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,-7.5
+      parent: 1
+- proto: NFSignEms1
+  entities:
+  - uid: 622
+    components:
+    - type: Transform
+      pos: 11.5,1.5
+      parent: 1
+- proto: NFSignEms2
+  entities:
+  - uid: 14
+    components:
+    - type: Transform
+      pos: 2.5,-3.5
+      parent: 1
 - proto: NitrogenCanister
   entities:
-  - uid: 464
+  - uid: 235
     components:
     - type: Transform
       anchored: True
-      pos: -11.5,-2.5
+      pos: -12.5,-4.5
       parent: 1
     - type: Physics
       bodyType: Static
+- proto: OperatingTable
+  entities:
+  - uid: 595
+    components:
+    - type: Transform
+      pos: 8.5,-2.5
+      parent: 1
 - proto: OxygenCanister
   entities:
-  - uid: 461
+  - uid: 214
     components:
     - type: Transform
       anchored: True
@@ -3616,30 +3610,29 @@ entities:
       bodyType: Static
 - proto: PortableGeneratorSuperPacmanShuttle
   entities:
-  - uid: 176
-    components:
-    - type: Transform
-      pos: -6.5,-1.5
-      parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
   - uid: 538
     components:
     - type: Transform
-      pos: -7.5,-1.5
+      pos: -6.5,3.5
       parent: 1
-    - type: FuelGenerator
-      on: False
-    - type: Physics
-      bodyType: Static
-- proto: PortableScrubber
-  entities:
-  - uid: 84
+  - uid: 637
     components:
     - type: Transform
-      pos: -9.5,1.5
+      pos: -7.5,3.5
+      parent: 1
+- proto: PortableScrubber
+  entities:
+  - uid: 572
+    components:
+    - type: Transform
+      pos: -9.5,0.5
+      parent: 1
+- proto: PosterContrabandAtmosiaDeclarationIndependence
+  entities:
+  - uid: 717
+    components:
+    - type: Transform
+      pos: -13.5,-3.5
       parent: 1
 - proto: PosterLegitHelpOthers
   entities:
@@ -3662,13 +3655,33 @@ entities:
     - type: Transform
       pos: 3.5,6.5
       parent: 1
-- proto: PosterLegitSafetyMothEpi
+- proto: PosterLegitPeriodicTable
   entities:
-  - uid: 490
+  - uid: 700
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 7.5,-2.5
+      pos: 6.5,4.5
+      parent: 1
+- proto: PosterLegitSafetyEyeProtection
+  entities:
+  - uid: 351
+    components:
+    - type: Transform
+      pos: -8.5,-3.5
+      parent: 1
+- proto: PosterLegitSafetyMothDelam
+  entities:
+  - uid: 721
+    components:
+    - type: Transform
+      pos: -5.5,-1.5
+      parent: 1
+- proto: PosterLegitSafetyMothEpi
+  entities:
+  - uid: 227
+    components:
+    - type: Transform
+      pos: 6.5,-1.5
       parent: 1
 - proto: PosterLegitSafetyMothMeth
   entities:
@@ -3679,10 +3692,18 @@ entities:
       parent: 1
 - proto: PosterLegitSafetyMothPiping
   entities:
-  - uid: 737
+  - uid: 544
     components:
     - type: Transform
-      pos: -13.5,-3.5
+      pos: -11.5,-2.5
+      parent: 1
+- proto: PosterLegitSafetyMothSSD
+  entities:
+  - uid: 723
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 9.5,3.5
       parent: 1
 - proto: PosterLegitSMEpi
   entities:
@@ -3691,14 +3712,8 @@ entities:
     - type: Transform
       pos: 12.5,0.5
       parent: 1
-- proto: PosterLegitSMFires
+- proto: PosterLegitSafetyMothFires
   entities:
-  - uid: 214
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,2.5
-      parent: 1
   - uid: 711
     components:
     - type: Transform
@@ -3706,24 +3721,24 @@ entities:
       parent: 1
 - proto: PosterLegitSMHardhats
   entities:
-  - uid: 718
+  - uid: 685
     components:
     - type: Transform
-      pos: -9.5,2.5
+      pos: -12.5,-1.5
       parent: 1
 - proto: PosterLegitSMPills
   entities:
-  - uid: 77
+  - uid: 708
     components:
     - type: Transform
-      pos: 1.5,2.5
+      pos: 2.5,2.5
       parent: 1
 - proto: PosterLegitSMPoisoning
   entities:
-  - uid: 511
+  - uid: 444
     components:
     - type: Transform
-      pos: -3.5,-1.5
+      pos: -1.5,-2.5
       parent: 1
 - proto: PottedPlantRandom
   entities:
@@ -3732,15 +3747,15 @@ entities:
     - type: Transform
       pos: 5.5,1.5
       parent: 1
+  - uid: 230
+    components:
+    - type: Transform
+      pos: -4.5,3.5
+      parent: 1
   - uid: 416
     components:
     - type: Transform
       pos: -1.5,-1.5
-      parent: 1
-  - uid: 710
-    components:
-    - type: Transform
-      pos: -4.5,3.5
       parent: 1
 - proto: PowerCellRecharger
   entities:
@@ -3751,23 +3766,16 @@ entities:
       parent: 1
 - proto: Poweredlight
   entities:
-  - uid: 78
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -9.5,1.5
-      parent: 1
   - uid: 97
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,7.5
       parent: 1
-  - uid: 181
+  - uid: 113
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,-0.5
+      pos: -10.5,-0.5
       parent: 1
   - uid: 211
     components:
@@ -3781,11 +3789,28 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 7.5,1.5
       parent: 1
-  - uid: 577
+  - uid: 445
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 1.5,-1.5
+      parent: 1
+  - uid: 515
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.5,-0.5
+      parent: 1
+  - uid: 524
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -5.5,4.5
+      pos: -3.5,1.5
+      parent: 1
+  - uid: 710
+    components:
+    - type: Transform
+      pos: -2.5,5.5
       parent: 1
   - uid: 740
     components:
@@ -3811,16 +3836,8 @@ entities:
       on: False
     - type: DeviceLinkSink
       invokeCounter: 1
-      links:
-      - 635
 - proto: PoweredlightSodium
   entities:
-  - uid: 415
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -11.5,1.5
-      parent: 1
   - uid: 440
     components:
     - type: Transform
@@ -3828,17 +3845,19 @@ entities:
       parent: 1
 - proto: PoweredSmallLight
   entities:
-  - uid: 444
+  - uid: 229
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: 13.5,-4.5
+      pos: 11.5,-3.5
       parent: 1
-  - uid: 513
+  - uid: 450
     components:
     - type: Transform
-      pos: 12.5,-1.5
+      pos: -7.5,3.5
       parent: 1
+    - type: PoweredLight
+      on: False
   - uid: 542
     components:
     - type: Transform
@@ -3857,27 +3876,19 @@ entities:
       rot: 3.141592653589793 rad
       pos: -10.5,-4.5
       parent: 1
-  - uid: 631
+  - uid: 703
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -6.5,-1.5
+      rot: 1.5707963267948966 rad
+      pos: 13.5,-5.5
       parent: 1
-- proto: Rack
-  entities:
-  - uid: 144
+  - uid: 724
     components:
     - type: Transform
-      pos: -10.5,-1.5
+      pos: 7.5,3.5
       parent: 1
 - proto: Railing
   entities:
-  - uid: 501
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -11.5,1.5
-      parent: 1
   - uid: 507
     components:
     - type: Transform
@@ -3926,11 +3937,15 @@ entities:
     - type: Transform
       pos: 1.5,3.5
       parent: 1
-  - uid: 487
+  - uid: 490
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,6.5
+      pos: -3.5,6.5
+      parent: 1
+  - uid: 715
+    components:
+    - type: Transform
+      pos: -5.5,4.5
       parent: 1
 - proto: RandomPosterLegit
   entities:
@@ -3939,43 +3954,23 @@ entities:
     - type: Transform
       pos: 5.5,-1.5
       parent: 1
-  - uid: 523
+  - uid: 722
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -8.5,-1.5
-      parent: 1
-  - uid: 692
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -6.5,4.5
-      parent: 1
-- proto: SheetUranium
-  entities:
-  - uid: 213
-    components:
-    - type: Transform
-      pos: -7.5,-1.5
+      pos: 10.5,-4.5
       parent: 1
 - proto: ShuttersRadiation
   entities:
-  - uid: 220
+  - uid: 518
     components:
     - type: Transform
-      pos: -7.5,-0.5
+      pos: -6.5,2.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 443
-  - uid: 459
+  - uid: 541
     components:
     - type: Transform
-      pos: -6.5,-0.5
+      pos: -7.5,2.5
       parent: 1
-    - type: DeviceLinkSink
-      links:
-      - 443
 - proto: ShuttleWindow
   entities:
   - uid: 38
@@ -4031,11 +4026,10 @@ entities:
       rot: 3.141592653589793 rad
       pos: -3.5,7.5
       parent: 1
-  - uid: 256
+  - uid: 236
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -4.5,1.5
+      pos: -7.5,-3.5
       parent: 1
   - uid: 322
     components:
@@ -4094,28 +4088,57 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -1.5,2.5
       parent: 1
+  - uid: 493
+    components:
+    - type: Transform
+      pos: -2.5,9.5
+      parent: 1
+  - uid: 502
+    components:
+    - type: Transform
+      pos: -9.5,2.5
+      parent: 1
+  - uid: 511
+    components:
+    - type: Transform
+      pos: -3.5,-1.5
+      parent: 1
   - uid: 521
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -2.5,2.5
       parent: 1
-  - uid: 540
+  - uid: 567
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,5.5
+      pos: 8.5,4.5
+      parent: 1
+  - uid: 577
+    components:
+    - type: Transform
+      pos: 3.5,9.5
       parent: 1
   - uid: 594
     components:
     - type: Transform
       pos: 3.5,10.5
       parent: 1
+  - uid: 599
+    components:
+    - type: Transform
+      pos: -10.5,1.5
+      parent: 1
   - uid: 602
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 8.5,-3.5
+      parent: 1
+  - uid: 608
+    components:
+    - type: Transform
+      pos: 10.5,2.5
       parent: 1
   - uid: 611
     components:
@@ -4150,26 +4173,33 @@ entities:
     - type: Transform
       pos: 1.5,5.5
       parent: 1
+  - uid: 676
+    components:
+    - type: Transform
+      pos: 2.5,-2.5
+      parent: 1
+  - uid: 684
+    components:
+    - type: Transform
+      pos: 11.5,-5.5
+      parent: 1
 - proto: SignalButton
   entities:
-  - uid: 443
+  - uid: 409
     components:
-    - type: MetaData
-      name: shutters button
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,-0.5
+      pos: -5.5,2.5
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        459:
+        518:
         - Pressed: Toggle
-        220:
+        541:
+        - Pressed: Toggle
+        450:
         - Pressed: Toggle
   - uid: 635
     components:
-    - type: MetaData
-      name: searchlight button
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,6.5
@@ -4182,18 +4212,17 @@ entities:
         - Pressed: Toggle
 - proto: SignAtmos
   entities:
-  - uid: 173
+  - uid: 216
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -8.5,-0.5
+      pos: -9.5,-2.5
       parent: 1
-- proto: SignAtmosMinsky
+- proto: SignBridge
   entities:
-  - uid: 497
+  - uid: 487
     components:
     - type: Transform
-      pos: -10.5,-5.5
+      pos: -2.5,6.5
       parent: 1
 - proto: SignChem
   entities:
@@ -4203,62 +4232,58 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,2.5
       parent: 1
-- proto: SignEngine
+- proto: SignConference
   entities:
-  - uid: 524
+  - uid: 709
     components:
     - type: Transform
-      pos: -5.5,-1.5
+      pos: -4.5,2.5
+      parent: 1
+- proto: SignEngine
+  entities:
+  - uid: 482
+    components:
+    - type: Transform
+      pos: -11.5,-0.5
       parent: 1
 - proto: SignEngineering
   entities:
-  - uid: 632
+  - uid: 588
     components:
     - type: Transform
       pos: -4.5,-0.5
       parent: 1
-- proto: SignMedical
+- proto: SignExamroom
   entities:
-  - uid: 73
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 10.5,-0.5
-      parent: 1
-  - uid: 382
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,-7.5
-      parent: 1
-  - uid: 384
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 3.5,-7.5
-      parent: 1
-  - uid: 438
+  - uid: 648
     components:
     - type: Transform
       pos: 6.5,1.5
       parent: 1
-  - uid: 493
+- proto: SignFlammableMed
+  entities:
+  - uid: 443
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 3.5,9.5
+      pos: -6.5,4.5
       parent: 1
-  - uid: 510
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,9.5
-      parent: 1
+- proto: SignMedical
+  entities:
   - uid: 596
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,-1.5
+      parent: 1
+  - uid: 677
+    components:
+    - type: Transform
+      pos: -3.5,8.5
+      parent: 1
+  - uid: 683
+    components:
+    - type: Transform
+      pos: 4.5,8.5
       parent: 1
   - uid: 728
     components:
@@ -4279,35 +4304,62 @@ entities:
     - type: Transform
       pos: 12.5,-3.5
       parent: 1
-- proto: SignSecureMedRed
+- proto: SignNosmoking
   entities:
-  - uid: 61
+  - uid: 486
     components:
     - type: Transform
-      pos: -8.5,-2.5
+      pos: -5.5,3.5
+      parent: 1
+- proto: SignPlaque
+  entities:
+  - uid: 725
+    components:
+    - type: Transform
+      pos: 3.5,8.5
+      parent: 1
+- proto: SignRadiationMed
+  entities:
+  - uid: 499
+    components:
+    - type: Transform
+      pos: -7.5,4.5
+      parent: 1
+- proto: SignSecureMed
+  entities:
+  - uid: 712
+    components:
+    - type: Transform
+      pos: -12.5,-5.5
+      parent: 1
+- proto: SignSpace
+  entities:
+  - uid: 560
+    components:
+    - type: Transform
+      pos: -10.5,-5.5
+      parent: 1
+- proto: SignSurgery
+  entities:
+  - uid: 705
+    components:
+    - type: Transform
+      pos: 7.5,-2.5
       parent: 1
 - proto: SinkWide
   entities:
-  - uid: 603
+  - uid: 181
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
+      rot: 1.5707963267948966 rad
       pos: 11.5,-4.5
       parent: 1
 - proto: SMESBasic
   entities:
-  - uid: 518
+  - uid: 146
     components:
     - type: Transform
-      pos: -7.5,-2.5
-      parent: 1
-- proto: SMESMachineCircuitboard
-  entities:
-  - uid: 544
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -7.5,2.5
+      pos: -10.5,-0.5
       parent: 1
 - proto: SpawnPointLatejoin
   entities:
@@ -4318,24 +4370,17 @@ entities:
       parent: 1
 - proto: StasisBed
   entities:
-  - uid: 122
+  - uid: 579
     components:
     - type: Transform
-      pos: 11.5,0.5
+      pos: 7.5,3.5
       parent: 1
 - proto: SubstationBasic
   entities:
-  - uid: 252
+  - uid: 60
     components:
     - type: Transform
       pos: -11.5,-1.5
-      parent: 1
-- proto: SubstationMachineCircuitboard
-  entities:
-  - uid: 215
-    components:
-    - type: Transform
-      pos: -7.5,2.5
       parent: 1
 - proto: TableReinforced
   entities:
@@ -4354,25 +4399,20 @@ entities:
     - type: Transform
       pos: -1.5,9.5
       parent: 1
-  - uid: 194
-    components:
-    - type: Transform
-      pos: 1.5,9.5
-      parent: 1
   - uid: 195
     components:
     - type: Transform
       pos: 2.5,9.5
       parent: 1
-  - uid: 222
+  - uid: 274
     components:
     - type: Transform
-      pos: -7.5,2.5
+      pos: 1.5,9.5
       parent: 1
-  - uid: 467
+  - uid: 603
     components:
     - type: Transform
-      pos: -6.5,2.5
+      pos: -5.5,-0.5
       parent: 1
   - uid: 679
     components:
@@ -4382,6 +4422,12 @@ entities:
       parent: 1
 - proto: TableReinforcedGlass
   entities:
+  - uid: 11
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 10.5,-2.5
+      parent: 1
   - uid: 439
     components:
     - type: Transform
@@ -4392,25 +4438,25 @@ entities:
     - type: Transform
       pos: 5.5,4.5
       parent: 1
-  - uid: 486
-    components:
-    - type: Transform
-      pos: 7.5,-0.5
-      parent: 1
   - uid: 498
     components:
     - type: Transform
       pos: 5.5,3.5
       parent: 1
-  - uid: 522
-    components:
-    - type: Transform
-      pos: 7.5,-1.5
-      parent: 1
   - uid: 531
     components:
     - type: Transform
       pos: 2.5,3.5
+      parent: 1
+  - uid: 675
+    components:
+    - type: Transform
+      pos: 7.5,-0.5
+      parent: 1
+  - uid: 702
+    components:
+    - type: Transform
+      pos: 7.5,-1.5
       parent: 1
 - proto: TableWood
   entities:
@@ -4426,6 +4472,12 @@ entities:
       parent: 1
 - proto: Thruster
   entities:
+  - uid: 68
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 10.5,3.5
+      parent: 1
   - uid: 348
     components:
     - type: Transform
@@ -4472,18 +4524,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -10.5,-6.5
       parent: 1
-  - uid: 364
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -8.5,4.5
-      parent: 1
-  - uid: 365
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 9.5,4.5
-      parent: 1
   - uid: 366
     components:
     - type: Transform
@@ -4494,19 +4534,11 @@ entities:
     - type: Transform
       pos: 4.5,9.5
       parent: 1
-- proto: ToolboxElectricalFilled
-  entities:
-  - uid: 494
+  - uid: 625
     components:
     - type: Transform
-      pos: -6.5,2.5
-      parent: 1
-- proto: ToolboxMechanicalFilled
-  entities:
-  - uid: 216
-    components:
-    - type: Transform
-      pos: -6.5,2.8
+      rot: 1.5707963267948966 rad
+      pos: -9.5,3.5
       parent: 1
 - proto: VendingMachineChemicals
   entities:
@@ -4517,10 +4549,17 @@ entities:
       parent: 1
 - proto: VendingMachineMedical
   entities:
-  - uid: 625
+  - uid: 559
     components:
     - type: Transform
-      pos: 7.5,3.5
+      pos: 11.5,0.5
+      parent: 1
+- proto: VendingMachineMediDrobe
+  entities:
+  - uid: 448
+    components:
+    - type: Transform
+      pos: 10.5,-3.5
       parent: 1
 - proto: WallShuttle
   entities:
@@ -4534,11 +4573,6 @@ entities:
     - type: Transform
       pos: 3.5,-1.5
       parent: 1
-  - uid: 14
-    components:
-    - type: Transform
-      pos: 2.5,-2.5
-      parent: 1
   - uid: 17
     components:
     - type: Transform
@@ -4549,11 +4583,6 @@ entities:
     - type: Transform
       pos: -2.5,-1.5
       parent: 1
-  - uid: 20
-    components:
-    - type: Transform
-      pos: -3.5,-1.5
-      parent: 1
   - uid: 21
     components:
     - type: Transform
@@ -4563,16 +4592,6 @@ entities:
     components:
     - type: Transform
       pos: -5.5,-2.5
-      parent: 1
-  - uid: 24
-    components:
-    - type: Transform
-      pos: -6.5,-2.5
-      parent: 1
-  - uid: 26
-    components:
-    - type: Transform
-      pos: -7.5,-3.5
       parent: 1
   - uid: 27
     components:
@@ -4649,35 +4668,15 @@ entities:
     - type: Transform
       pos: -12.5,-2.5
       parent: 1
-  - uid: 59
-    components:
-    - type: Transform
-      pos: -12.5,-1.5
-      parent: 1
-  - uid: 62
-    components:
-    - type: Transform
-      pos: -10.5,-0.5
-      parent: 1
   - uid: 63
     components:
     - type: Transform
-      pos: -10.5,1.5
-      parent: 1
-  - uid: 65
-    components:
-    - type: Transform
-      pos: -9.5,2.5
+      pos: -8.5,4.5
       parent: 1
   - uid: 67
     components:
     - type: Transform
       pos: -8.5,3.5
-      parent: 1
-  - uid: 68
-    components:
-    - type: Transform
-      pos: -7.5,3.5
       parent: 1
   - uid: 69
     components:
@@ -4719,11 +4718,6 @@ entities:
     - type: Transform
       pos: 7.5,4.5
       parent: 1
-  - uid: 113
-    components:
-    - type: Transform
-      pos: 8.5,4.5
-      parent: 1
   - uid: 115
     components:
     - type: Transform
@@ -4747,22 +4741,7 @@ entities:
   - uid: 119
     components:
     - type: Transform
-      pos: 3.5,9.5
-      parent: 1
-  - uid: 121
-    components:
-    - type: Transform
-      pos: -2.5,9.5
-      parent: 1
-  - uid: 132
-    components:
-    - type: Transform
-      pos: 9.5,3.5
-      parent: 1
-  - uid: 134
-    components:
-    - type: Transform
-      pos: 10.5,2.5
+      pos: -12.5,-0.5
       parent: 1
   - uid: 136
     components:
@@ -4798,11 +4777,6 @@ entities:
     components:
     - type: Transform
       pos: 10.5,-4.5
-      parent: 1
-  - uid: 152
-    components:
-    - type: Transform
-      pos: 11.5,-5.5
       parent: 1
   - uid: 153
     components:
@@ -4844,15 +4818,47 @@ entities:
     - type: Transform
       pos: 12.5,-7.5
       parent: 1
+  - uid: 173
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,2.5
+      parent: 1
+  - uid: 176
+    components:
+    - type: Transform
+      pos: -12.5,-1.5
+      parent: 1
   - uid: 212
     components:
     - type: Transform
       pos: 3.5,-6.5
       parent: 1
-  - uid: 228
+  - uid: 247
     components:
     - type: Transform
+      pos: -8.5,2.5
+      parent: 1
+  - uid: 302
+    components:
+    - type: Transform
+      pos: 9.5,3.5
+      parent: 1
+  - uid: 352
+    components:
+    - type: Transform
+      pos: -10.5,0.5
+      parent: 1
+  - uid: 372
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
       pos: -11.5,-0.5
+      parent: 1
+  - uid: 503
+    components:
+    - type: Transform
+      pos: -5.5,5.5
       parent: 1
   - uid: 520
     components:
@@ -4872,11 +4878,21 @@ entities:
       rot: 3.141592653589793 rad
       pos: -4.5,6.5
       parent: 1
+  - uid: 580
+    components:
+    - type: Transform
+      pos: -6.5,-2.5
+      parent: 1
   - uid: 584
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 5.5,6.5
+      parent: 1
+  - uid: 591
+    components:
+    - type: Transform
+      pos: -11.5,0.5
       parent: 1
   - uid: 606
     components:
@@ -4888,12 +4904,6 @@ entities:
     components:
     - type: Transform
       pos: -9.5,-5.5
-      parent: 1
-  - uid: 608
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 8.5,3.5
       parent: 1
   - uid: 609
     components:
@@ -4935,16 +4945,23 @@ entities:
       parent: 1
 - proto: WallShuttleDiagonal
   entities:
+  - uid: 78
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,4.5
+      parent: 1
   - uid: 93
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 7.5,-3.5
       parent: 1
-  - uid: 491
+  - uid: 467
     components:
     - type: Transform
-      pos: -12.5,-0.5
+      rot: 3.141592653589793 rad
+      pos: -4.5,5.5
       parent: 1
   - uid: 527
     components:
@@ -4957,22 +4974,10 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 11.5,2.5
       parent: 1
-  - uid: 530
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 10.5,3.5
-      parent: 1
   - uid: 533
     components:
     - type: Transform
       pos: -6.5,5.5
-      parent: 1
-  - uid: 535
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -4.5,5.5
       parent: 1
   - uid: 585
     components:
@@ -4985,11 +4990,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 7.5,5.5
-      parent: 1
-  - uid: 599
-    components:
-    - type: Transform
-      pos: -9.5,3.5
       parent: 1
   - uid: 600
     components:
@@ -5026,7 +5026,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -2.5,-2.5
       parent: 1
-  - uid: 626
+  - uid: 658
     components:
     - type: Transform
       pos: 12.5,-2.5
@@ -5043,30 +5043,10 @@ entities:
     - type: Transform
       pos: 3.5,2.5
       parent: 1
-  - uid: 81
+  - uid: 24
     components:
     - type: Transform
-      pos: -5.5,2.5
-      parent: 1
-  - uid: 82
-    components:
-    - type: Transform
-      pos: -5.5,3.5
-      parent: 1
-  - uid: 86
-    components:
-    - type: Transform
-      pos: -6.5,3.5
-      parent: 1
-  - uid: 87
-    components:
-    - type: Transform
-      pos: -8.5,-2.5
-      parent: 1
-  - uid: 88
-    components:
-    - type: Transform
-      pos: -8.5,-1.5
+      pos: -9.5,-3.5
       parent: 1
   - uid: 94
     components:
@@ -5114,10 +5094,10 @@ entities:
     - type: Transform
       pos: 1.5,2.5
       parent: 1
-  - uid: 223
+  - uid: 237
     components:
     - type: Transform
-      pos: -5.5,-0.5
+      pos: -11.5,-2.5
       parent: 1
   - uid: 313
     components:
@@ -5135,6 +5115,16 @@ entities:
     - type: Transform
       pos: 9.5,-0.5
       parent: 1
+  - uid: 438
+    components:
+    - type: Transform
+      pos: -4.5,1.5
+      parent: 1
+  - uid: 441
+    components:
+    - type: Transform
+      pos: -9.5,-2.5
+      parent: 1
   - uid: 442
     components:
     - type: Transform
@@ -5150,12 +5140,6 @@ entities:
     - type: Transform
       pos: 6.5,3.5
       parent: 1
-  - uid: 483
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -8.5,-0.5
-      parent: 1
   - uid: 517
     components:
     - type: Transform
@@ -5167,19 +5151,55 @@ entities:
     - type: Transform
       pos: 6.5,4.5
       parent: 1
+  - uid: 626
+    components:
+    - type: Transform
+      pos: -5.5,2.5
+      parent: 1
+  - uid: 630
+    components:
+    - type: Transform
+      pos: -5.5,3.5
+      parent: 1
+  - uid: 652
+    components:
+    - type: Transform
+      pos: -5.5,4.5
+      parent: 1
   - uid: 682
     components:
     - type: Transform
       pos: 1.5,3.5
       parent: 1
-- proto: WarningWaste
+- proto: WarningAir
   entities:
-  - uid: 605
+  - uid: 691
     components:
     - type: Transform
-      pos: -10.5,1.5
+      pos: -9.5,-4.5
       parent: 1
-- proto: WarpPointShip
+- proto: WarningN2
+  entities:
+  - uid: 692
+    components:
+    - type: Transform
+      pos: -13.5,-4.5
+      parent: 1
+- proto: WarningO2
+  entities:
+  - uid: 690
+    components:
+    - type: Transform
+      pos: -12.5,-2.5
+      parent: 1
+- proto: WarningWaste
+  entities:
+  - uid: 523
+    components:
+    - type: Transform
+      pos: -10.5,0.5
+      parent: 1
+- proto: WarpPoint
   entities:
   - uid: 688
     components:
@@ -5192,5 +5212,12 @@ entities:
     components:
     - type: Transform
       pos: -3.5,5.5
+      parent: 1
+- proto: WeaponGrapplingGun
+  entities:
+  - uid: 414
+    components:
+    - type: Transform
+      pos: -5.5,-0.5
       parent: 1
 ...

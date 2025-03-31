@@ -1,9 +1,11 @@
 using Content.Shared.Atmos;
+using Content.Shared.Light.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Tools;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 using Robust.Shared.Utility;
@@ -15,6 +17,7 @@ namespace Content.Shared.Maps
     {
         [ValidatePrototypeId<ToolQualityPrototype>]
         public const string PryingToolQuality = "Prying";
+        public const string DiggingToolQuality = "Digging"; // Frontier
 
         public const string SpaceID = "Space";
 
@@ -25,7 +28,7 @@ namespace Content.Shared.Maps
         [AbstractDataFieldAttribute]
         public bool Abstract { get; private set; }
 
-        [IdDataField] public string ID { get; } = string.Empty;
+        [IdDataField] public string ID { get; private set; } = string.Empty;
 
         public ushort TileId { get; private set; }
 
@@ -46,13 +49,14 @@ namespace Content.Shared.Maps
         public PrototypeFlags<ToolQualityPrototype> DeconstructTools { get; set; } = new();
 
         // Delta V
-        [DataField("canShovel")] public bool CanShovel { get; private set; }
+        // [DataField("canShovel")] public bool CanShovel { get; private set; }
         //Delta V
 
         /// <remarks>
         /// Legacy AF but nice to have.
         /// </remarks>
         public bool CanCrowbar => DeconstructTools.Contains(PryingToolQuality);
+        public bool CanShovel => DeconstructTools.Contains(DiggingToolQuality); // Frontier
 
         /// <summary>
         /// These play when the mob has shoes on.

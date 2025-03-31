@@ -1,8 +1,7 @@
-using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Body.Systems;
 using Content.Server.Cargo.Components;
-using Content.Server.Chemistry.Containers.EntitySystems;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Administration;
 using Content.Shared.Body.Components;
 using Content.Shared.Cargo.Components;
@@ -18,6 +17,8 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Server.Materials.Components; // Frontier
+using System.Linq;
+using Content.Shared.Research.Prototypes;
 
 namespace Content.Server.Cargo.Systems;
 
@@ -31,7 +32,7 @@ public sealed class PricingSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly BodySystem _bodySystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -160,6 +161,26 @@ public sealed class PricingSystem : EntitySystem
         return price;
     }
 
+    public double GetLatheRecipePrice(LatheRecipePrototype recipe)
+    {
+        var price = 0.0;
+
+        if (recipe.Result is { } result)
+        {
+            price += GetEstimatedPrice(_prototypeManager.Index(result));
+        }
+
+        if (recipe.ResultReagents is { } resultReagents)
+        {
+            foreach (var (reagent, amount) in resultReagents)
+            {
+                price += (_prototypeManager.Index(reagent).PricePerUnit * amount).Double();
+            }
+        }
+
+        return price;
+    }
+
     /// <summary>
     /// Get a rough price for an entityprototype. Does not consider contained entities.
     /// </summary>
@@ -261,6 +282,35 @@ public sealed class PricingSystem : EntitySystem
 
         return price;
     }
+
+    // Begin Frontier - GetPrice variant that uses predicate
+    /// <summary>
+    /// Appraises an entity, returning its price. Respects predicate - an entity that is excluded will be removed from the 
+    /// </summary>
+    /// <param name="uid">The entity to appraise.</param>
+    /// <param name="includeContents">Whether to examine its contents.</param>
+    /// <param name="predicate">An optional predicate that controls whether or not the entity or its children are counted toward the total.</param>
+    /// <returns>The price of the entity.</returns>
+    public double GetPriceConditional(EntityUid uid, bool includeContents = true, Func<EntityUid, bool>? predicate = null)
+    {
+        if (predicate is not null && !predicate(uid))
+            return 0.0;
+
+        var price = GetPrice(uid, false);
+
+        if (includeContents && TryComp<ContainerManagerComponent>(uid, out var containers))
+        {
+            foreach (var container in containers.Containers.Values)
+            {
+                foreach (var ent in container.ContainedEntities)
+                {
+                    price += GetPriceConditional(ent, true, predicate);
+                }
+            }
+        }
+        return price;
+    }
+    // End Frontier - GetPrice variant that uses predicate
 
     private double GetMaterialsPrice(EntityUid uid)
     {
@@ -380,18 +430,29 @@ public sealed class PricingSystem : EntitySystem
         return price;
     }
 
+    // New Frontiers - Stack Vendor Prices - Gets overwrite values for vendor prices.
+    // This code is licensed under AGPLv3. See AGPLv3.txt
     private double GetVendPrice(EntityPrototype prototype)
     {
         var price = 0.0;
 
-        if (prototype.Components.TryGetValue(_factory.GetComponentName(typeof(StaticPriceComponent)), out var vendProto))
+        // Prefer static price to stack price component, take the first positive value read.
+        if (prototype.Components.TryGetValue(_factory.GetComponentName(typeof(StaticPriceComponent)), out var staticProto))
         {
-            var vendPrice = (StaticPriceComponent) vendProto.Component;
-            price += vendPrice.VendPrice;
+            var staticComp = (StaticPriceComponent) staticProto.Component;
+            if (staticComp.VendPrice > 0.0)
+                price += staticComp.VendPrice;
+        }
+        if (price == 0.0 && prototype.Components.TryGetValue(_factory.GetComponentName(typeof(StackPriceComponent)), out var stackProto))
+        {
+            var stackComp = (StackPriceComponent) stackProto.Component;
+            if (stackComp.VendPrice > 0.0)
+                price += stackComp.VendPrice;
         }
 
         return price;
     }
+    // End of modified code
 
     /// <summary>
     /// Appraises a grid, this is mainly meant to be used by yarrs.
@@ -409,7 +470,7 @@ public sealed class PricingSystem : EntitySystem
         {
             if (predicate is null || predicate(child))
             {
-                var subPrice = GetPrice(child);
+                var subPrice = GetPriceConditional(child, true, predicate); // Frontier: GetPrice<GetPriceConditional, add true, predicate
                 price += subPrice;
                 afterPredicate?.Invoke(child, subPrice);
             }
@@ -442,7 +503,7 @@ public record struct PriceCalculationEvent()
 [ByRefEvent]
 public record struct EstimatedPriceCalculationEvent()
 {
-    public EntityPrototype Prototype;
+    public required EntityPrototype Prototype;
 
     /// <summary>
     /// The total price of the entity.

@@ -1,52 +1,28 @@
 - type: entity
   id: ComputerBankATMBase
+  parent: BaseComputer
   abstract: true
-  placement:
-    mode: SnapgridCenter
   components:
-  - type: GenericVisualizer
-    visuals:
-      enum.ComputerVisuals.Powered:
-        computerLayerScreen:
-          True: { visible: true, shader: unshaded }
-          False: { visible: false }
-        computerLayerKeys:
-          True: { visible: true, shader: unshaded }
-          False: { visible: true, shader: shaded }
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        collection: MetalGlassBreak
-  - type: Computer
-  - type: ApcPowerReceiver
-    powerLoad: 200
-  - type: ExtensionCableReceiver
   - type: ActivatableUIRequiresPower
   - type: ActivatableUI
     singleUser: true
-  - type: LitOnPowered
-  - type: PointLight
-    radius: 1.5
-    energy: 1.6
-    color: "#b89f25"
-    enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
-    autoRot: true
-    offset: "0, 0.4" # shine from the top, not bottom of the computer
-    castShadows: false
-  - type: EmitSoundOnUIOpen
-    sound:
-      collection: Keyboard
-  - type: Appearance
+  - type: Computer
+    board: Null
+  - type: ItemSlots # TODO: move ItemSlot to be nullable, withdraw shouldn't have one at all
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      bank-ATM-cashSlot: !type:ContainerSlot
 
 - type: entity
-  name: bank atm
+  name: bank ATM
   id: ComputerBankATMDeposit
+  parent: ComputerBankATMBase
   description: Used to deposit and withdraw funds from a personal bank account.
   abstract: true
   components:
   - type: BankATM
-    bank-ATM-cashSlot:
+    cashSlot:
       name: bank-ATM-cashSlot
       insertSound: /Audio/Machines/scanning.ogg
       ejectSound: /Audio/Machines/tray_eject.ogg
@@ -54,26 +30,23 @@
       swap: false
       whitelist:
         components:
-          - Currency
+          - Cash
   - type: ActivatableUI
     key: enum.BankATMMenuUiKey.ATM
   - type: UserInterface
     interfaces:
       enum.BankATMMenuUiKey.ATM:
         type: BankATMMenuBoundUserInterface
-  - type: ItemSlots
-  - type: ContainerContainer
-    containers:
-      bank-ATM-cashSlot: !type:ContainerSlot {}
 
 - type: entity
-  name: bank atm withdraw-only
+  name: withdraw-only bank ATM
   id: ComputerBankATMWithdraw
+  parent: ComputerBankATMBase
   description: Used to withdraw funds from a personal bank account, unable to deposit.
   abstract: true
   components:
   - type: BankATM
-    bank-ATM-cashSlot:
+    cashSlot:
       name: bank-ATM-cashSlot
       insertSound: /Audio/Machines/scanning.ogg
       ejectSound: /Audio/Machines/tray_eject.ogg
@@ -85,10 +58,10 @@
   - type: UserInterface
     interfaces:
       enum.BankATMMenuUiKey.ATM:
-        type: WithdrawBankATMMenuBoundUserInterface
+        type: BankATMWithdrawOnlyMenuBoundUserInterface
 
 - type: entity
-  parent: [ComputerBankATMBase, ComputerBankATMDeposit, BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerBankATMDeposit]
   id: ComputerBankATM
   components:
   - type: Sprite
@@ -102,7 +75,7 @@
       state: unshaded
 
 - type: entity
-  parent: [ComputerBankATMBase, ComputerBankATMWithdraw, BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
+  parent: ComputerBankATMWithdraw
   id: ComputerWithdrawBankATM
   components:
   - type: Sprite
@@ -114,15 +87,16 @@
       state: icon
     - map: ["computerLayerScreen"]
       state: unshaded
+  - type: Computer
+    board: ComputerWithdrawBankATMComputerCircuitboard
 
 - type: entity
   suffix: Wallmount
-  parent: [ComputerBankATMBase, ComputerBankATMDeposit, BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureWallmount, BaseStructureComputer]
+  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputerWallmount, ComputerBankATMDeposit]
   id: ComputerWallmountBankATM
   components:
   - type: Sprite
     netsync: false
-    noRot: false
     sprite: _NF/Structures/Machines/atm/wall_atm.rsi
     layers:
       - map: ["computerLayerBody"]
@@ -132,22 +106,23 @@
 
 - type: entity
   suffix: Wallmount
-  parent: [ComputerBankATMBase, ComputerBankATMWithdraw, BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureWallmount, BaseStructureComputer]
+  parent: [BaseStructureComputerWallmount, ComputerBankATMWithdraw]
   id: ComputerWallmountWithdrawBankATM
   components:
   - type: Sprite
     netsync: false
-    noRot: false
     sprite: _NF/Structures/Machines/atm/wall_atm.rsi
     layers:
       - map: ["computerLayerBody"]
         state: icon
       - map: ["computerLayerScreen"]
         state: unshaded
+  - type: Computer
+    board: ComputerWithdrawBankATMComputerCircuitboard
 
 - type: entity
   suffix: BlackMarket
-  parent: [ComputerBankATMBase, ComputerBankATMDeposit, BaseStructureDisableToolUse, BaseStructureDestructible, BaseStructureComputer]
+  parent: [BaseStructureDisableToolUse, BaseStructureDestructible, ComputerBankATMDeposit]
   id: ComputerBlackMarketBankATM
   description: Has some sketchy looking modifications and a sticker that says DEPOSIT FEE 30%
   components:
@@ -166,16 +141,18 @@
     interfaces:
       enum.BankATMMenuUiKey.BlackMarket:
         type: BankATMMenuBoundUserInterface
+  - type: BankATM
+    taxAccounts:
+      Frontier: 0.3 # The scandal!
 
 - type: entity
   suffix: Wallmount, BlackMarket
-  parent: [ComputerBankATMBase, ComputerBankATMDeposit, BaseStructureDisableToolUse, BaseStructureDestructible, BaseStructureWallmount, BaseStructureComputer]
+  parent: [BaseStructureDisableToolUse, BaseStructureDestructible, BaseStructureComputerWallmount, ComputerBankATMDeposit]
   id: ComputerWallmountBlackMarketBankATM
   description: Has some sketchy looking modifications and a sticker that says DEPOSIT FEE 30%
   components:
   - type: Sprite
     netsync: false
-    noRot: true
     sprite: _NF/Structures/Machines/atm/wall_illegal_atm.rsi
     layers:
     - map: ["computerLayerBody"]
@@ -188,16 +165,19 @@
     interfaces:
       enum.BankATMMenuUiKey.BlackMarket:
         type: BankATMMenuBoundUserInterface
+  - type: BankATM
+    taxAccounts:
+      Frontier: 0.3 # The scandal!
 
 - type: entity
   name: station administration console
-  parent: [ComputerBankATMBase, BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureAccessReaderImmuneToEmag, BaseStructureComputer]
-  id: StationAdminBankATM
-  description: Used to pay out from the station's bank account
+  parent: [BaseStructureDisableScrewing, BaseStructureDisablePrying, BaseStructureIndestructible, BaseStructureAccessReaderImmuneToEmag, ComputerBankATMBase]
+  id: BaseStationAdminBankATM
+  abstract: true
+  description: Used to transfer funds to and from the station's bank account.
   components:
   - type: Sprite
     netsync: false
-    noRot: true
     sprite: Structures/Machines/computers.rsi
     layers:
     - map: ["computerLayerBody"]
@@ -205,11 +185,12 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: id
+      sprite: _NF/Structures/Machines/computers.rsi
+      state: station_atm
     - map: ["computerLayerKeys"]
       state: id_key
   - type: StationBankATM
-    station-bank-ATM-cashSlot:
+    cashSlot:
       name: station-bank-ATM-cashSlot
       insertSound: /Audio/Machines/scanning.ogg
       ejectSound: /Audio/Machines/tray_eject.ogg
@@ -217,16 +198,46 @@
       swap: false
       whitelist:
         components:
-          - Currency
+          - Cash
   - type: ActivatableUI
     key: enum.BankATMMenuUiKey.ATM
   - type: UserInterface
     interfaces:
       enum.BankATMMenuUiKey.ATM:
-        type: StationBankATMMenuBoundUserInterface
+        type: StationAdminConsoleBoundUserInterface
+  - type: ActivatableUIRequiresAccess
+  - type: ActivatableUIRequiresPower
   - type: ItemSlots
   - type: ContainerContainer
     containers:
-      station-bank-ATM-cashSlot: !type:ContainerSlot {}
+      board: !type:Container
+      station-bank-ATM-cashSlot: !type:ContainerSlot
   - type: AccessReader
     access: [["HeadOfPersonnel"], ["HeadOfSecurity"]]
+
+- type: entity
+  parent: BaseStationAdminBankATM
+  id: StationAdminBankATMFrontier
+  description: Used to transfer funds to and from Frontier Outpost's bank account.
+  suffix: Frontier
+  components:
+  - type: StationBankATM
+    account: Frontier
+
+- type: entity
+  parent: BaseStationAdminBankATM
+  id: StationAdminBankATMNfsd
+  description: Used to transfer funds to and from NFSD's bank account.
+  suffix: NFSD
+  components:
+  - type: StationBankATM
+    account: Nfsd
+
+- type: entity
+  parent: BaseStationAdminBankATM
+  id: StationAdminBankATMMedical
+  description: Used to transfer funds to and from the medical bank account.
+  suffix: Medical
+  components:
+  - type: StationBankATM
+    account: Medical

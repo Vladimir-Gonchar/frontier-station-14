@@ -1,4 +1,4 @@
-﻿<Control xmlns="https://spacestation14.io"
+<Control xmlns="https://spacestation14.io"
                  xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls">
     <PanelContainer Name="BackgroundColorPanel" Access="Public"/>
     <BoxContainer Orientation="Horizontal"
@@ -32,12 +32,25 @@
                Text="{Loc player-tab-antagonist}"
                MouseFilter="Pass"/>
         <cc:VSeparator/>
+        <Label Name="RoleTypeLabel"
+               SizeFlagsStretchRatio="2"
+               HorizontalExpand="True"
+               ClipText="True"
+               Text="{Loc player-tab-roletype}"
+               MouseFilter="Pass"/>
+        <cc:VSeparator/>
         <Label Name="PlaytimeLabel"
                SizeFlagsStretchRatio="1"
                HorizontalExpand="True"
                ClipText="True"
                Text="{Loc player-tab-playtime}"
-               MouseFilter="Pass"
-               ToolTip="{Loc player-tab-entry-tooltip}"/>
+               MouseFilter="Pass"/>
+        <cc:VSeparator/>
+        <Label Name="BalanceLabel"
+               SizeFlagsStretchRatio="2"
+               HorizontalExpand="True"
+               ClipText="True"
+               Text="{Loc player-tab-balance}"
+               MouseFilter="Pass"/>
     </BoxContainer>
 </Control>

@@ -1,6 +1,9 @@
 using Content.Shared.Actions;
+using Content.Shared.Buckle.Components;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Events;
 using Content.Shared.Damage.ForceSay;
+using Content.Shared.Emoting;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.IdentityManagement;
@@ -16,10 +19,12 @@ using Content.Shared.Sound.Components;
 using Content.Shared.Speech;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
+using Content.Shared.Traits.Assorted;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Shared._NF.Bed.Sleep; // Frontier
 
 namespace Content.Shared.Bed.Sleep;
 
@@ -33,8 +38,8 @@ public sealed partial class SleepingSystem : EntitySystem
     [Dependency] private readonly SharedEmitSoundSystem _emitSound = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
 
-    public static readonly ProtoId<EntityPrototype> SleepActionId = "ActionSleep";
-    public static readonly ProtoId<EntityPrototype> WakeActionId = "ActionWake";
+    public static readonly EntProtoId SleepActionId = "ActionSleep";
+    public static readonly EntProtoId WakeActionId = "ActionWake";
 
     public override void Initialize()
     {
@@ -59,6 +64,18 @@ public sealed partial class SleepingSystem : EntitySystem
         SubscribeLocalEvent<SleepingComponent, InteractHandEvent>(OnInteractHand);
 
         SubscribeLocalEvent<ForcedSleepingComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<SleepingComponent, UnbuckleAttemptEvent>(OnUnbuckleAttempt);
+        SubscribeLocalEvent<SleepingComponent, EmoteAttemptEvent>(OnEmoteAttempt);
+
+        SubscribeLocalEvent<SleepingComponent, BeforeForceSayEvent>(OnChangeForceSay, after: new []{typeof(PainNumbnessSystem)});
+    }
+
+    private void OnUnbuckleAttempt(Entity<SleepingComponent> ent, ref UnbuckleAttemptEvent args)
+    {
+        // TODO is this necessary?
+        // Shouldn't the interaction have already been blocked by a general interaction check?
+        if (ent.Owner == args.User)
+            args.Cancelled = true;
     }
 
     private void OnBedSleepAction(Entity<ActionsContainerComponent> ent, ref SleepActionEvent args)
@@ -118,9 +135,6 @@ public sealed partial class SleepingSystem : EntitySystem
         RaiseLocalEvent(ent, ref ev);
         _blindableSystem.UpdateIsBlind(ent.Owner);
         _actionsSystem.AddAction(ent, ref ent.Comp.WakeAction, WakeActionId, ent);
-
-        // TODO remove hardcoded time.
-        _actionsSystem.SetCooldown(ent.Comp.WakeAction, _gameTiming.CurTime, _gameTiming.CurTime + TimeSpan.FromSeconds(2f));
     }
 
     private void OnSpeakAttempt(Entity<SleepingComponent> ent, ref SpeakAttemptEvent args)
@@ -148,12 +162,12 @@ public sealed partial class SleepingSystem : EntitySystem
 
     private void OnSlip(Entity<SleepingComponent> ent, ref SlipAttemptEvent args)
     {
-        args.Cancel();
+        args.NoSlip = true;
     }
 
     private void OnConsciousAttempt(Entity<SleepingComponent> ent, ref ConsciousAttemptEvent args)
     {
-        args.Cancel();
+        args.Cancelled = true;
     }
 
     private void OnExamined(Entity<SleepingComponent> ent, ref ExaminedEvent args)
@@ -252,6 +266,10 @@ public sealed partial class SleepingSystem : EntitySystem
             return false;
 
         EnsureComp<SleepingComponent>(ent);
+        // Frontier: set auto-wakeup time
+        if (TryComp<AutoWakeUpComponent>(ent, out var autoWakeUp))
+            autoWakeUp.NextWakeUp = _gameTiming.CurTime + autoWakeUp.Length;
+        // End Frontier: auto-wakeup
         return true;
     }
 
@@ -300,6 +318,39 @@ public sealed partial class SleepingSystem : EntitySystem
         Wake((ent, ent.Comp));
         return true;
     }
+
+    /// <summary>
+    /// Prevents the use of emote actions while sleeping
+    /// </summary>
+    public void OnEmoteAttempt(Entity<SleepingComponent> ent, ref EmoteAttemptEvent args)
+    {
+        args.Cancel();
+    }
+
+    private void OnChangeForceSay(Entity<SleepingComponent> ent, ref BeforeForceSayEvent args)
+    {
+        args.Prefix = ent.Comp.ForceSaySleepDataset;
+    }
+
+    // Frontier: auto-wakeup
+    /// <summary>
+    /// Handles auto-wakeup
+    /// </summary>
+    public override void Update(float frameTime)
+    {
+        var query = EntityQueryEnumerator<AutoWakeUpComponent, SleepingComponent>();
+        var curTime = _gameTiming.CurTime;
+        while (query.MoveNext(out var uid, out var wakeUp, out var sleeping))
+        {
+            if (curTime >= wakeUp.NextWakeUp)
+            {
+                Wake((uid, sleeping));
+                _statusEffectsSystem.TryRemoveStatusEffect(uid, "Drowsiness");
+            }
+        }
+    }
+    // End Frontier: auto-wakeup
+
 }
 
 

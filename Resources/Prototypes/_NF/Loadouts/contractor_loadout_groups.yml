@@ -85,14 +85,34 @@
   - ContractorClothingUniformJumpsuitGenetics
   - ContractorClothingUniformJumpskirtGenetics
   - ContractorClothingUniformJumpsuitPsychologist
+  - ContractorClothingUniformJumpskirtPsychologist
   - ContractorClothingUniformJumpsuitScientistFormal
   - ContractorClothingUniformJumpsuitRoboticist
   - ContractorClothingUniformJumpskirtRoboticist
+  - ContractorClothingUniformJumpsuitLawyerBlue
+  - ContractorClothingUniformJumpskirtLawyerBlue
+  - ContractorClothingUniformJumpsuitLawyerPurple
+  - ContractorClothingUniformJumpskirtLawyerPurple
+  - ContractorClothingUniformJumpsuitLawyerRed
+  - ContractorClothingUniformJumpskirtLawyerRed
+  - ContractorClothingUniformJumpsuitLawyerBlack
+  - ContractorClothingUniformJumpskirtLawyerBlack
+  - ContractorClothingUniformJumpsuitLawyerGood
+  - ContractorClothingUniformJumpskirtLawyerGood
   - ContractorClothingUniformRandomPunkCroptop # Punkish (Randomized visuals)
   - ContractorClothingUniformRandomPunkTanktop # Punkish (Randomized visuals)
   - ContractorClothingUniformRandomArmlessNoSkirt # Punkish (Randomized visuals)
   - ContractorClothingUniformRandomPunkCroptopShorts # Punkish (Randomized visuals)
   - ContractorClothingUniformRandomPunkTanktopShorts # Punkish (Randomized visuals)
+  - ContractorClothingUniformRandomArmless
+  - ContractorClothingUniformRandomStandard
+  - ContractorClothingUniformRandomShorts
+  - ContractorClothingUniformRandomShirt
+  - ContractorClothingSkirtUniformRandomArmless
+  - ContractorClothingSkirtUniformRandomStandard
+  - ContractorClothingSkirtUniformRandomBra
+  - ContractorClothingSkirtUniformRandomShorts
+  - ContractorClothingSkirtUniformRandomShirt
   - ContractorClothingUniformJumpsuitMonasticRobeDark
   - ContractorClothingUniformJumpsuitMonasticRobeLight
   - ContractorClothingUniformJumpsuitChaplainPilgrimVest
@@ -100,8 +120,10 @@
   - ContractorClothingUniformJumpskirtQMTurtleneck
   - ContractorClothingUniformJumpsuitSeniorPhysician
   - ContractorClothingUniformJumpskirtSeniorPhysician
-  - ContractorClothingUniformJumpsuitCMO
-  - ContractorClothingUniformJumpskirtCMO
+  #- ContractorClothingUniformJumpsuitCMO # Temp removed for MOM. Will return if replaced.
+  #- ContractorClothingUniformJumpskirtCMO # Temp removed for MOM. Will return if replaced. #
+  #- ContractorClothingUniformTurtleneckCMO # Temp removed for MOM. Will return if replaced. #
+  #- ContractorClothingUniformTurtleskirtCMO # Temp removed for MOM. Will return if replaced. #
   - ContractorClothingUniformJumpsuitSeniorResearcher
   - ContractorClothingUniformJumpskirtSeniorResearcher
   - ContractorClothingUniformJumpsuitResearchDirector
@@ -118,6 +140,8 @@
   - ContractorClothingUniformJumpsuitKilt
   - ContractorClothingUniformJumpsuitDameDane
   - ContractorClothingUniformJumpsuitKimono
+  - ContractorClothingKimonoBlue
+  - ContractorClothingKimonoPink
   - ContractorClothingUniformJumpsuitGladiator
   - ContractorClothingUniformJumpskirtPerformer
   - ContractorClothingUniformJumpskirtJanimaid
@@ -130,6 +154,10 @@
   - ContractorClothingUniformJumpsuitTshirtJeans
   - ContractorClothingUniformJumpsuitTshirtJeansGray
   - ContractorClothingUniformJumpsuitTshirtJeansPeach
+  - ContractorClothingUniformJumpsuitCaptain
+  - ContractorClothingUniformJumpskirtCaptain
+  - ContractorClothingUniformJumpsuitCapFormal
+  - ContractorClothingUniformJumpskirtCapFormalDress
   - ContractorClothingUniformJumpsuitMilitaryCaptain
   - ContractorClothingUniformJumpsuitMilitaryAtmospherics
   - ContractorClothingUniformJumpsuitMilitaryEngineering
@@ -142,7 +170,7 @@
   - ContractorClothingUniformJumpsuitMilitaryChemistry
   - ContractorClothingUniformJumpsuitMilitaryVirology
   - ContractorClothingUniformJumpsuitMilitaryGenetics
-  - ContractorClothingUniformJumpsuitMilitaryCMO
+ # - ContractorClothingUniformJumpsuitMilitaryCMO # Temp removed for MOM. Will return if replaced.
   - ContractorClothingUniformJumpsuitMilitaryScientist
   - ContractorClothingUniformJumpsuitMilitaryResearchDirector
   - ContractorClothingUniformJumpsuitMilitaryService
@@ -161,8 +189,26 @@
   - ContractorClothingUniformJumpsuitMilitaryColorPurple
   - ContractorClothingUniformJumpsuitMilitaryColorLightBrown
   - ContractorClothingUniformJumpsuitMilitaryColorBrown
+  - ContractorClothingUniformJumpskirtBlackElegantDress
+  - ContractorClothingUniformJumpskirtRedElegantDress
+  - ContractorClothingUniformJumpskirtGreenElegantDress
+  - ContractorClothingUniformJumpskirtBlueElegantDress
+  - ContractorClothingUniformJumpskirtPurpleElegantDress
+  - ContractorClothingUniformJumpskirtCyanStripedDress
+  - ContractorClothingUniformJumpskirtRedStripedDress
+  - ContractorClothingUniformJumpskirtGreenStripedDress
+  - ContractorClothingUniformJumpskirtPinkStripedDress
+  - ContractorClothingUniformJumpskirtOrangeStripedDress
+  - ContractorClothingUniformJumpskirtPurpleTurtleneckDress
+  - ContractorClothingUniformJumpskirtRedTurtleneckDress
+  - ContractorClothingUniformJumpskirtGreenTurtleneckDress
+  - ContractorClothingUniformJumpskirtBlueTurtleneckDress
+  - ContractorClothingUniformJumpskirtYellowTurtleneckDress
+  - ContractorClothingUniformJumpskirtYellowOldDress
+
   fallbacks:
   - ContractorClothingUniformJumpsuitColorGrey
+  - ContractorClothingUniformJumpskirtColorGrey
 
 - type: loadoutGroup
   id: ContractorBackpack
@@ -237,14 +283,12 @@
   - ContractorClothingBackpackMessengerMime
   fallbacks:
   - ContractorClothingBackpack
-  
+
 - type: loadoutGroup
   id: ContractorOuterClothing
   name: loadout-group-contractor-outerclothing
   minLimit: 0
   loadouts:
-  - ContractorClothingOuterSuitEmergency
-  - ContractorClothingOuterHardsuitEVA
   - ContractorClothingOuterHardsuitBasic
   - ContractorClothingOuterHardsuitVoidParamed
   - ContractorClothingOuterHoodieGrey
@@ -289,9 +333,9 @@
   - ContractorClothingOuterWinterMime
   - ContractorClothingOuterWinterQM
   - ContractorClothingOuterWinterRD
-  - ContractorClothingOuterWinterCMO
+#  - ContractorClothingOuterWinterCMO # Temp removed for MOM. Will return if replaced.
   - ContractorClothingOuterWinterCE
-  - ContractorClothingOuterCoatLabCmo
+#  - ContractorClothingOuterCoatLabCmo # Temp removed for MOM. Will return if replaced.
   - ContractorClothingOuterCoatLabSeniorPhysician
   - ContractorClothingOuterCoatRD
   - ContractorClothingOuterCoatLabSeniorResearcher
@@ -361,6 +405,7 @@
   - ContractorClothingBeltMartialBlack
   - ContractorClothingBeltPunkRandomized # Punkish (Randomized visuals)
   - ContractorClothingBeltPunkRandomizedFilled # Punkish (Randomized visuals)
+  - ContractorClothingBeltSheathFilledHilt
   - ContractorClothingBeltChampion
 
 - type: loadoutGroup
@@ -368,7 +413,7 @@
   name: loadout-group-contractor-shoes
   loadouts:
   - ContractorClothingShoesColorBlack
-  - ContractorClothingShoesClothwarp
+  - ContractorClothingShoesClothwrap
   - ContractorClothingShoesTourist
   - ContractorClothingShoesBootsSalvage
   - ContractorClothingShoesChef
@@ -411,7 +456,7 @@
   - ContractorClothingShoesHighheelBoots
   - ContractorClothingShoesBootsCowboyFancy
   - ContractorClothingShoesBootsWinterChiefEngineer
-  - ContractorClothingShoesBootsWinterCMO
+#  - ContractorClothingShoesBootsWinterCMO # Temp removed for DOC. Will return if replaced.
   - ContractorClothingShoesBootsWinterQM
   - ContractorClothingShoesBootsWinterRD
   - ContractorClothingShoesBootsWinterClown
@@ -430,7 +475,6 @@
   name: loadout-group-contractor-head
   minLimit: 0
   loadouts:
-  - ContractorClothingHeadHelmetEVALarge
   - ContractorClothingHeadBandBlack
   - ContractorClothingHeadBandBlue
   - ContractorClothingHeadBandGreen
@@ -460,7 +504,6 @@
   - ContractorClothingHeadHatBowlerHat
   - ContractorClothingHeadHatGreyFlatcap
   - ContractorClothingHeadHatBrownFlatcap
-  - ContractorClothingHeadHatCapcap
   - ContractorClothingHeadHatParamedicsoft
   - ContractorClothingHeadNurseHat
   - ContractorClothingHeadHatBeretMedic
@@ -469,11 +512,13 @@
   - ContractorClothingHeadHatSurgcapPurple
   - ContractorClothingHeadHatFedoraGrey
   - ContractorClothingHeadHatFedoraBrown
+  - ContractorClothingHeadHatCapcap
+  - ContractorClothingHeadHatCaptain
   - ContractorClothingHeadTinfoil
   - ContractorClothingHeadHatBeretRND
   - ContractorClothingHeadHatBeretEngineering
   - ContractorClothingHeadHatBeretSeniorPhysician
-  - ContractorClothingHeadHatBeretCmo
+#  - ContractorClothingHeadHatBeretCmo # Temp removed for DOC. Will return if replaced.
   - ContractorClothingHeadHatBeretQM
   - ContractorClothingHeadHatQMsoft
   - ContractorClothingHeadHatCardinal
@@ -502,7 +547,31 @@
   - ContractorClothingHeadHatCone
   - ContractorClothingHeadBandGold
   - ContractorClothingHeadHatTophat
-  
+
+- type: loadoutGroup
+  id: ContractorEars
+  name: loadout-group-contractor-ears
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ContractorClothingHeadsetGreyCommon
+  - ContractorClothingHeadsetCargoCommon
+  - ContractorClothingHeadsetMiningCommon
+  - ContractorClothingHeadsetCommandCommon
+  - ContractorClothingHeadsetEngineeringCommon
+  - ContractorClothingHeadsetMedicalCommon
+  - ContractorClothingHeadsetScienceCommon
+  - ContractorClothingHeadsetMedicalScienceCommon
+  - ContractorClothingHeadsetRoboticsCommon
+  - ContractorClothingHeadsetServiceCommon
+  - ContractorClothingHeadsetAltCargoCommon
+  - ContractorClothingHeadsetAltCommandCommon
+  - ContractorClothingHeadsetAltEngineeringCommon
+  - ContractorClothingHeadsetAltMedicalCommon
+  - ContractorClothingHeadsetAltScienceCommon
+  fallbacks:
+  - ContractorClothingHeadsetGreyCommon
+
 - type: loadoutGroup
   id: ContractorGloves
   name: loadout-group-contractor-gloves
@@ -527,6 +596,7 @@
   - ContractorClothingHandsGlovesBoxingBlue
   - ContractorClothingHandsGlovesBoxingRed
   - ContractorClothingHandsGlovesBoxingYellow
+  - ContractorClothingHandsGlovesCaptain
   - ContractorClothingHandsGlovesColorWhite
 
 - type: loadoutGroup
@@ -541,13 +611,14 @@
   - ContractorClothingNeckTieBH
   - ContractorClothingNeckTieRed
   - ContractorClothingNeckTieSci
+  - ContractorClothingNeckLawyerbadge
   - ContractorClothingNeckHeadphones
   - ContractorClothingNeckCrucifix
   - ContractorClothingNeckBellCollar
+  - ContractorCDDogtags
   - ContractorClothingNeckStethoscope
   - ContractorClothingOuterPoncho
   - ContractorClothingOuterPonchoClassic
-  - ContractorClothingNeckCloakCap
   - ContractorClothingNeckCloakMiner
   - ContractorClothingNeckCloakMoth
   - ContractorClothingNeckScarfChaplainStole
@@ -555,6 +626,7 @@
   - ContractorClothingNeckCloakTrans
   - ContractorClothingNeckCloakAro
   - ContractorClothingNeckCloakAce
+  - ContractorClothingNeckCloakAroace
   - ContractorClothingNeckCloakBi
   - ContractorClothingNeckCloakIntersex
   - ContractorClothingNeckCloakEnby
@@ -562,6 +634,20 @@
   - ContractorClothingNeckCloakGay
   - ContractorClothingNeckCloakLesbian
   - ContractorBedsheetRainbow
+  - ClothingNeckLGBTPin
+  - ClothingNeckAromanticPin
+  - ClothingNeckAsexualPin
+  - ClothingNeckAroacePin
+  - ClothingNeckBisexualPin
+  - ClothingNeckGayPin
+  - ClothingNeckIntersexPin
+  - ClothingNeckLesbianPin
+  - ClothingNeckNonBinaryPin
+  - ClothingNeckPansexualPin
+  - ClothingNeckOmnisexualPin
+  - ClothingNeckTransPin
+  - ClothingNeckAutismPin
+  - ClothingNeckGoldAutismPin
   - ContractorClothingNeckIFFNeutral
   - ContractorClothingNeckIFFGreen
   - ContractorClothingNeckIFFRed
@@ -569,12 +655,13 @@
   - ContractorClothingNeckIFFCyan
   - ContractorClothingNeckIFFOrange
   - ContractorClothingNeckIFFPurple
-  - ContractorClothingNeckCloakCapFormal
   - ContractorClothingNeckMantleCap
+  - ContractorClothingNeckCloakCap
+  - ContractorClothingNeckCloakCapFormal
   - ContractorClothingNeckCloakQm
   - ContractorClothingNeckMantleQM
-  - ContractorClothingCloakCmo
-  - ContractorClothingNeckMantleCMO
+#  - ContractorClothingCloakCmo # Temp removed for DOC. Will return if replaced.
+#  - ContractorClothingNeckMantleCMO # Temp removed for DOC. Will return if replaced.
   - ContractorClothingNeckCloakRd
   - ContractorClothingNeckMantleRD
   - ContractorClothingNeckCloakCe
@@ -584,7 +671,7 @@
 
 - type: loadoutGroup
   id: ContractorPDA
-  name: loadout-group-contractor-id
+  name: loadout-group-contractor-pda
   loadouts:
   - ContractorClearNFPDA
   - ContractorSalvagePDA
@@ -612,7 +699,7 @@
   - ContractorSeniorResearcherPDA
   - ContractorRnDPDA
   - ContractorSeniorPhysicianPDA
-  - ContractorCMOPDA
+  #- ContractorCMOPDA # Temp removed for DOC. Will return if replaced.
   - ContractorSeniorEngineerPDA
   - ContractorCEPDA
   - ContractorBoxerPDA
@@ -621,7 +708,7 @@
   - ContractorMimePDA
   fallbacks:
   - ContractorClearNFPDA
-  
+
 - type: loadoutGroup
   id: ContractorGlasses
   name: loadout-group-contractor-glasses
@@ -640,12 +727,92 @@
   - ContractorClothingEyesPunkInfoShades # Punkish (Randomized visuals)
   - ContractorClothingEyesEyepatchHudDiag
   - ContractorClothingEyesEyepatchHudMedical
-  
+
 - type: loadoutGroup
-  id: ContractorUtility # Right Hand - 1 only
-  name: loadout-group-contractor-utility
+  id: ContractorBackpackItems
+  name: loadout-group-contractor-backpack-items
   minLimit: 0
+  maxLimit: 6 # Caveat emptor - enjoy picking stuff up off the ground
   loadouts:
+  - ContractorMonkeyCubeWrapped
+  - ContractorKoboldCubeWrapped
+  - ContractorCigPackBlue
+  - ContractorCigPackRed
+  - ContractorCigPackBlack
+  - ContractorCigPackGreen
+  - ContractorCigarCase
+  - ContractorNFAshtray
+  - ContractorTapeRecorder
+  - ContractorSmokingPipeFilledTobacco
+  - ContractorTobaccoPouchBrownFilled
+  - ContractorTobaccoPouchBlueFilled
+  - ContractorTobaccoPouchRedFilled
+  - ContractorTobaccoPouchPurpleFilled
+  - ContractorVape
+  - ContractorCigarGoldCase
+  - ContractorMatchbox
+  - ContractorLighter
+  - ContractorFlippoLighter
+  - ContractorFlippoEngravedLighter
+  - ContractorDrinkFlaskOld
+  - ContractorDrinkShinyFlask
+  - ContractorDrinkFlask
+  - ContractorDrinkVacuumFlask
+  - ContractorFlashlightLantern
+  - ContractorCardBoxBlack
+  - ContractorWristwatch
+  - ContractorWristwatchGold
+  - ContractorSilverRing
+  - ContractorGoldRing
+  - ContractorBasketball
+  - ContractorFootball
+  - ContractorBeachBall
+  - ContractorCrayonBox
+  - ContractorSoapNT
+  - PlushieLizard
+  - ContractorPlushieSharkGrey
+  - ContractorPlushieSharkBlue
+  - ContractorPlushieSharkPink
+  - ContractorHarmonicaInstrument
+  - ContractorSaxophoneInstrument
+  - ContractorAcousticGuitarInstrument
+  - ContractorPonderingOrb
+  - ContractorPlushieRGBee
+  - ContractorMysterySpaceBladeBox
+  - ContractorHoloGraffitiProjector # Punkish (might be annoying)
+  - ContractorCrayonMagic
+    # Bureaucracy
+  - ContractorBoxFolderMedicalDoctor
+  - ContractorBrbSign
+  - ContractorHandLabeler
+  - ContractorStampsApprovedDenied
+  - ContractorRubberStampCaptain
+  - ContractorRubberStampChaplain
+  - ContractorRubberStampDoctor
+  - ContractorRubberStampEngineer
+  - ContractorRubberStampLawyer
+  - ContractorRubberStampPsychologist
+  - ContractorRubberStampTrader
+  - ContractorRubberStampClown
+  - ContractorRubberStampMime
+
+- type: loadoutGroup
+  id: ContractorHandItems
+  name: loadout-group-contractor-hand-items
+  minLimit: 0
+  maxLimit: 2 # One per hand
+  loadouts:
+  - ContractorBriefcaseBrownFilled
+  - ContractorToolboxEmergency
+  - ContractorToolboxMechanical
+  - ContractorCane
+  - ContractorLGBTQHandyFlag
+  - ContractorNTHandyFlag
+  - ContractorBalloonNT
+  - ContractorFlashlightUmbrella
+  - ContractorDawInstrumentFlatpack
+  - ContractorHoverbikeFlatpack
+  - ContractorEmotionalPetCarrier
   - ContractorAppraisalTool
   - ContractorPickaxe
   - ContractorHandheldGPSBasic
@@ -661,38 +828,10 @@
   - ContractorHandheldCrewMonitor
   - ContractorHypoMini
   - ContractorBible
-  
-- type: loadoutGroup
-  id: ContractorFun # Left Hand - 1 only
-  name: loadout-group-contractor-fun
-  minLimit: 0
-  loadouts:
-  - ContractorBriefcaseBrownFilled
-  - ContractorToolboxEmergency
-  - ContractorToolboxMechanical
-  - ContractorPlushieSharkGrey
-  - ContractorPlushieSharkBlue
-  - ContractorPlushieSharkPink
-  - ContractorHarmonicaInstrument
-  - ContractorSaxophoneInstrument
-  - ContractorAcousticGuitarInstrument
-  - ContractorCane
-  - ContractorLGBTQHandyFlag
-  - ContractorNTHandyFlag
-  - ContractorBalloonNT
-  - ContractorPonderingOrb
-  - ContractorPlushieRGBee
-  - ContractorMysterySpaceBladeBox
-  - ContractorHoloGraffitiProjector # Punkish (might be annoying)
-  - ContractorFlashlightUmbrella
-  - ContractorDawInstrumentFlatpack
-  - ContractorHoverbikeFlatpack
-  - ContractorEmotionalPetCarrier
 
 - type: loadoutGroup
   id: ContractorFace
   name: loadout-group-contractor-face
-  minLimit: 0
   loadouts:
   - ContractorClothingMaskBreath
   - ContractorClothingMaskBreathMedical
@@ -707,49 +846,9 @@
   - ContractorClothingMaskScaredMime
   - ContractorClothingMaskSadMime
   - ContractorClothingMaskClown
-
-- type: loadoutGroup
-  id: ContractorTrinkets
-  name: loadout-group-contractor-trinkets
-  minLimit: 0
-  maxLimit: 3
-  loadouts:
-  - ContractorCigPackBlue
-  - ContractorCigPackRed
-  - ContractorCigPackBlack
-  - ContractorCigPackGreen
-  - ContractorCigarCase
-  - ContractorNFAshtray
-  - ContractorSmokingPipeFilledTobacco
-  - ContractorVape
-  - ContractorCigarGoldCase
-  - ContractorMatchbox
-  - ContractorLighter
-  - ContractorFlippoLighter
-  - ContractorFlippoEngravedLighter
-  - ContractorDrinkFlaskOld
-  - ContractorDrinkShinyFlask
-  - ContractorDrinkFlask
-  - ContractorDrinkVacuumFlask
-  - ContractorFlashlightLantern
-  - ContractorBasketball
-  - ContractorFootball
-  - ContractorBeachBall
-  - ContractorCrayonBox
-  - ContractorSoapNT
-  # Frontier - try to mirror the upstream trinkets here, but only if they arent job role restricted in some weird way
-  - PlushieLizard
-  - ClothingNeckLGBTPin
-  - ClothingNeckAromanticPin
-  - ClothingNeckAsexualPin
-  - ClothingNeckBisexualPin
-  - ClothingNeckIntersexPin
-  - ClothingNeckLesbianPin
-  - ClothingNeckNonBinaryPin
-  - ClothingNeckPansexualPin
-  - ClothingNeckTransPin
-  - ClothingNeckAutismPin
-  - ClothingNeckGoldAutismPin
+  - ContractorClothingMaskClownBald
+  fallbacks:
+  - ContractorClothingMaskBreath
 
 - type: loadoutGroup
   id: ContractorBoxSurvival
@@ -767,8 +866,8 @@
 - type: loadoutGroup
   id: ContractorEncryptionKey
   name: loadout-group-contractor-encryption-key
-  minLimit: 1
-  maxLimit: 3
+  minLimit: 0
+  maxLimit: 5
   loadouts:
   - ContractorEncryptionKeyTraffic
   - ContractorEncryptionKeyMedical
@@ -777,6 +876,26 @@
   - ContractorEncryptionKeyScience
   fallbacks:
   - ContractorEncryptionKeyTraffic
+
+- type: loadoutGroup
+  id: ContractorWallet
+  name: loadout-group-contractor-wallet
+  loadouts:
+  - ContractorClothingWalletLeatherBrown
+  - ContractorClothingWalletLeatherBlack
+  fallbacks:
+  - ContractorClothingWalletLeatherBrown
+
+- type: loadoutGroup
+  id: ContractorCartridge
+  name: loadout-group-contractor-cartridge
+  minLimit: 0
+  maxLimit: 5
+  loadouts:
+  - ContractorAppraisalCartridge
+  - ContractorMedTekCartridge
+  - ContractorNetProbeCartridge
+  - ContractorLogProbeCartridge
 
 - type: loadoutGroup
   id: ContractorImplanter
@@ -788,3 +907,7 @@
   - ContractorLightImplanter
   - ContractorBikeHornImplanter
   - ContractorSadTromboneImplanter
+  - ContractorMimePowersImplanter
+  - ContractorBibleUserImplanter
+  fallbacks:
+  - ContractorMedicalTrackingImplanter

@@ -12,6 +12,10 @@
   supervisors: job-supervisors-hire # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FourTwenty
+    prototype: CannabisSeeds
 
 - type: startingGear
   id: BotanistGear
@@ -20,6 +24,6 @@
     id: BotanistPDA
     ears: ClothingHeadsetService
     belt: ClothingBeltPlantFilled
-  storage:
-    back:
-    - BoxSurvival
+  #storage:
+    #back:
+    #- Stuff

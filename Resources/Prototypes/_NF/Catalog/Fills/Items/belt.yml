@@ -7,9 +7,9 @@
     contents:
       - id: CrowbarRed
       - id: Wrench
-      - id: NetworkConfigurator
-      - id: MedicalTrackingImplanter
-      - id: WeaponGrapplingGun
+      - id: Screwdriver
+      - id: Multitool
+      - id: HandHeldMassScanner
       - id: RemoteSignaller
       - id: InflatableWallStack5
       - id: InflatableDoorStack1
@@ -88,3 +88,13 @@
       - id: Wirecutter
       - id: Welder
       - id: Multitool
+
+- type: entity
+  id: ClothingBeltSheathFilledHilt
+  parent: ClothingBeltSheath
+  suffix: Filled, Hilt
+  components:
+  - type: ContainerFill
+    containers:
+      item:
+      - CaptainSabreHilt

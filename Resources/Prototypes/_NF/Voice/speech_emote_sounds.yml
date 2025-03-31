@@ -30,6 +30,8 @@
       collection: Whistles
     Weh:
       collection: Weh
+    Hew:
+      collection: Hew
     Belch:
       collection: Belch
     Gasp:
@@ -72,6 +74,8 @@
       collection: Whistles
     Weh:
       collection: Weh
+    Hew:
+      collection: Hew
     Belch:
       collection: Belch
     Gasp:
@@ -120,9 +124,9 @@
       variation: 0.125
 
 - type: emoteSounds
-  id: Jerma
+  id: Fox
   params:
-    variation: null
+    variation: 0.125
   sounds:
     Scream:
-      collection: Jerma
+      collection: Fox

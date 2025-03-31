@@ -2,7 +2,7 @@
   id: AutolatheMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: autolathe machine board
-  description: A machine printed circuit board for an autolathe
+  description: A machine printed circuit board for an autolathe.
   components:
     - type: MachineBoard
       prototype: Autolathe
@@ -16,7 +16,7 @@
   parent: BaseMachineCircuitboard
   id: AutolatheHyperConvectionMachineCircuitboard
   name: hyper convection autolathe machine board
-  description: A machine printed circuit board for a hyper convection autolathe
+  description: A machine printed circuit board for a hyper convection autolathe.
   components:
   - type: MachineBoard
     prototype: AutolatheHyperConvection
@@ -66,8 +66,8 @@
 - type: entity
   id: BiofabricatorMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: biofabricator machine board
-  description: A machine printed circuit board for a biofabricator.
+  name: biocube fabricator machine board
+  description: A machine printed circuit board for a biocube fabricator.
   components:
     - type: MachineBoard
       prototype: Biofabricator
@@ -80,6 +80,7 @@
   id: SecurityTechFabCircuitboard
   parent: BaseMachineCircuitboard
   name: security techfab machine board
+  categories: [ HideSpawnMenu ] # Frontier
   description: A machine printed circuit board for a security techfab.
   components:
     - type: Sprite
@@ -98,7 +99,7 @@
   id: AmmoTechFabCircuitboard
   parent: BaseMachineCircuitboard
   name: ammo techfab circuit board
-  description: A machine printed circuit board for an ammo techfab
+  description: A machine printed circuit board for an ammo techfab.
   components:
     - type: Sprite
       state: security
@@ -127,6 +128,8 @@
           defaultPrototype: Beaker
     - type: StealTarget
       stealGroup: MedicalTechFabCircuitboard
+    - type: PirateBountyItem # Frontier
+      id: MedicalTechFabCircuitboard # Frontier
 
 - type: entity
   id: CircuitImprinterMachineCircuitboard
@@ -198,6 +201,23 @@
       Plasma: 5
 
 - type: entity
+  id: BiogeneratorMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: biogenerator machine board
+  description: A machine printed circuit board for a biogenerator.
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: Biogenerator
+    requirements: # Frontier
+      MatterBin: 2 # Frontier stackRequirements<requirements
+    tagRequirements:
+      GlassBeaker:
+        amount: 1
+        defaultPrototype: Beaker
+
+- type: entity
   id: UniformPrinterMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: uniform printer machine board
@@ -262,6 +282,8 @@
         Capacitor: 1 # Frontier stackRequirements<requirements
       stackRequirements:
         Glass: 5
+    - type: PirateBountyItem # Frontier
+      id: ArtifactAnalyzerMachineCircuitboard # Frontier
 
 - type: entity
   id: ArtifactCrusherMachineCircuitboard
@@ -344,6 +366,7 @@
       stackRequirements:
         Cable: 1
         Glass: 1
+    - type: BindToStationExemption # Frontier - we exempt this machine from binding to grids because the intention is for it to have that ability
 
 - type: entity
   id: ThermomachineFreezerMachineCircuitBoard
@@ -456,6 +479,7 @@
     stackRequirements:
       Cable: 5
       Glass: 2
+  - type: BindToStationExemption # Frontier - we exempt this machine from binding to grids because the intention is for it to have that ability
 
 - type: entity
   id: SpaceHeaterMachineCircuitBoard
@@ -563,7 +587,8 @@
     - type: MachineBoard
       prototype: ChemDispenserEmpty
       requirements: # Frontier
-        Capacitor: 1 # Frontier stackRequirements<requirements
+        # Capacitor: 1 # Frontier stackRequirements<requirements
+        MatterBin: 1 # Frontier: upgrades number of stored jugs
       stackRequirements:
         Glass: 1
         Steel: 3
@@ -644,6 +669,23 @@
         PowerCell: 4 # Frontier componentRequirements<requirements
       stackRequirements:
         CableHV: 10
+
+- type: entity
+  id: SMESAdvancedMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: advanced SMES machine board
+  description: A machine printed circuit board for an Advanced SMES.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: power_mod
+  - type: MachineBoard
+    prototype: SMESAdvancedEmpty
+    requirements: # Frontier
+        Capacitor: 2 # Frontier stackRequirements<requirements
+        PowerCell: 8 # Frontier componentRequirements<requirements, 4<8
+    stackRequirements:
+      CableHV: 20
 
 - type: entity
   id: CellRechargerCircuitboard
@@ -896,6 +938,7 @@
         Silicon: 20
     - type: StaticPrice
       price: 40
+    - type: BindToStationExemption # Frontier - we exempt this machine from binding to grids because the intention is for it to have that ability
 
 - type: entity
   id: ReagentGrinderMachineCircuitboard
@@ -985,21 +1028,6 @@
       Manipulator: 1 # Frontier stackRequirements<requirements
     stackRequirements:
       Steel: 1
-
-- type: entity
-  id: MaterialReclaimerMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: material reclaimer machine board
-  components:
-    - type: Sprite
-      state: supply
-    - type: MachineBoard
-      prototype: MaterialReclaimer
-      requirements: # Frontier
-        Manipulator: 2 # Frontier stackRequirements<requirements
-      stackRequirements:
-        Steel: 5
-        Plastic: 5
 
 - type: entity
   id: OreProcessorMachineCircuitboard
@@ -1192,6 +1220,8 @@
       state: service
     - type: MachineBoard
       prototype: BoozeDispenserEmpty
+      requirements: # Frontier
+        MatterBin: 1 # Frontier
       stackRequirements:
         Steel: 5
       tagRequirements:
@@ -1215,6 +1245,20 @@
         Steel: 5
 
 - type: entity
+  id: MailTeleporterMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: mail teleporter machine board
+  description: A machine printed circuit board for a mail teleporter.
+  components:
+  - type: Sprite
+    state: supply
+  - type: MachineBoard
+    prototype: CargoMailTeleporter
+    stackRequirements:
+      Capacitor: 2
+      Steel: 5
+
+- type: entity
   id: SodaDispenserMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: soda dispenser machine board
@@ -1224,6 +1268,8 @@
       state: service
     - type: MachineBoard
       prototype: SodaDispenserEmpty
+      requirements: # Frontier
+        MatterBin: 1 # Frontier
       stackRequirements:
         Steel: 5
       tagRequirements:
@@ -1249,6 +1295,8 @@
   name: salvage magnet machine board
   description: A machine printed circuit board for a salvage magnet.
   components:
+  - type: Sprite
+    state: supply
   - type: MachineBoard
     prototype: SalvageMagnet
     requirements: # Frontier
@@ -1272,6 +1320,23 @@
     stackRequirements:
       Steel: 5
       CableHV: 5
+      Uranium: 2
+
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: StationAnchorCircuitboard
+  name: station anchor machine board
+  description: A machine printed circuit board for a station anchor.
+  components:
+  - type: MachineBoard
+    prototype: StationAnchor
+    requirements: # Frontier
+      Capacitor: 4 # Frontier stackRequirements<requirements
+      MatterBin: 3 # Frontier stackRequirements<requirements
+    stackRequirements:
+      Steel: 10
+      Glass: 5
+      CableHV: 8
       Uranium: 2
 
 - type: entity
@@ -1300,3 +1365,17 @@
       Steel: 2
       Glass: 5
       Cable: 2
+
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: CutterMachineCircuitboard
+  name: cutter machine board
+  components:
+  - type: MachineBoard
+    prototype: CutterMachine
+    requirements: # Frontier
+      Capacitor: 1 # Frontier stackRequirements<requirements
+      Manipulator: 1 # Frontier stackRequirements<requirements
+    stackRequirements:
+      Steel: 2
+      Cable: 1

@@ -12,6 +12,10 @@
   supervisors: job-supervisors-hire # Frontier
   accessGroups: # Frontier
   - GeneralAccess # Frontier
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: BoxingDay
+    prototype: BoxCardboard
 
 - type: startingGear
   id: CargoTechGear
@@ -19,3 +23,6 @@
     id: CargoPDA
     ears: ClothingHeadsetCargo
     pocket1: AppraisalTool
+  #storage:
+    #back:
+    #- Stuff

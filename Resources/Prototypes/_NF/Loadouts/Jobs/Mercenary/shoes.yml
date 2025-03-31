@@ -1,29 +1,46 @@
 - type: loadout
   id: MercenaryClothingShoesBootsMercenary
-  equipment: MercenaryClothingShoesBootsMercenary
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
   price: 0
-
-- type: startingGear
-  id: MercenaryClothingShoesBootsMercenary
   equipment:
     shoes: ClothingShoesBootsMercenary
 
 - type: loadout
   id: MercenaryClothingShoesBootsCombat
-  equipment: MercenaryClothingShoesBootsCombat
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
   price: 0
-
-- type: startingGear
-  id: MercenaryClothingShoesBootsCombat
   equipment:
     shoes: ClothingShoesBootsCombat
 
 - type: loadout
   id: MercenaryClothingShoesBootsJack
-  equipment: MercenaryClothingShoesBootsJack
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
   price: 0
-
-- type: startingGear
-  id: MercenaryClothingShoesBootsJack
   equipment:
     shoes: ClothingShoesBootsJack
+
+- type: loadout
+  id: MercenaryClothingShoesMagMercenary
+  name: mercenary magboots (empty)
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 2500
+  equipment:
+    shoes: ClothingShoesBootsMagMercenary
+
+- type: loadout
+  id: MercenaryClothingShoesMagSecurity
+  name: security magboots (empty)
+  hideEffects:
+  - !type:GroupLoadoutEffect
+    proto: ShoesCapableNF
+  price: 2500
+  equipment:
+    shoes: ClothingShoesBootsMagSecurity

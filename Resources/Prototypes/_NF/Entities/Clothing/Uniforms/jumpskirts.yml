@@ -1,8 +1,8 @@
 - type: entity
-  parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtArcadia
   name: arcadia jumpskirt
-  description: A jumpskirt produced by Arcadia Industries. Designed to reduce chaffing between the legs for the comfort of skin, slime, scales, fluff, and wood
+  parent: [ ClothingUniformSkirtBase, BaseC3ContrabandNoValue, ContrabandClothing ]
+  description: A jumpskirt produced by Arcadia Industries. Designed to reduce chaffing between the legs for the comfort of skin, slime, scales, fluff, and wood.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Uniforms/Jumpskirt/arcadia.rsi
@@ -57,8 +57,8 @@
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtNfsd
-  name: nfsd jumpskirt
-  description: A long sleeved jumpskirt produced for deputy sheriff's. Designed to reduce chaffing between the legs for the comfort of skin, slime, scales, fluff, and wood
+  name: NFSD jumpskirt
+  description: A long sleeved jumpskirt produced for deputy sheriffs. Designed to reduce chaffing between the legs for the comfort of skin, slime, scales, fluff, and wood.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Uniforms/Jumpskirt/nfsd_skirt.rsi
@@ -68,13 +68,24 @@
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtNfsdShort
-  name: nfsd jumpskirt
-  description: A short sleeved jumpskirt produced for deputy sheriff's. Designed to reduce chaffing between the legs for the comfort of skin, slime, scales, fluff, and wood
+  name: NFSD jumpskirt
+  description: A short sleeved jumpskirt produced for deputy sheriffs. Designed to reduce chaffing between the legs for the comfort of skin, slime, scales, fluff, and wood.
   components:
   - type: Sprite
     sprite: _NF/Clothing/Uniforms/Jumpskirt/nfsd_skirt_short.rsi
   - type: Clothing
     sprite: _NF/Clothing/Uniforms/Jumpskirt/nfsd_skirt_short.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtPublicAffairsLiaison
+  name: public affairs liaison jumpskirt
+  description: A starched and pressed skirt suit for the public affairs liaison.
+  components:
+  - type: Sprite
+    sprite: _NF/Clothing/Uniforms/Jumpskirt/public_affairs.rsi
+  - type: Clothing
+    sprite: _NF/Clothing/Uniforms/Jumpskirt/public_affairs.rsi
 
 - type: entity
   parent: ClothingUniformSkirtBase

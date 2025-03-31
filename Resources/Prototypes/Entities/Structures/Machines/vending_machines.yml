@@ -5,6 +5,10 @@
   description: Just add capitalism!
   abstract: true
   components:
+  - type: ActionGrant
+    actions:
+    - ActionVendingThrow
+  - type: StationAiWhitelist
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: -9
@@ -74,13 +78,12 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Vending
+  - type: SpookySpeaker
+    messageSet: SpookySpeakerMessagesGeneric
+    speakChance: 0.2
   - type: IntrinsicRadioReceiver
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Binary
   - type: ActiveRadio
     channels:
-    - Binary
     - Common
   - type: DoAfter
   - type: Electrified
@@ -96,12 +99,34 @@
   - type: Actions
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-mechanical
+    weight: 0.025 # fuck you in particular (it now needs 40 vending machines to be as likely as 1 interesting animal)
   - type: StaticPrice
-    price: 1000
+    price: 1000 # Frontier: 100<1000
   - type: Appearance
   - type: WiresVisuals
+  # Frontier: vending machine modifications
   - type: MarketModifier
     mod: 10
+  - type: PotentialDeadDrop
+    hintText: dead-drop-hint-vendor
+  - type: VendingMachine
+    pack: EmptyVendingMachineInventory # Mandatory, use empty inventory
+    taxAccounts:
+      Frontier: 0.25
+      Nfsd: 0.15
+    cashSlot:
+      whitelist:
+        components:
+        - Cash
+    cashSlotName: cash_slot
+    currencyStackType: Credit
+  - type: PirateBountyItem
+    id: VendingMachine
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      cash_slot: !type:ContainerSlot
+  # End Frontier
 
 - type: entity
   parent: VendingMachine
@@ -136,18 +161,17 @@
     pack: CondimentVendAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
-  - type: Speech
   - type: Transform
     noRot: false
 
 - type: entity
-  parent: [BaseStructureUnanchorable, VendingMachine] # Frontier
+  parent: [BaseStructureDisableAnchoring, VendingMachine] # Frontier
   id: VendingMachineAmmo
   name: liberation station
   description: An overwhelming amount of ancient patriotism washes over you just by looking at the machine.
   components:
   - type: VendingMachine
-    pack: AmmoVendInventory
+    pack: WeaponryWorksVendInventory # Frontier AmmoVendInventory<WeaponryWorksVendInventory
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -155,7 +179,6 @@
     pack: AmmoVendAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/ammo.rsi
     layers:
@@ -166,8 +189,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: MarketModifier
-    mod: 11.132
+  - type: MarketModifier # Frontier
+    mod: 12 # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -186,7 +209,6 @@
     pack: BoozeOMatAds
   - type: SpeakOnUIClosed
     pack: BoozeOMatGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/boozeomat.rsi
     layers:
@@ -197,14 +219,49 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
   - type: GuideHelp
     guides:
     - Bartender
+    - Drinks
 
 - type: entity
-  parent: [BaseStructureIndestructible, BaseStructureAccessReaderImmuneToEmag, VendingMachine] # Frontier
+  parent: VendingMachineBooze
+  id: VendingMachineBoozeSyndicate # syndie booze-o-mat for nukie outpost
+  name: Bruise-O-Mat
+  description: A refurbished Booze-O-Mat for boosting operative morale. An imprint of a blood-red hardsuit is visible on one side, and the paint seems ashed off on the other side.
+  components:
+  - type: VendingMachine
+    pack: BoozeOMatInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    denyState: deny-unshaded
+    loopDeny: false
+  - type: Advertise
+    pack: BruiseOMatAds
+  - type: SpeakOnUIClosed
+    pack: BruiseOMatGoodbyes
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/bruiseomat.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: AccessReader
+    access: [["SyndicateAgent"]]
+  - type: GuideHelp
+    guides:
+    - Bartender
+    - Drinks
+
+- type: entity
+  parent: VendingMachine
   id: VendingMachineCart
   name: PTech
   description: PTech vending! Providing a ROBUST selection of PDAs, cartridges, and anything else a dull paper pusher needs!
@@ -232,8 +289,6 @@
     color: "#ffb0b0"
   - type: AccessReader
     access: [["HeadOfPersonnel"]]
-  - type: MarketModifier
-    mod: 5
 
 - type: entity
   parent: VendingMachine
@@ -265,8 +320,8 @@
     radius: 1.5
     energy: 1.6
     color: "#4b93ad"
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -287,7 +342,6 @@
     pack: CigaretteMachineAds
   - type: SpeakOnUIClosed
     pack: CigaretteMachineGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/cigs.rsi
     layers:
@@ -315,7 +369,6 @@
     pack: ClothesMateAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/clothing.rsi
     layers:
@@ -347,7 +400,6 @@
     pack: ClothesMateAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/winterdrobe.rsi
     layers:
@@ -386,7 +438,6 @@
     pack: HotDrinksMachineAds
   - type: SpeakOnUIClosed
     pack: HotDrinksMachineGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/coffee.rsi
     layers:
@@ -426,7 +477,6 @@
     pack: RobustSoftdrinksAds
   - type: SpeakOnUIClosed
     pack: RobustSoftdrinksGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/cola.rsi
     layers:
@@ -570,7 +620,6 @@
     initialStockQuality: 0.33
   - type: Advertise
     pack: RobustSoftdrinksAds
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/shamblersjuice.rsi
     layers:
@@ -607,7 +656,6 @@
     pack: RobustSoftdrinksAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/pwrgame.rsi
     layers:
@@ -641,10 +689,9 @@
     ejectDelay: 1.9
     initialStockQuality: 0.33
   - type: Advertise
-    pack: RobustSoftdrinksAds
+    pack: DrGibbAds
   - type: SpeakOnUIClosed
-    pack: GenericVendGoodbyes
-  - type: Speech
+    pack: DrGibbGoodbyes
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/gib.rsi
     layers:
@@ -659,6 +706,42 @@
     radius: 1.5
     energy: 1.6
     color: "#D82929"
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineSmite
+  name: Smite Vendor
+  description: Popular with the administration.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/smite.rsi
+    layers:
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.Base" ]
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+    - state: panel
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: VendingMachine
+    pack: SmiteInventory
+    dispenseOnHitChance: 0.25
+    dispenseOnHitThreshold: 2
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+    ejectDelay: 1.9
+    initialStockQuality: 0.33
+  - type: Advertise
+    pack: SmiteAds
+  - type: SpeakOnUIClosed
+    pack: SmiteGoodbyes
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#00E645"
 
 - type: entity
   parent: VendingMachine
@@ -686,12 +769,14 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  # - type: AccessReader # Frontier
+  #   access: [["Kitchen"]] # Frontier
   - type: PointLight
     radius: 1.5
     energy: 1.6
     color: "#4b93ad"
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -741,7 +826,6 @@
     pack: DiscountDansAds
   - type: SpeakOnUIClosed
     pack: DiscountDansGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/discount.rsi
     layers:
@@ -784,8 +868,6 @@
     radius: 1.5
     energy: 1.6
     color: "#b89e2a"
-  - type: MarketModifier
-    mod: 10
 
 - type: entity
   parent: VendingMachine
@@ -815,8 +897,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -852,8 +934,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -888,8 +970,8 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: AccessReader
     access: [["Security"]]
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
   - type: PointLight
     radius: 1
     energy: 1.2
@@ -897,6 +979,7 @@
   - type: GuideHelp
     guides:
     - Security
+    # - Antagonists # Frontier: removed guidebook entry
 
 - type: entity
   parent: VendingMachine
@@ -930,16 +1013,16 @@
     radius: 1.5
     energy: 1.6
     color: "#326e3f"
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
 
 - type: entity
   parent: VendingMachineSeedsUnlocked
   id: VendingMachineSeeds
   suffix: Hydroponics
   components:
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -961,7 +1044,6 @@
     pack: GetmoreChocolateCorpAds
   - type: SpeakOnUIClosed
     pack: GetmoreChocolateCorpGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/snack.rsi
     layers:
@@ -1107,7 +1189,6 @@
     pack: BodaAds
   - type: SpeakOnUIClosed
     pack: BodaGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/sovietsoda.rsi
     layers:
@@ -1122,8 +1203,6 @@
     radius: 1.5
     energy: 1.6
     color: "#389690"
-  - type: MarketModifier
-    mod: 9.64
 
 - type: entity
   parent: VendingMachine
@@ -1143,7 +1222,6 @@
     pack: AutoDrobeAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/theater.rsi
     layers:
@@ -1179,7 +1257,6 @@
     pack: VendomatAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/vendomat.rsi
     layers:
@@ -1212,7 +1289,6 @@
     pack: VendomatAds
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/robotics.rsi
     layers:
@@ -1223,8 +1299,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -1311,7 +1387,6 @@
     pack: ChangAds
   - type: SpeakOnUIClosed
     pack: ChangGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/changs.rsi
     layers:
@@ -1334,7 +1409,7 @@
   description: A dwarf's best friend!
   components:
   - type: VendingMachine
-    pack: SalvageEquipmentInventory
+    pack: NFSalvageEquipmentInventory # Frontier SalvageEquipmentInventory<NFSalvageEquipmentInventory
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -1352,12 +1427,14 @@
   - type: PointLight
     radius: 1.5
     energy: 1.6
-    color: "#9dc5c9"
-  - type: MarketModifier
-    mod: 10
+    color: "#b89f25"
+  # - type: AccessReader # Frontier
+  #   access: [["Salvage"]] # Frontier
   # - type: GuideHelp # Frontier: removed guidebook entry
   #   guides: # Frontier: removed guidebook entry
   #   - Salvage # Frontier: removed guidebook entry
+  - type: MarketModifier # Frontier
+    mod: 15 # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -1377,7 +1454,6 @@
     pack: DonutAds
   - type: SpeakOnUIClosed
     pack: DonutGoodbyes
-  - type: Speech
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/donut.rsi
     layers:
@@ -1392,14 +1468,14 @@
     radius: 1.5
     energy: 1.6
     color: "#d4ab33"
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
 
 # wallmounted machines
 
 - type: entity
   id: VendingMachineWallmount
-  parent: VendingMachine
+  parent: [BaseStructureWallmount, VendingMachine] # Frontier: add BaseStructureWallmount
   name: vending machine
   abstract: true
   placement:
@@ -1438,8 +1514,14 @@
       shader: unshaded
     - texture: Structures/Machines/VendingMachines/maintenance_panel.png
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
+  - type: PointLight
+    radius: 1.3
+    energy: 1.6
+    color: "#43ccb5"
+  # - type: AccessReader # Frontier
+  #   access: [["Medical"]] # Frontier
   - type: GuideHelp
     guides:
     - Medical
@@ -1471,6 +1553,12 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#326e3f"
+  # - type: AccessReader # Frontier
+  #   access: [["Hydroponics"]] # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -1523,6 +1611,10 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#d82929"
   - type: AccessReader
     access: [["Security"]]
 
@@ -1603,6 +1695,12 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89e2a"
+  # - type: AccessReader # Frontier
+  #   access: [["Cargo"]] # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -1709,6 +1807,12 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89e2a"
+  # - type: AccessReader # Frontier
+  #   access: [["Engineering"]] # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -1735,6 +1839,12 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b89e2a"
+  # - type: AccessReader # Frontier
+  #   access: [["Engineering"]] # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -1813,6 +1923,12 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#6927C5"
+  # - type: AccessReader # Frontier
+  #   access: [["Janitor"]] # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -1841,7 +1957,7 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
 
 - type: entity
-  parent: [BaseStructureUnanchorable, VendingMachine] # Frontier
+  parent: [BaseStructureDisableAnchoring, VendingMachine] # Frontier
   id: VendingMachineSyndieDrobe
   name: SyndieDrobe
   description: Wardrobe machine encoded by the syndicate, contains elite outfits for various operations.
@@ -1865,8 +1981,12 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#d82929"
   - type: AccessReader
-#    access: [["NuclearOperative"], ["SyndicateAgent"]]
+    access: [["NuclearOperative"], ["SyndicateAgent"]]
 
 - type: entity
   parent: VendingMachine
@@ -1947,10 +2067,10 @@
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
 
 - type: entity
-  parent: [BaseStructureUnanchorable, VendingMachine] # Frontier
+  parent: [BaseStructureDisableAnchoring, VendingMachine] # Frontier
   id: VendingMachineCentDrobe
   name: CentDrobe
-  description: A one-of-a-kind vending machine for all your centcom aesthetic needs!
+  description: A one-of-a-kind vending machine for all your centcomm aesthetic needs!
   components:
   - type: VendingMachine
     pack: CentDrobeInventory
@@ -2009,10 +2129,43 @@
     pack: HappyHonkAds
   - type: SpeakOnUIClosed
     pack: HappyHonkGoodbyes
-  - type: AccessReader # Frontier
+#  - type: AccessReader # Frontier
 #    access: [["Kitchen"], ["Theatre"]] # Frontier
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
+
+# Pride Vending Machine
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachinePride
+  name: Pride-O-Mat
+  description: A vending machine containing pride.
+  components:
+  - type: VendingMachine
+    pack: PrideDrobeInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Advertise
+    pack: PrideDrobeAds
+  - type: SpeakOnUIClosed
+    pack: PrideDrobeGoodbyes
+  - type: Speech
+  - type: PointLight
+    radius: 1.5
+    energy: 1.3 # reduced energy since the color is pure white
+    color: "#FFFFFF"
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/pride.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
 
 # Gas Tank Dispenser
 
@@ -2028,8 +2181,8 @@
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/tankdispenser.rsi #TODO add visualiser for remaining tanks as layers
     state: dispenser
-  - type: MarketModifier
-    mod: 5
+  - type: MarketModifier # Frontier
+    mod: 5 # Frontier
 
 - type: entity
   parent: VendingMachine
@@ -2071,6 +2224,7 @@
   - type: GuideHelp
     guides:
     - Chemicals
+    - Chemist
 
 - type: entity
   parent: VendingMachineChemicals
@@ -2085,6 +2239,6 @@
     normalState: normal
     denyState: deny
     ejectDelay: 2
-  - type: AccessReader # Frontier
-#    access: [["SyndicateAgent"]] # Frontier
+  - type: AccessReader
+    access: [["SyndicateAgent"]]
 

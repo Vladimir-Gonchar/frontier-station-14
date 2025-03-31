@@ -47,8 +47,21 @@
 
 - type: entity
   parent: IDCardStandard
+  id: PublicAffairsIDCard
+  name: public affairs liaison ID card
+  components:
+  - type: PresetIdCard
+    job: PublicAffairsLiaison
+  - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
+    layers:
+    - state: nfsd
+    - state: idpublicaffairsliaison
+
+- type: entity
+  parent: IDCardStandard
   id: CadetIDCard
-  name: nfsd cadet ID card
+  name: NFSD cadet ID card
   components:
   - type: PresetIdCard
     job: Cadet
@@ -65,7 +78,7 @@
 - type: entity
   parent: CadetIDCard
   id: DeputyIDCard
-  name: nfsd deputy ID card
+  name: NFSD deputy ID card
   components:
   - type: PresetIdCard
     job: Deputy
@@ -78,7 +91,7 @@
 - type: entity
   parent: CadetIDCard
   id: BrigmedicNFIDCard
-  name: nfsd brigmedic ID card
+  name: NFSD brigmedic ID card
   components:
   - type: PresetIdCard
     job: Brigmedic
@@ -91,7 +104,7 @@
 - type: entity
   parent: CadetIDCard
   id: SergeantIDCard
-  name: nfsd sergeant ID card
+  name: NFSD sergeant ID card
   components:
   - type: PresetIdCard
     job: SeniorOfficer
@@ -104,7 +117,7 @@
 - type: entity
   parent: CadetIDCard
   id: BailiffIDCard
-  name: nfsd bailiff ID card
+  name: NFSD bailiff ID card
   components:
   - type: PresetIdCard
     job: Bailiff
@@ -115,9 +128,9 @@
     - state: idnfsdbailiff
 
 - type: entity
-  parent: CadetIDCard
+  parent: [CadetIDCard, BaseCommandContraband]
   id: ShriffIDCard
-  name: nfsd sheriff ID card
+  name: NFSD sheriff ID card
   components:
   - type: PresetIdCard
     job: Sheriff
@@ -131,11 +144,11 @@
 
 - type: entity
   parent: CadetIDCard
-  id: DetectiveNFIDCard
-  name: nfsd detective ID card
+  id: NFDetectiveIDCard
+  name: NFSD detective ID card
   components:
   - type: PresetIdCard
-    job: DetectiveNF
+    job: NFDetective
   - type: Sprite
     sprite: _NF/Objects/Misc/id_cards.rsi
     layers:
@@ -156,7 +169,7 @@
   name: ERT mail carrier ID card
   components:
   - type: IdCard
-    jobTitle: ERT Mail Carrier
+    jobTitle: job-title-ert-mail-carrier
   - type: Sprite
     sprite: _NF/Objects/Misc/id_cards.rsi
     layers:
@@ -164,25 +177,12 @@
     - state: ert_mailcarrier
 
 - type: entity
-  parent: HoPIDCard
+  parent: [HoPIDCard, BaseCommandContraband]
   id: SrIDCard
   name: station representative ID card
   components:
   - type: PresetIdCard
     job: StationRepresentative
-
-- type: entity
-  parent: MailCarrierIDCard
-  id: MailCarrierNFIDCard
-  name: mail carrier ID card
-  components:
-  - type: PresetIdCard
-    job: MailCarrier
-  - type: Sprite
-    sprite: _NF/Objects/Misc/id_cards.rsi
-    layers:
-    - state: default
-    - state: idmailcarrier
 
 - type: entity
   parent: ValetIDCard
@@ -196,6 +196,13 @@
     layers:
     - state: default
     - state: idvalet
+
+- type: entity
+  parent: JanitorIDCard
+  id: NFJanitorIDCard
+  components:
+  - type: PresetIdCard
+    job: NFJanitor
 
 - type: entity
   parent: PassengerIDCard
@@ -215,7 +222,6 @@
   id: PirateNFIDCard
   name: pirate ID card
   description: Garr, be this wood?
-  noSpawn: false # true in parent
   components:
   - type: PresetIdCard
     job: Pirate
@@ -253,3 +259,53 @@
     layers:
     - state: pirate
     - state: idpiratefirstmate
+
+- type: entity
+  parent: PunPunIDCard
+  id: YipYipIDCard
+  name: yip yip ID card
+  components:
+  - type: PresetIdCard
+    name: Yip Yip
+
+- type: entity
+  parent: [IDCardStandard, BaseCommandContraband]
+  id: DocIDCard
+  name: director of care ID card
+  components:
+  - type: PresetIdCard
+    job: DirectorOfCare
+  - type: Sprite
+    sprite: _NF/Objects/Misc/id_cards.rsi
+    layers:
+    - state: silver
+    - state: idmedicdoc
+  - type: Clothing
+    sprite: _NF/Objects/Misc/id_cards.rsi
+  - type: Item
+    heldPrefix: medic #temporary to OBSERVE
+
+# Cats
+- type: entity
+  parent: CourierIDCard
+  id: ClippyIDCard
+  name: clippy ID card
+  components:
+  - type: PresetIdCard
+    name: Clippy
+
+- type: entity
+  parent: PirateFirstMateNFIDCard
+  id: ClarpyIDCard
+  name: clarpy ID card
+  components:
+  - type: PresetIdCard
+    name: Clarpy
+
+- type: entity
+  parent: DeputyIDCard
+  id: CappyIDCard
+  name: cappy ID card
+  components:
+  - type: PresetIdCard
+    name: Cappy

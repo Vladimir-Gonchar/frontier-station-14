@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: HudMedSec
   start: start
   graph:
@@ -22,22 +22,13 @@
               amount: 5
               doAfter: 5
             - tag: Radio
-              name: radio
+              name: handicomms # Frontier handicomms<radio
               icon:
-                sprite: Objects/Devices/communication.rsi
-                state: walkietalkie
+                sprite: _NF/Objects/Devices/communication.rsi # Frontier
+                state: base # Frontier
               doAfter: 5
-            - tag: CapacitorStockPart
-              name: capacitor
-              icon:
-                sprite: Objects/Misc/stock_parts.rsi
-                state: capacitor
-              doAfter: 5
-            - tag: CapacitorStockPart
-              name: capacitor
-              icon:
-                sprite: Objects/Misc/stock_parts.rsi
-                state: capacitor
+            - material: Capacitor
+              amount: 2
               doAfter: 5
     - node: medsecHud
       entity: ClothingEyesHudMedSec

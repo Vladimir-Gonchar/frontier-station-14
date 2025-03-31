@@ -6,6 +6,7 @@
   startingGear: ContractorGear
   icon: "JobIconContractor"
   supervisors: job-supervisors-hire
+  displayWeight: 40 # Top
   accessGroups: # Frontier
   - GeneralAccess # Frontier
   special:
@@ -15,5 +16,3 @@
 
 - type: startingGear
   id: ContractorGear
-  equipment:
-    ears: ClothingHeadsetGrey

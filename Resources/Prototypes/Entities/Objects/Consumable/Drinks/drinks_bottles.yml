@@ -39,6 +39,7 @@
   - type: PhysicalComposition
     materialComposition:
       Plastic: 100
+  - type: DnaSubstanceTrace
   - type: PressurizedSolution
     solution: drink
   - type: Shakeable
@@ -138,6 +139,8 @@
         reagents:
         - ReagentId: Absinthe
           Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-absinthe
   - type: Sprite
     sprite: Objects/Consumable/Drinks/absinthebottle.rsi
   - type: Sealable
@@ -145,7 +148,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkBlueCuracaoBottleFull
-  name: Miss Blue Curacao
+  name: Miss Blue Curaçao
   description: A fruity, exceptionally azure drink. Does not allow the imbiber to use the fifth magic.
   components:
   - type: SolutionContainerManager
@@ -154,6 +157,8 @@
         reagents:
         - ReagentId: BlueCuracao
           Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-blue-curacao
   - type: Sprite
     sprite: Objects/Consumable/Drinks/alco-bottle.rsi
     layers:
@@ -178,6 +183,8 @@
         reagents:
         - ReagentId: Nothing
           Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-nothing
   - type: Sprite
     sprite: Objects/Consumable/Drinks/bottleofnothing.rsi
   - type: Sealable
@@ -194,6 +201,8 @@
         reagents:
         - ReagentId: Champagne
           Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-champagne
   - type: Sprite
     sprite: Objects/Consumable/Drinks/champagnebottle.rsi
   - type: Openable
@@ -203,7 +212,7 @@
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkCognacBottleFull
   name: cognac bottle
-  description: A sweet and strongly alchoholic drink, made after numerous distillations and years of maturing. # Frontier - description change
+  description: A sweet and strongly alcoholic drink, made after numerous distillations and years of maturing. # Frontier - description change
   components:
   - type: SolutionContainerManager
     solutions:
@@ -220,8 +229,8 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottlePlasticBaseFull]
   id: DrinkColaBottleFull
-  name: space cola bottle
-  description: Cola. In space.
+  name: Space Cola bottle
+  description: Cola. In spaaace!
   components:
   - type: SolutionContainerManager
     solutions:
@@ -238,7 +247,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkGrenadineBottleFull
-  name: briar rose grenadine syrup bottle
+  name: Briar Rose grenadine syrup bottle
   description: Sweet and tangy, a bar syrup used to add color or flavor to drinks.
   components:
   - type: SolutionContainerManager
@@ -247,6 +256,8 @@
         reagents:
         - ReagentId: Grenadine
           Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-grenadine
   # intended use is to spike drinks so starts open
   - type: Openable
     opened: true
@@ -276,7 +287,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkGildlagerBottleFull
-  name: gildlager bottle
+  name: Gildlager bottle
   description: 100 proof cinnamon schnapps, made for alcoholic teen girls on spring break.
   components:
   - type: SolutionContainerManager
@@ -285,6 +296,8 @@
         reagents:
         - ReagentId: Gildlager
           Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-gildlager
   - type: Sprite
     sprite: Objects/Consumable/Drinks/gildlagerbottle.rsi
   - type: Sealable
@@ -310,8 +323,8 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkMelonLiquorBottleFull
-  name: emeraldine melon liquor
-  description: A bottle of 46 proof Emeraldine Melon Liquor. Sweet and light.
+  name: Emeraldine melon liquor
+  description: A bottle of 46 proof Emeraldine melon liquor. Sweet and light.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -319,6 +332,8 @@
         reagents:
         - ReagentId: MelonLiquor
           Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-melon-liquor
   - type: Sprite
     sprite: Objects/Consumable/Drinks/alco-bottle.rsi
     layers:
@@ -334,8 +349,8 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkPatronBottleFull
-  name: wrapp artiste patron bottle
-  description: Silver laced tequilla, served in space night clubs across the galaxy.
+  name: Wrapp Artiste Patrón bottle
+  description: Silver laced tequila, served in space night clubs across the galaxy.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -343,13 +358,15 @@
         reagents:
         - ReagentId: Patron
           Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-patron
   - type: Sprite
     sprite: Objects/Consumable/Drinks/patronbottle.rsi
 
 - type: entity
   parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkPoisonWinebottleFull
-  name: warlock's velvet bottle
+  name: Warlock's Velvet bottle
   description: What a delightful packaging for a surely high quality wine! The vintage must be amazing!
   components:
   - type: SolutionContainerManager
@@ -369,7 +386,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkRumBottleFull
-  name: captain pete's Cuban spiced rum
+  name: Captain Pete's Cuban spiced rum
   description: This isn't just rum, oh no. It's practically GRIFF in a bottle.
   components:
   - type: SolutionContainerManager
@@ -387,8 +404,8 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottlePlasticBaseFull]
   id: DrinkSpaceMountainWindBottleFull
-  name: space mountain wind bottle
-  description: Blows right through you like a space wind.
+  name: Space Solar Wind bottle
+  description: Blows right through you like a solar wind.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -406,7 +423,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottlePlasticBaseFull]
   id: DrinkSpaceUpBottleFull
-  name: space-up bottle
+  name: Space-Up bottle
   description: Tastes like a hull breach in your mouth.
   components:
   - type: SolutionContainerManager
@@ -425,7 +442,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkTequilaBottleFull
-  name: caccavo guaranteed quality tequila bottle
+  name: Caccavo Guaranteed Quality tequila bottle
   description: Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!
   components:
   - type: SolutionContainerManager
@@ -443,7 +460,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkVermouthBottleFull
-  name: goldeneye vermouth bottle
+  name: Goldeneye vermouth bottle
   description: Sweet, sweet dryness!
   components:
   - type: SolutionContainerManager
@@ -479,7 +496,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkWhiskeyBottleFull
-  name: uncle git's special reserve
+  name: Uncle Git's Special Reserve
   description: A premium single-malt whiskey, gently matured inside the tunnels of a nuclear shelter. TUNNEL WHISKEY RULES.
   components:
   - type: SolutionContainerManager
@@ -497,7 +514,7 @@
 - type: entity
   parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkWineBottleFull
-  name: doublebearded bearded special wine bottle
+  name: Doublebearded Bearded Special wine bottle
   description: A faint aura of unease and asspainery surrounds the bottle.
   components:
   - type: SolutionContainerManager
@@ -521,7 +538,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkBeerBottleFull
-  name: beer  # beer it is. coffee. beer? coff-ee? be-er? c-o... b-e
+  name: beer bottle # beer it is. coffee. beer? coff-ee? be-er? c-o... b-e
   description: An alcoholic beverage made from malted grains, hops, yeast, and water.
   components:
   - type: Item
@@ -533,6 +550,8 @@
         reagents:
         - ReagentId: Beer
           Quantity: 50
+  - type: Label
+    currentLabel: reagent-name-beer
   - type: Sprite
     sprite: Objects/Consumable/Drinks/beer.rsi
   - type: Openable
@@ -545,7 +564,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottleGlassBaseFull]
   id: DrinkBeerGrowler # Needs to be renamed DrinkBeerBottleFull
-  name: Beer Growler  # beer it is. coffee. beer? coff-ee? be-er? c-o... b-e
+  name: beer growler  # beer it is. coffee. beer? coff-ee? be-er? c-o... b-e
   description: An alcoholic beverage made from malted grains, hops, yeast, and water. XL growler bottle.
   components:
   - type: SolutionContainerManager
@@ -569,7 +588,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottlePlasticBaseFull]
   id: DrinkAleBottleFull
-  name: Magm-Ale
+  name: Magm-Ale bottle
   description: A true dorf's drink of choice.
   components:
   - type: Item
@@ -581,6 +600,8 @@
         reagents:
         - ReagentId: Ale
           Quantity: 50
+  - type: Label
+    currentLabel: reagent-name-ale
   - type: Sprite
     sprite: Objects/Consumable/Drinks/alebottle.rsi
   - type: Openable
@@ -589,7 +610,7 @@
 - type: entity
   parent: [DrinkBottleVisualsAll, DrinkBottlePlasticBaseFull]
   id: DrinkAleBottleFullGrowler
-  name: Magm-Ale Growler
+  name: Magm-Ale growler
   description: A true dorf's drink of choice. XL growler bottle.
   components:
   - type: SolutionContainerManager
@@ -621,6 +642,8 @@
         reagents:
         - ReagentId: Water
           Quantity: 30
+  - type: Label
+    currentLabel: reagent-name-water
   - type: Drink
   - type: Sprite
     sprite: Objects/Consumable/Drinks/waterbottle.rsi
@@ -733,7 +756,7 @@
 - type: entity
   parent: [DrinkBottleVisualsOpenable, DrinkBottlePlasticBaseFull]
   id: DrinkCreamCartonXL
-  name: Milk Cream XL
+  name: milk cream XL
   description: It's cream. Made from milk. What else did you think you'd find in there?
   components:
   - type: SolutionContainerManager
@@ -756,7 +779,7 @@
   id: DrinkSugarJug
   name: sugar jug
   suffix: For Drinks, Full
-  description: some people put this in their coffee...
+  description: Some people put this in their coffee...
   components:
   - type: SolutionContainerManager
     solutions:
@@ -766,12 +789,14 @@
         - ReagentId: Sugar
           Quantity: 300
   - type: Drink
+  - type: Label
+    currentLabel: reagent-name-sugar
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
   id: DrinkLemonLimeJug
-  name: lemon lime jug
-  description: a dual citrus sensation.
+  name: Smite jug
+  description: A dual citrus sensation.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -788,7 +813,7 @@
   parent: DrinkBottlePlasticBaseFull
   id: DrinkMeadJug
   name: mead jug
-  description: storing mead in a plastic jug should be a crime.
+  description: Storing mead in a plastic jug should be a crime.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -805,7 +830,7 @@
   parent: DrinkBottlePlasticBaseFull
   id: DrinkIceJug
   name: ice jug
-  description: stubborn water. pretty cool.
+  description: Stubborn water. Pretty cool.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -839,7 +864,7 @@
   parent: DrinkBottlePlasticBaseFull
   id: DrinkCoffeeJug
   name: coffee jug
-  description: wake up juice, of the heated kind.
+  description: Wake up juice, of the heated kind.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -856,7 +881,7 @@
   parent: DrinkBottlePlasticBaseFull
   id: DrinkTeaJug
   name: tea jug
-  description: the drink of choice for the Bri'ish and hipsters.
+  description: The drink of choice for the Bri'ish and hipsters.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -873,7 +898,7 @@
   parent: DrinkBottlePlasticBaseFull
   id: DrinkGreenTeaJug
   name: green tea jug
-  description: its like tea... but green! great for settling the stomach.
+  description: It's like tea... but green! great for settling the stomach.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -890,7 +915,7 @@
   parent: DrinkBottlePlasticBaseFull
   id: DrinkIcedTeaJug
   name: iced tea jug
-  description: for when the regular tea is too hot for you boohoo
+  description: For when the regular tea is too hot for you. Boohoo.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -906,8 +931,8 @@
 - type: entity
   parent: DrinkBottlePlasticBaseFull
   id: DrinkDrGibbJug
-  name: dr gibb. jug
-  description: yeah I don't know either...
+  name: Dr. Gibb jug
+  description: 42 different flavours... in a jug!
   components:
   - type: SolutionContainerManager
     solutions:
@@ -924,7 +949,7 @@
   parent: DrinkBottlePlasticBaseFull
   id: DrinkRootBeerJug
   name: root beer jug
-  description: this drink makes Australians giggle
+  description: This drink makes Australians giggle.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -941,7 +966,7 @@
   parent: DrinkBottlePlasticBaseFull
   id: DrinkWaterMelonJuiceJug
   name: watermelon juice jug
-  description: May include leftover seeds
+  description: May include leftover seeds.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -957,8 +982,8 @@
 - type: entity
   parent: DrinkBottlePlasticBaseFull
   id: DrinkEnergyDrinkJug
-  name: red bool jug
-  description: A jug of Red Bool, with enough caffine to kill a whole station.
+  name: Red Bool jug
+  description: A jug of Red Bool, with enough caffeine to kill a whole station.
   components:
   - type: SolutionContainerManager
     solutions:
@@ -969,7 +994,7 @@
           Quantity: 100
   - type: Drink
   - type: Label
-    currentLabel: red bool
+    currentLabel: reagent-name-energy-drink
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull

@@ -24,20 +24,21 @@ public sealed class IdCardSystem : SharedIdCardSystem
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<IdCardComponent, BeingMicrowavedEvent>(OnMicrowaved);
     }
 
     private void OnMicrowaved(EntityUid uid, IdCardComponent component, BeingMicrowavedEvent args)
     {
         if (!component.CanMicrowave || !TryComp<MicrowaveComponent>(args.Microwave, out var micro) || micro.Broken)
-            return;   
+            return;
 
         if (TryComp<AccessComponent>(uid, out var access))
         {
             float randomPick = _random.NextFloat();
 
             // if really unlucky, burn card
-            if (randomPick <= 0.15f)
+            if (args.BeingHeated && randomPick <= 0.15f) // Frontier: if not being heated, don't destroy the ID
             {
                 TryComp(uid, out TransformComponent? transformComponent);
                 if (transformComponent != null)
@@ -52,6 +53,13 @@ public sealed class IdCardSystem : SharedIdCardSystem
                 EntityManager.QueueDeleteEntity(uid);
                 return;
             }
+
+            // Frontier: ID accesses only change with radiation
+            if (!args.BeingIrradiated)
+            {
+                return;
+            }
+            // End Frontier
 
             //Explode if the microwave can't handle it
             if (!micro.CanMicrowaveIdsSafely)
@@ -77,7 +85,12 @@ public sealed class IdCardSystem : SharedIdCardSystem
             }
 
             // Give them a wonderful new access to compensate for everything
-            var random = _random.Pick(_prototypeManager.EnumeratePrototypes<AccessLevelPrototype>().ToArray());
+            var ids = _prototypeManager.EnumeratePrototypes<AccessLevelPrototype>().Where(x => x.CanAddToIdCard).ToArray();
+
+            if (ids.Length == 0)
+                return;
+
+            var random = _random.Pick(ids);
 
             access.Tags.Add(random.ID);
             Dirty(uid, access);

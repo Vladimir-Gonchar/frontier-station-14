@@ -61,7 +61,7 @@
   category: construction-category-structures
   description: Keeps the air in and the greytide out.
   icon:
-    sprite: Structures/Walls/solid.rsi
+    sprite: _NF/Structures/Walls/solid.rsi # Frontier
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -79,7 +79,7 @@
   category: construction-category-structures
   description: Keeps the air in and the greytide out.
   icon:
-    sprite: Structures/Walls/solid.rsi
+    sprite: _NF/Structures/Walls/solid.rsi # Frontier
     state: rgeneric
   objectType: Structure
   placementMode: SnapgridCenter
@@ -105,11 +105,11 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
-# here
+
 - type: construction
   name: wood wall
   id: WoodWall
-  graph: Girder
+  graph: Barricade
   startNode: start
   targetNode: woodWall
   category: construction-category-structures
@@ -387,7 +387,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/window.rsi
+    sprite: _NF/Structures/Windows/window.rsi # Frontier
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -406,7 +406,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _NF/Structures/Windows/window_diagonal.rsi # Frontier
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -424,7 +424,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_window.rsi
+    sprite: _NF/Structures/Windows/reinforced_window.rsi # Frontier
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -443,7 +443,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_window_diagonal.rsi
+    sprite: _NF/Structures/Windows/reinforced_window_diagonal.rsi # Frontier
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -455,13 +455,13 @@
   startNode: start
   targetNode: tintedWindow
   category: construction-category-structures
-  description: Not clear but tough.
+  description: Not clear, but lasers still pass through.
   canBuildInImpassable: true
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/tinted_window.rsi
+    sprite: _NF/Structures/Windows/tinted_window.rsi # Frontier
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -512,12 +512,12 @@
   targetNode: plasmaWindow
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Clear and even tougher, with a purple tint.
+  description: Clear, with a purple tint.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/plasma_window.rsi
+    sprite: _NF/Structures/Windows/plasma_window.rsi # Frontier
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -531,12 +531,12 @@
   targetNode: reinforcedPlasmaWindow
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Fire resistant and even tougher, with a purple tint.
+  description: Clear and even tougher, with a purple tint.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_plasma_window.rsi
+    sprite: _NF/Structures/Windows/reinforced_plasma_window.rsi # Frontier
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -569,12 +569,12 @@
   targetNode: plasmaWindowDiagonal
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Clear and even tougher, with a purple tint.
+  description: Clear, with a purple tint.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/plasma_diagonal.rsi
+    sprite: _NF/Structures/Windows/plasma_diagonal.rsi # Frontier
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -587,12 +587,12 @@
   targetNode: reinforcedPlasmaWindowDiagonal
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Fire resistant and even tougher, with a purple tint.
+  description: Clear and even tougher, with a purple tint.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_plasma_diagonal.rsi
+    sprite: _NF/Structures/Windows/reinforced_plasma_diagonal.rsi # Frontier
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -659,7 +659,7 @@
   targetNode: plasmaWindowDirectional
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Clear and even tougher, with a purple tint.
+  description: Clear, with a purple tint.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
@@ -677,7 +677,7 @@
   targetNode: plasmaReinforcedWindowDirectional
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Fire resistant and even tougher, with a purple tint.
+  description: Clear and even tougher, with a purple tint.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
@@ -695,12 +695,12 @@
   targetNode: uraniumWindow
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Clear and much tougher than regular glass, with added RadAbsorb to protect you from deadly radiation.
+  description: Clear, with added RadAbsorb to protect you from deadly radiation.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/uranium_window.rsi
+    sprite: _NF/Structures/Windows/uranium_window.rsi # Frontier
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -714,12 +714,12 @@
   targetNode: reinforcedUraniumWindow
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Clear and much tougher than regular glass, with added RadAbsorb to protect you from deadly radiation.
+  description: Clear and even tougher, with added RadAbsorb to protect you from deadly radiation.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_uranium_window.rsi
+    sprite: _NF/Structures/Windows/reinforced_uranium_window.rsi # Frontier
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -733,12 +733,12 @@
   targetNode: uraniumWindowDiagonal
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Clear and much tougher than regular glass, with added RadAbsorb to protect you from deadly radiation.
+  description: Clear, with added RadAbsorb to protect you from deadly radiation.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/uranium_window_diagonal.rsi
+    sprite: _NF/Structures/Windows/uranium_window_diagonal.rsi # Frontier
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -751,12 +751,12 @@
   targetNode: reinforcedUraniumWindowDiagonal
   category: construction-category-structures
   canBuildInImpassable: true
-  description: Clear and much tougher than regular glass, with added RadAbsorb to protect you from deadly radiation.
+  description: Clear and even tougher, with added RadAbsorb to protect you from deadly radiation.
   conditions:
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
+    sprite: _NF/Structures/Windows/reinforced_uranium_diagonal.rsi # Frontier
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -774,6 +774,7 @@
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
+  canRotate: false
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
@@ -791,12 +792,13 @@
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
+  canRotate: false
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
 
 - type: construction
-  name: Thin firelock
+  name: thin firelock
   id: FirelockEdge
   graph: Firelock
   startNode: start
@@ -1336,7 +1338,7 @@
   category: construction-category-structures
   description: It opens, it closes, and maybe crushes you. Necessary for connecting two space craft together.
   icon:
-    sprite: Structures/Doors/Airlocks/Glass/shuttle.rsi
+    sprite: Structures/Doors/Airlocks/Standard/shuttle.rsi # Frontier: Airlocks/Glass<Airlocks/Standard
     state: closed
   #  state: assembly
   objectType: Structure
@@ -1455,13 +1457,31 @@
     - !type:TileNotBlocked
 
 - type: construction
+  name: emergency light
+  id: EmergencyLightFixture
+  graph: LightFixture
+  startNode: start
+  targetNode: emergencyLight
+  category: construction-category-structures
+  description: An emergency light.
+  icon:
+    sprite: Structures/Wallmounts/Lighting/emergency_light.rsi
+    state: base
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   name: ground light post
   id: LightGroundFixture
   graph: LightFixture
   startNode: start
   targetNode: groundLight
   category: construction-category-structures
-  description: A ground light fixture. Use light bulbs.
+  description: A ground light fixture. Use light tubes.
   icon:
     sprite: Structures/Lighting/LightPosts/small_light_post.rsi
     state: base
@@ -1641,6 +1661,23 @@
     state: plasticflaps
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  name: carp statue
+  id: CarpStatue
+  graph: CarpStatue
+  startNode: start
+  targetNode: statue
+  category: construction-category-structures
+  placementMode: SnapgridCenter
+  description: A statue of one of the brave carp that got us where we are today. Made with real teeth!
+  objectType: Structure
+  canBuildInImpassable: false
+  icon:
+    sprite: Structures/Specific/carp_statue.rsi
+    state: icon
+  conditions:
+  - !type:TileNotBlocked
 
 - type: construction
   name: bananium clown statue

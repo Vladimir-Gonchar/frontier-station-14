@@ -9,7 +9,7 @@ namespace Content.Shared.Preferences.Loadouts;
 public sealed partial class LoadoutGroupPrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; } = string.Empty;
+    public string ID { get; private set; } = string.Empty;
 
     /// <summary>
     /// User-friendly name for the group.
@@ -38,9 +38,18 @@ public sealed partial class LoadoutGroupPrototype : IPrototype
     [DataField(required: true)]
     public List<ProtoId<LoadoutPrototype>> Loadouts = new();
 
+    // Frontier: loadout redundancy
+    /// <summary>
+    /// Loadout subgroups - will be appended to loadout list.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<LoadoutGroupPrototype>> Subgroups = new();
+    // End Frontier
+
     // Frontier: handle unaffordable loadouts
     /// <summary>
     /// Fallback loadouts to be selected in case a character cannot afford them.
+    /// Also serves as a default loadout options (up to the maxLimit for a set) for a new character.
     /// </summary>
     [DataField]
     public List<ProtoId<LoadoutPrototype>> Fallbacks = new();

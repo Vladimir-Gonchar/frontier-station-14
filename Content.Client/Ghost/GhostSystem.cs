@@ -11,6 +11,7 @@ using Robust.Client.UserInterface;
 using Robust.Shared.GameStates;
 using Robust.Shared.Timing;
 using Robust.Shared.Player;
+using Content.Client._Corvax.Respawn; // Frontier
 
 namespace Content.Client.Ghost
 {
@@ -19,10 +20,12 @@ namespace Content.Client.Ghost
         [Dependency] private readonly IClientConsoleHost _console = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly SharedActionsSystem _actions = default!;
+        [Dependency] private readonly PointLightSystem _pointLightSystem = default!;
         [Dependency] private readonly ContentEyeSystem _contentEye = default!;
         [Dependency] private readonly EyeSystem _eye = default!;
         [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
         [Dependency] private readonly IGameTiming _gameTiming = default!;
+        [Dependency] private readonly RespawnSystem _respawn = default!;
 
         public override void Update(float frameTime)
         {
@@ -30,7 +33,7 @@ namespace Content.Client.Ghost
             {
                 var ui = _uiManager.GetActiveUIWidgetOrNull<GhostGui>();
                 if (ui != null && Player != null)
-                    ui.UpdateRespawn(ghost.Item2.TimeOfDeath);
+                    ui.UpdateRespawn(_respawn.RespawnResetTime);
             }
         }
 
@@ -98,8 +101,27 @@ namespace Content.Client.Ghost
             if (args.Handled)
                 return;
 
-            Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-lighting-manager-popup"), args.Performer);
-            _contentEye.RequestToggleLight(uid, component);
+            TryComp<PointLightComponent>(uid, out var light);
+
+            if (!component.DrawLight)
+            {
+                // normal lighting
+                Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-lighting-manager-popup-normal"), args.Performer);
+                _contentEye.RequestEye(component.DrawFov, true);
+            }
+            else if (!light?.Enabled ?? false) // skip this option if we have no PointLightComponent
+            {
+                // enable personal light
+                Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-lighting-manager-popup-personal-light"), args.Performer);
+                _pointLightSystem.SetEnabled(uid, true, light);
+            }
+            else
+            {
+                // fullbright mode
+                Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-lighting-manager-popup-fullbright"), args.Performer);
+                _contentEye.RequestEye(component.DrawFov, false);
+                _pointLightSystem.SetEnabled(uid, false, light);
+            }
             args.Handled = true;
         }
 
@@ -118,8 +140,8 @@ namespace Content.Client.Ghost
             if (args.Handled)
                 return;
 
-            Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-ghost-visibility-popup"), args.Performer);
-
+            var locId = GhostVisibility ? "ghost-gui-toggle-ghost-visibility-popup-off" : "ghost-gui-toggle-ghost-visibility-popup-on";
+            Popup.PopupEntity(Loc.GetString(locId), args.Performer);
             if (uid == _playerManager.LocalEntity)
                 ToggleGhostVisibility();
 
@@ -152,7 +174,7 @@ namespace Content.Client.Ghost
         private void OnGhostState(EntityUid uid, GhostComponent component, ref AfterAutoHandleStateEvent args)
         {
             if (TryComp<SpriteComponent>(uid, out var sprite))
-                sprite.LayerSetColor(0, component.color);
+                sprite.LayerSetColor(0, component.Color);
 
             if (uid != _playerManager.LocalEntity)
                 return;

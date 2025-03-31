@@ -16,6 +16,7 @@ public sealed partial class NavScreen : BoxContainer
     [Dependency] private readonly IEntityManager _entManager = default!;
     private SharedTransformSystem _xformSystem;
 
+    private EntityUid? _consoleEntity; // Entity of controlling console
     private EntityUid? _shuttleEntity;
 
     public NavScreen()
@@ -33,12 +34,7 @@ public sealed partial class NavScreen : BoxContainer
         DockToggle.OnToggled += OnDockTogglePressed;
         DockToggle.Pressed = NavRadar.ShowDocks;
 
-        // Frontier - IFF search
-        IffSearchCriteria.OnTextChanged += args => OnIffSearchChanged(args.Text);
-
-        // Frontier - Maximum IFF Distance
-        MaximumIFFDistanceValue.GetChild(0).GetChild(1).Margin = new Thickness(8,0,0,0);
-        MaximumIFFDistanceValue.OnValueChanged += args => OnRangeFilterChanged(args);
+        NfInitialize(); // Frontier Initialization for the NavScreen
     }
 
     // Frontier - IFF search
@@ -55,30 +51,17 @@ public sealed partial class NavScreen : BoxContainer
             };
     }
 
-    // Frontier - Maximum IFF Distance
-    private void OnRangeFilterChanged(int value)
-    {
-        NavRadar.MaximumIFFDistance = (float) value;
-    }
-
     public void SetShuttle(EntityUid? shuttle)
     {
         _shuttleEntity = shuttle;
 
-        // Frontier - PR #1284 Add Shuttle Designation
-        if (_entManager.TryGetComponent<MetaDataComponent>(shuttle, out var metadata))
-        {
-            var shipNameParts = metadata.EntityName.Split(' ');
-            var designation = shipNameParts[^1];
-            if (designation[2] == '-')
-            {
-                NavDisplayLabel.Text = string.Join(' ', shipNameParts[..^1]);
-                ShuttleDesignation.Text = designation;
-            }
-            else
-                NavDisplayLabel.Text = metadata.EntityName;
-        }
-        // End Frontier - PR #1284
+        NfAddShuttleDesignation(shuttle); // Frontier - PR #1284 Add Shuttle Designation
+    }
+
+    public void SetConsole(EntityUid? console)
+    {
+        _consoleEntity = console;
+        NavRadar.SetConsole(console);
     }
 
     private void OnIFFTogglePressed(BaseButton.ButtonEventArgs args)
@@ -102,6 +85,7 @@ public sealed partial class NavScreen : BoxContainer
     public void UpdateState(NavInterfaceState scc)
     {
         NavRadar.UpdateState(scc);
+        NfUpdateState(); // Frontier Update State
     }
 
     public void SetMatrix(EntityCoordinates? coordinates, Angle? angle)
@@ -126,13 +110,19 @@ public sealed partial class NavScreen : BoxContainer
         // Get the positive reduced angle.
         var displayRot = -worldRot.Reduced();
 
-        GridPosition.Text = $"{worldPos.X:0.0}, {worldPos.Y:0.0}";
-        GridOrientation.Text = $"{displayRot.Degrees:0.0}";
+        GridPosition.Text = Loc.GetString("shuttle-console-position-value",
+            ("X", $"{worldPos.X:0.0}"),
+            ("Y", $"{worldPos.Y:0.0}"));
+        GridOrientation.Text = Loc.GetString("shuttle-console-orientation-value",
+            ("angle", $"{displayRot.Degrees:0.0}"));
 
         var gridVelocity = gridBody.LinearVelocity;
         gridVelocity = displayRot.RotateVec(gridVelocity);
         // Get linear velocity relative to the console entity
-        GridLinearVelocity.Text = $"{gridVelocity.X + 10f * float.Epsilon:0.0}, {gridVelocity.Y + 10f * float.Epsilon:0.0}";
-        GridAngularVelocity.Text = $"{-gridBody.AngularVelocity + 10f * float.Epsilon:0.0}";
+        GridLinearVelocity.Text = Loc.GetString("shuttle-console-linear-velocity-value",
+            ("X", $"{gridVelocity.X + 10f * float.Epsilon:0.0}"),
+            ("Y", $"{gridVelocity.Y + 10f * float.Epsilon:0.0}"));
+        GridAngularVelocity.Text = Loc.GetString("shuttle-console-angular-velocity-value",
+            ("angularVelocity", $"{-MathHelper.RadiansToDegrees(gridBody.AngularVelocity) + 10f * float.Epsilon:0.0}"));
     }
 }

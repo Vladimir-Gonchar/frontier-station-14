@@ -1,7 +1,5 @@
-using Content.Server.Access.Systems;
 using Content.Server.Cargo.Components;
 using Content.Server.DeviceLinking.Systems;
-using Content.Server.Paper;
 using Content.Server.Popups;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Stack;
@@ -13,13 +11,16 @@ using Content.Shared.Cargo;
 using Content.Shared.Cargo.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Paper;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Random;
-using Content.Shared._NF.Trade.Components;
+using Content.Server._NF.SectorServices; // Frontier
+using Content.Shared._NF.Trade; // Frontier
+using Content.Shared.Whitelist; // Frontier
 
 namespace Content.Server.Cargo.Systems;
 
@@ -32,7 +33,6 @@ public sealed partial class CargoSystem : SharedCargoSystem
     [Dependency] private readonly AccessReaderSystem _accessReaderSystem = default!;
     [Dependency] private readonly DeviceLinkSystem _linker = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IdCardSystem _idCardSystem = default!;
     [Dependency] private readonly ItemSlotsSystem _slots = default!;
     [Dependency] private readonly PaperSystem _paperSystem = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
@@ -45,10 +45,11 @@ public sealed partial class CargoSystem : SharedCargoSystem
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly SectorServiceSystem _sectorService = default!; // Frontier
+    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!; // Frontier
 
     private EntityQuery<TransformComponent> _xformQuery;
     private EntityQuery<CargoSellBlacklistComponent> _blacklistQuery;
-    private EntityQuery<TradeCrateComponent> _tradeCrateQuery;
     private EntityQuery<MobStateComponent> _mobQuery;
     private EntityQuery<TradeStationComponent> _tradeQuery;
 
@@ -62,7 +63,6 @@ public sealed partial class CargoSystem : SharedCargoSystem
 
         _xformQuery = GetEntityQuery<TransformComponent>();
         _blacklistQuery = GetEntityQuery<CargoSellBlacklistComponent>();
-        _tradeCrateQuery = GetEntityQuery<TradeCrateComponent>();
         _mobQuery = GetEntityQuery<MobStateComponent>();
         _tradeQuery = GetEntityQuery<TradeStationComponent>();
 
@@ -70,6 +70,10 @@ public sealed partial class CargoSystem : SharedCargoSystem
         InitializeShuttle();
         InitializeTelepad();
         InitializeBounty();
+        // Frontier: add specific initialization calls here.
+        InitializePirateBounty();
+        InitializeTradeCrates();
+        // End Frontier
     }
 
     public override void Update(float frameTime)
@@ -81,20 +85,25 @@ public sealed partial class CargoSystem : SharedCargoSystem
     }
 
     [PublicAPI]
-    public void UpdateBankAccount(EntityUid uid, StationBankAccountComponent component, int balanceAdded)
+    public void UpdateBankAccount(Entity<StationBankAccountComponent?> ent, int balanceAdded)
     {
-        component.Balance += balanceAdded;
-        var query = EntityQueryEnumerator<CargoOrderConsoleComponent>();
+        if (!Resolve(ent, ref ent.Comp))
+            return;
 
-        while (query.MoveNext(out var oUid, out var _))
+        ent.Comp.Balance += balanceAdded;
+
+        var ev = new BankBalanceUpdatedEvent(ent, ent.Comp.Balance);
+
+        var query = EntityQueryEnumerator<BankClientComponent, TransformComponent>();
+        while (query.MoveNext(out var client, out var comp, out var xform))
         {
-            if (!_uiSystem.IsUiOpen(oUid, CargoConsoleUiKey.Orders))
+            var station = _station.GetOwningStation(client, xform);
+            if (station != ent)
                 continue;
 
-            var station = _station.GetOwningStation(oUid);
-            if (station != uid)
-                continue;
-
+            comp.Balance = ent.Comp.Balance;
+            Dirty(client, comp);
+            RaiseLocalEvent(client, ref ev);
         }
     }
 }

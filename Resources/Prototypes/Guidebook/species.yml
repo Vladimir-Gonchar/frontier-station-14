@@ -4,17 +4,20 @@
   text: "/ServerInfo/Guidebook/Mobs/Species.xml"
   children:
     - Arachnid
-    - Diona
-    - Dwarf
-    - Goblin # Frontier
+    - Diona # Note: Frontier changes inside
+    - Dwarf # Note: Frontier changes inside
     - Human
     - Moth
     - Reptilian
     - SlimePerson
+    - Vox
+    - Goblin # Frontier
     - Vulpkanin # DeltaV
     - Harpy # DeltaV
     - Felinid # DeltaV
     - Oni # DeltaV
+#    - Rodentia # DeltaV
+    - Chitinid # DeltaV
 
 - type: guideEntry
   id: Arachnid
@@ -24,12 +27,12 @@
 - type: guideEntry
   id: Diona
   name: species-name-diona
-  text: "/ServerInfo/Guidebook/Mobs/Diona.xml"
+  text: "/ServerInfo/_NF/Guidebook/Mobs/Diona.xml" # Frontier: moved to _NF folder
 
 - type: guideEntry
   id: Dwarf
   name: species-name-dwarf
-  text: "/ServerInfo/Guidebook/Mobs/Dwarf.xml"
+  text: "/ServerInfo/_NF/Guidebook/Mobs/Dwarf.xml" # Frontier: moved to _NF folder
 
 - type: guideEntry
   id: Human
@@ -50,3 +53,8 @@
   id: SlimePerson
   name: species-name-slime
   text: "/ServerInfo/Guidebook/Mobs/SlimePerson.xml"
+
+- type: guideEntry
+  id: Vox
+  name: species-name-vox
+  text: "/ServerInfo/Guidebook/Mobs/Vox.xml"

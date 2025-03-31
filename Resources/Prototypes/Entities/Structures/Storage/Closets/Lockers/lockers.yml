@@ -169,6 +169,11 @@
   - type: ExplosionResistance
     damageCoefficient: 0.50
   - type: AntiRottingContainer
+  - type: Construction
+    graph: ClosetFreezer
+    node: done
+    containers:
+    - entity_storage
 
 - type: entity
   id: LockerFreezer
@@ -295,7 +300,7 @@
 # HoS
 - type: entity
   id: LockerHeadOfSecurity
-  parent: [BaseStructureIndestructible, BaseStructureLockImmuneToEmag, BaseStructureAccessReaderImmuneToEmag, BaseStructureDisableToolUse, BaseStructureUnanchorable, LockerBaseSecure] # Frontier
+  parent: [BaseStructureIndestructible, BaseStructureLockImmuneToEmag, BaseStructureAccessReaderImmuneToEmag, BaseStructureDisableToolUse, LockerBaseSecure] # Frontier: add BaseStructureIndestructible, BaseStructureLockImmuneToEmag, BaseStructureAccessReaderImmuneToEmag, BaseStructureDisableToolUse
   name: head of security's locker
   components:
   - type: Appearance
@@ -309,7 +314,7 @@
 # Warden
 - type: entity
   id: LockerWarden
-  parent: [BaseStructureIndestructible, BaseStructureLockImmuneToEmag, BaseStructureAccessReaderImmuneToEmag, BaseStructureDisableToolUse, BaseStructureUnanchorable, LockerBaseSecure] # Frontier
+  parent: [BaseStructureIndestructible, BaseStructureLockImmuneToEmag, BaseStructureAccessReaderImmuneToEmag, BaseStructureDisableToolUse, LockerBaseSecure] # Frontier: add BaseStructureIndestructible, BaseStructureLockImmuneToEmag, BaseStructureAccessReaderImmuneToEmag, BaseStructureDisableToolUse
   name: warden's locker
   components:
   - type: Appearance
@@ -359,6 +364,20 @@
     stateDoorOpen: shotguncase_open
     stateDoorClosed: shotguncase_door
   - type: AccessReader
+  - type: Construction
+    graph: GunSafe
+    node: done
+    containers:
+    - entity_storage
+  - type: StaticPrice
+    price: 660
+
+- type: entity
+  id: GunSafeBaseSecure
+  parent: GunSafe
+  suffix: Armory, Locked
+  components:
+  - type: AccessReader
     access: [["Armory"]]
 
 # Detective
@@ -401,6 +420,7 @@
   parent: LockerSyndicatePersonal
   description: Advanced locker technology.
   components:
+    - type: ArrivalsBlacklist
     - type: BluespaceLocker
       minBluespaceLinks: 1
       behaviorProperties:

@@ -5,22 +5,20 @@ using Content.Server.GameTicking;
 using Content.Server.Interaction;
 using Content.Server.Mind;
 using Content.Server.Popups;
-using Content.Server.Shipyard.Systems;
-using Content.Server.Traits.Assorted;
+using Content.Server._NF.Shipyard.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Climbing.Systems;
-using Content.Shared.CryoSleep;
+using Content.Shared._NF.CryoSleep;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.DragDrop;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction.Events;
-using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.NF14.CCVar;
+using Content.Shared._NF.CCVar;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Server.Containers;
@@ -30,8 +28,9 @@ using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Timing;
+using Content.Server.Ghost;
 
-namespace Content.Server.CryoSleep;
+namespace Content.Server._NF.CryoSleep;
 
 public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 {
@@ -49,6 +48,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
     [Dependency] private readonly MobStateSystem _mobSystem = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly ShipyardSystem _shipyard = default!; // For the FoundOrganics method
+    [Dependency] private readonly GhostSystem _ghost = default!;
 
     private readonly Dictionary<NetUserId, StoredBody?> _storedBodies = new();
     private EntityUid? _storageMap;
@@ -65,7 +65,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         SubscribeLocalEvent<CryoSleepComponent, DestructionEventArgs>((e,c,_) => EjectBody(e, c));
         SubscribeLocalEvent<CryoSleepComponent, CryoStoreDoAfterEvent>(OnAutoCryoSleep);
         SubscribeLocalEvent<CryoSleepComponent, DragDropTargetEvent>(OnEntityDragDropped);
-        SubscribeLocalEvent<RoundEndedEvent>(OnRoundEnded);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
 
         InitReturning();
     }
@@ -154,7 +154,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
 
         QueueDel(args.Victim);
         _audio.PlayPvs(component.LeaveSound, uid);
-        args.SetHandled(SuicideKind.Special);
+        args.Handled = true;
     }
 
     private void OnExamine(EntityUid uid, CryoSleepComponent component, ExaminedEvent args)
@@ -265,7 +265,9 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         NetUserId? id = null;
         if (_mind.TryGetMind(bodyId, out var mindEntity, out var mind) && mind.CurrentEntity is { Valid : true } body)
         {
-            _gameTicker.OnGhostAttempt(mindEntity, false, true, mind: mind);
+            var argMind = mind;
+            RaiseLocalEvent(bodyId, new CryosleepBeforeMindRemovedEvent(cryopod, argMind?.UserId), true);
+            _ghost.OnGhostAttempt(mindEntity, false, true, mind: mind);
 
             id = mind.UserId;
             if (id != null)
@@ -283,7 +285,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
             _doAfter.Cancel(cryo.CryosleepDoAfter);
 
         // Start a timer. When it ends, the body needs to be deleted.
-        Timer.Spawn(TimeSpan.FromSeconds(_configurationManager.GetCVar(NF14CVars.CryoExpirationTime)), () =>
+        Timer.Spawn(TimeSpan.FromSeconds(_configurationManager.GetCVar(NFCCVars.CryoExpirationTime)), () =>
         {
             if (id != null)
                 ResetCryosleepState(id.Value);
@@ -320,7 +322,7 @@ public sealed partial class CryoSleepSystem : SharedCryoSleepSystem
         return component.BodyContainer.ContainedEntity != null;
     }
 
-    private void OnRoundEnded(RoundEndedEvent args)
+    private void OnRoundRestart(RoundRestartCleanupEvent args)
     {
         _storedBodies.Clear();
     }

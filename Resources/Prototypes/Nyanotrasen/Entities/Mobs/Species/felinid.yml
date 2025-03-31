@@ -8,6 +8,9 @@
     scale: 0.8, 0.8
   - type: HumanoidAppearance
     species: Felinid
+    hideLayersOnEquip: # Frontier
+    - Hair # Frontier
+    - HeadTop # Frontier
   - type: Fixtures
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:
@@ -55,20 +58,26 @@
   - type: TypingIndicator
     proto: felinid
   - type: PseudoItem
+    storedOffset: 0,17
+    shape:
+      - 0,0,1,4
+      - 0,2,3,4
+      - 4,0,5,4
   - type: Vocal
     wilhelm: "/Audio/Nyanotrasen/Voice/Felinid/cat_wilhelm.ogg"
     sounds:
       Male: MaleFelinid
       Female: FemaleFelinid
       Unsexed: MaleFelinid
+  - type: ItemCougher
+    item: Hairball
+    action: ActionHairball
+    coughPopup: hairball-cough
   - type: Felinid
   - type: NpcFactionMember
     factions:
     - NanoTrasen
     - Felinid # Frontier
-  - type: SizeAttributeWhitelist # Frontier
-    tall: true
-    tallscale: 1
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -85,13 +94,17 @@
         emote: Scream
         probability: 0.2
   - type: NoShoesSilentFootsteps
+  - type: TallWhitelist # Frontier
+    scale: 1 # Frontier
+  - type: Inventory # Frontier
+    speciesId: felinid # Frontier
 
 - type: entity
   save: false
   name: Urist McFelinid
   parent: MobHumanDummy
   id: MobFelinidDummy
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   description: A dummy felinid meant to be used in character setup.
   components:
   - type: HumanoidAppearance

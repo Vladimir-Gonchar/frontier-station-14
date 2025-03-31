@@ -17,6 +17,7 @@ namespace Content.IntegrationTests.Tests.GameRules;
 public sealed class AntagPreferenceTest
 {
     [Test]
+    [Ignore("Antag role selection isn't used on Frontier.")] // Frontier
     public async Task TestLobbyPlayersValid()
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings
@@ -47,7 +48,7 @@ public sealed class AntagPreferenceTest
         Assert.That(sys.IsEntityValid(client.AttachedEntity, def), Is.True);
 
         // By default, traitor/antag preferences are disabled, so the pool should be empty.
-        var sessions = new List<ICommonSession>{pair.Player!};
+        var sessions = new List<ICommonSession> { pair.Player! };
         var pool = sys.GetPlayerPool(rule, sessions, def);
         Assert.That(pool.Count, Is.EqualTo(0));
 

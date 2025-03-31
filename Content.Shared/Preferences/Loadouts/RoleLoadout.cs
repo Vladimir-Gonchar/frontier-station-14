@@ -22,6 +22,11 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
     [DataField]
     public Dictionary<ProtoId<LoadoutGroupPrototype>, List<Loadout>> SelectedLoadouts = new();
 
+    /// <summary>
+    /// Loadout specific name.
+    /// </summary>
+    public string? EntityName;
+
     /*
      * Loadout-specific data used for validation.
      */
@@ -42,21 +47,47 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             weh.SelectedLoadouts.Add(selected.Key, new List<Loadout>(selected.Value));
         }
 
+        weh.EntityName = EntityName;
+
         return weh;
     }
 
     /// <summary>
     /// Ensures all prototypes exist and effects can be applied.
     /// </summary>
-    public void EnsureValid(HumanoidCharacterProfile profile, ICommonSession session, IDependencyCollection collection)
+    public void EnsureValid(HumanoidCharacterProfile profile, ICommonSession? session, IDependencyCollection collection) // Frontier: nullable session
     {
         var groupRemove = new ValueList<string>();
         var protoManager = collection.Resolve<IPrototypeManager>();
 
         if (!protoManager.TryIndex(Role, out var roleProto))
         {
+            EntityName = null;
             SelectedLoadouts.Clear();
             return;
+        }
+
+        // Remove name not allowed.
+        if (!roleProto.CanCustomizeName)
+        {
+            EntityName = null;
+        }
+
+        // Validate name length
+        // TODO: Probably allow regex to be supplied?
+        if (EntityName != null)
+        {
+            var name = EntityName.Trim();
+
+            if (name.Length > HumanoidCharacterProfile.MaxNameLength)
+            {
+                EntityName = name[..HumanoidCharacterProfile.MaxNameLength];
+            }
+
+            if (name.Length == 0)
+            {
+                EntityName = null;
+            }
         }
 
         // In some instances we might not have picked up a new group for existing data.
@@ -105,8 +136,25 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
                 // Malicious client maybe, check the group even has it.
                 if (!groupProto.Loadouts.Contains(loadout.Prototype))
                 {
-                    loadouts.RemoveAt(i);
-                    continue;
+                    // Frontier: check subgroups
+                    bool subGroupEntryFound = false;
+                    foreach (var subgroup in groupProto.Subgroups)
+                    {
+                        if (protoManager.TryIndex(subgroup, out var subgroupProto) &&
+                            subgroupProto.Loadouts.Contains(loadout.Prototype))
+                        {
+                            subGroupEntryFound = true;
+                            break;
+                        }
+                    }
+                    if (!subGroupEntryFound)
+                    {
+                        loadouts.RemoveAt(i);
+                        continue;
+                    }
+                    // End Frontier: check subgroups
+                    // loadouts.RemoveAt(i); // Frontier: commented out old implementation
+                    // continue; // Frontier: commented out old implementation
                 }
 
                 // Validate the loadout can be applied (e.g. points).
@@ -124,18 +172,45 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             // If you put invalid ones first but that's your fault for not using sensible defaults
             if (loadouts.Count < groupProto.MinLimit)
             {
-                for (var i = 0; i < Math.Min(groupProto.MinLimit, groupProto.Loadouts.Count); i++)
+                // Frontier: apply fallbacks first as default items for a role
+                if (groupProto.Fallbacks.Count > 0)
                 {
-                    if (!protoManager.TryIndex(groupProto.Loadouts[i], out var loadoutProto))
+                    foreach (var protoId in groupProto.Fallbacks)
+                    {
+                        // Apply default loadouts from fallbacks up to the minimum limit (bare minimum)
+                        if (loadouts.Count >= groupProto.MinLimit)
+                            break;
+
+                        if (!protoManager.TryIndex(protoId, out var loadoutProto))
+                            continue;
+
+                        var defaultLoadout = new Loadout()
+                        {
+                            Prototype = loadoutProto.ID,
+                        };
+
+                        // Not valid so don't default to it anyway.
+                        if (!IsValid(profile, session, defaultLoadout.Prototype, collection, out _))
+                            continue;
+
+                        loadouts.Add(defaultLoadout);
+                        Apply(loadoutProto);
+                    }
+                }
+                // End Frontier
+
+                foreach (var protoId in groupProto.Loadouts)
+                {
+                    if (loadouts.Count >= groupProto.MinLimit)
+                        break;
+
+                    if (!protoManager.TryIndex(protoId, out var loadoutProto))
                         continue;
 
                     var defaultLoadout = new Loadout()
                     {
                         Prototype = loadoutProto.ID,
                     };
-
-                    if (loadouts.Contains(defaultLoadout))
-                        continue;
 
                     // Not valid so don't default to it anyway.
                     if (!IsValid(profile, session, defaultLoadout.Prototype, collection, out _))
@@ -190,12 +265,44 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             var loadouts = new List<Loadout>();
             SelectedLoadouts[group] = loadouts;
 
+            // Frontier: apply fallbacks as default items for a role
+            if (groupProto.Fallbacks.Count > 0)
+            {
+                foreach (var protoId in groupProto.Fallbacks)
+                {
+                    // Apply default loadouts from fallbacks up to the *maximum* limit
+                    // Must respect maximum limit to be legal
+                    if (loadouts.Count >= groupProto.MaxLimit)
+                        break;
+
+                    if (!protoManager.TryIndex(protoId, out var loadoutProto))
+                        continue;
+
+                    var defaultLoadout = new Loadout()
+                    {
+                        Prototype = loadoutProto.ID,
+                    };
+
+                    // Not valid so don't default to it anyway.
+                    if (!IsValid(profile, session, defaultLoadout.Prototype, collection, out _))
+                        continue;
+
+                    loadouts.Add(defaultLoadout);
+                    Apply(loadoutProto);
+                }
+            }
+            // End Frontier
+
             if (groupProto.MinLimit > 0)
             {
                 // Apply any loadouts we can.
-                for (var j = 0; j < Math.Min(groupProto.MinLimit, groupProto.Loadouts.Count); j++)
+                foreach (var protoId in groupProto.Loadouts)
                 {
-                    if (!protoManager.TryIndex(groupProto.Loadouts[j], out var loadoutProto))
+                    // Reached the limit, time to stop
+                    if (loadouts.Count >= groupProto.MinLimit)
+                        break;
+
+                    if (!protoManager.TryIndex(protoId, out var loadoutProto))
                         continue;
 
                     var defaultLoadout = new Loadout()
@@ -226,7 +333,7 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
         if (!protoManager.TryIndex(loadout, out var loadoutProto))
         {
             // Uhh
-            reason = FormattedMessage.FromMarkup("");
+            reason = FormattedMessage.FromMarkupOrThrow("");
             return false;
         }
 
@@ -243,8 +350,45 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
             valid = valid && effect.Validate(profile, this, session, collection, out reason);
         }
 
+        // Frontier: add hide effects
+        foreach (var effect in loadoutProto.HideEffects)
+        {
+            valid = valid && effect.Validate(profile, this, session, collection, out reason);
+        }
+        // End Frontier
+
         return valid;
     }
+
+    // Frontier: hidden loadouts
+    /// <summary>
+    /// Returns whether a loadout should be hidden or not
+    /// </summary>
+    public bool IsHidden(HumanoidCharacterProfile profile, ICommonSession? session, ProtoId<LoadoutPrototype> loadout, IDependencyCollection collection)
+    {
+        var protoManager = collection.Resolve<IPrototypeManager>();
+
+        if (!protoManager.TryIndex(loadout, out var loadoutProto))
+        {
+            return true;
+        }
+
+        if (!protoManager.HasIndex(Role))
+        {
+            return true;
+        }
+
+        // Frontier: add hide effects
+        foreach (var effect in loadoutProto.HideEffects)
+        {
+            if (!effect.Validate(profile, this, session, collection, out var _)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    // End Frontier: hidden loadouts
 
     /// <summary>
     /// Applies the specified loadout to this group.
@@ -315,7 +459,8 @@ public sealed partial class RoleLoadout : IEquatable<RoleLoadout>
 
         if (!Role.Equals(other.Role) ||
             SelectedLoadouts.Count != other.SelectedLoadouts.Count ||
-            Points != other.Points)
+            Points != other.Points ||
+            EntityName != other.EntityName)
         {
             return false;
         }

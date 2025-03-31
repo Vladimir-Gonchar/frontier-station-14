@@ -149,6 +149,11 @@ public sealed partial class MechSystem : SharedMechSystem
 
     private void OnRemoveEquipmentMessage(EntityUid uid, MechComponent component, MechEquipmentRemoveMessage args)
     {
+        // Frontier: mechs with fixed equipment
+        if (!component.CanRemoveEquipment)
+            return;
+        // End Frontier: mechs with fixed equipment
+
         var equip = GetEntity(args.Equipment);
 
         if (!Exists(equip) || Deleted(equip))
@@ -214,8 +219,11 @@ public sealed partial class MechSystem : SharedMechSystem
                         return;
                     }
 
-                    var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, component.ExitDelay,
-                        new MechExitEvent(), uid, target: uid);
+                    var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, component.ExitDelay, new MechExitEvent(), uid, target: uid)
+                    {
+                        BreakOnMove = true,
+                    };
+                    _popup.PopupEntity(Loc.GetString("mech-eject-pilot-alert", ("item", uid), ("user", args.User)), uid, PopupType.Large);
 
                     _doAfter.TryStartDoAfter(doAfterEventArgs);
                 }
@@ -244,7 +252,7 @@ public sealed partial class MechSystem : SharedMechSystem
             if (faction.Factions != null)
                 factionMech.Factions = faction.Factions;
         }
-        // Frontier
+        // End Frontier
 
         TryInsert(uid, args.Args.User, component);
         _actionBlocker.UpdateCanMove(uid);

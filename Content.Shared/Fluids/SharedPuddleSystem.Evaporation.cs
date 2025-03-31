@@ -1,5 +1,6 @@
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
+using Robust.Shared.Prototypes; // Frontier
 
 namespace Content.Shared.Fluids;
 
@@ -8,20 +9,13 @@ public abstract partial class SharedPuddleSystem
     [ValidatePrototypeId<ReagentPrototype>]
     private const string Water = "Water";
 
-    private const string FluorosulfuricAcid = "FluorosulfuricAcid"; // Frontier
-    private const string Vomit = "Vomit"; // Frontier
-    private const string InsectBlood = "InsectBlood"; // Frontier
-    private const string AmmoniaBlood = "AmmoniaBlood"; // Frontier
-    private const string ZombieBlood = "ZombieBlood"; // Frontier
-    private const string Blood = "Blood"; // Frontier
-    private const string Slime = "Slime"; // Frontier
-    private const string CopperBlood = "CopperBlood"; // Frontier
-    private const string Sap = "Sap"; // Frontier
-    private const string JuiceTomato = "JuiceTomato"; // Frontier
-    private const string Fiber = "Fiber"; // Frontier
-    private const string Nothing = "Nothing"; // Frontier
+    private static readonly ProtoId<ReagentPrototype> Holywater = "Holywater"; // Frontier
+    private static readonly ProtoId<ReagentPrototype> Ice = "Ice"; // Frontier
+    private static readonly ProtoId<ReagentPrototype> SodaWater = "SodaWater"; // Frontier
+    private static readonly ProtoId<ReagentPrototype> AntiSepticFluid = "AntiSepticFluid"; // Frontier: evaporates, not usable as mop water
 
-    public static readonly string[] EvaporationReagents = [Water, Vomit, InsectBlood, AmmoniaBlood, ZombieBlood, Blood, Slime, CopperBlood, FluorosulfuricAcid, Sap, JuiceTomato, Fiber, Nothing]; // Frontier
+    // Frontier: NOTE: if updating this list, keep up to date with AbsorbentSystem.MopFriendlyReagents
+    public static readonly string[] EvaporationReagents = [Water, Holywater, Ice, SodaWater, AntiSepticFluid]; // Frontier
 
     public bool CanFullyEvaporate(Solution solution)
     {

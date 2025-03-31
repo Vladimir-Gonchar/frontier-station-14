@@ -10,12 +10,18 @@
 #
 - type: vessel
   id: Menace
+  parent: BaseVesselAntag
   name: Menace
   description: 'Mail is no longer an option: you either receive it or you die.'
   price: 21000
   category: Small
   group: BlackMarket
   shuttlePath: /Maps/_NF/Shuttles/BlackMarket/menace.yml
+  guidebookPage: Null
+  class:
+  - Pirate
+  engine:
+  - Plasma
 
 - type: gameMap
   id: Menace

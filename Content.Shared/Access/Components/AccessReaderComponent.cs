@@ -66,16 +66,17 @@ public sealed partial class AccessReaderComponent : Component
     public int AccessLogLimit = 20;
 
     /// <summary>
+    /// If true logging on successful access uses will be disabled.
+    /// Can be set by LOG wire.
+    /// </summary>
+    [DataField]
+    public bool LoggingDisabled;
+
+    /// <summary>
     /// Whether or not emag interactions have an effect on this.
     /// </summary>
     [DataField]
-    public bool BreakOnEmag = true;
-
-    /// <summary>
-    /// Frontier - Whether or not its emag immune.
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public bool ImmuneToEmag;
+    public bool BreakOnAccessBreaker = true;
 }
 
 [DataDefinition, Serializable, NetSerializable]

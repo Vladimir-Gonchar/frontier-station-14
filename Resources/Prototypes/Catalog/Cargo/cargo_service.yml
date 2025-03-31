@@ -4,7 +4,7 @@
     sprite: Objects/Specific/Janitorial/janitorial.rsi
     state: cleaner
   product: CrateServiceJanitorialSupplies
-  cost: 560
+  cost: 2500 # Frontier: 560<2500
   category: cargoproduct-category-name-service
   group: market
 
@@ -15,6 +15,17 @@
     state: normal
   product: CrateServiceReplacementLights
   cost: 600
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: ServiceLightsHoliday
+  abstract: true # Frontier
+  icon:
+    sprite: Objects/Power/light_bulb.rsi
+    state: normal
+  product: CrateServiceHolidayLights
+  cost: 800
   category: cargoproduct-category-name-service
   group: market
 
@@ -44,7 +55,7 @@
   abstract: true # Frontier
   icon:
     sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/green.rsi
-    state: closed
+    state: icon
   product: CrateServiceSmokeables
   cost: 1500
   category: cargoproduct-category-name-service
@@ -54,7 +65,7 @@
   id: ServiceCustomSmokable
   icon:
     sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/green.rsi
-    state: closed
+    state: icon
   product: CrateServiceCustomSmokable
   cost: 1000
   category: cargoproduct-category-name-service
@@ -204,4 +215,15 @@
   cost: 1000
   category: cargoproduct-category-name-service
   group: market
+
+- type: cargoProduct
+  id: ServiceCandles
+  icon:
+    sprite: Objects/Misc/candles.rsi
+    state: candle-big
+  product: CrateCandles
+  cost: 500
+  category: cargoproduct-category-name-service
+  group: market
+
 

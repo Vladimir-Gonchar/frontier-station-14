@@ -172,6 +172,117 @@
     - KitchenDeepFryer
     rareChance: 0.05
 
+- type: entity
+  name: random crate
+  id: SpawnDungeonLootCrateService
+  parent: MarkerBase
+  suffix: "Dungeon, Service"
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Structures/Storage/Crates/hydroponics.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: RandomSpawner
+    prototypes:
+    # Empty crates
+    - CrateFreezer
+    - CrateTrashCartJani
+    - CrateHydroponics
+    - CrateHydroSecure
+    - CratePlastic
+    - CratePlasticBiodegradable
+    # Restocks
+    - CrateVendingMachineRestockBoozeFilled
+    - CrateVendingMachineRestockChefvendFilled
+    - CrateVendingMachineRestockCondimentStationFilled
+    - CrateVendingMachineRestockDinnerwareFilled
+    - CrateVendingMachineRestockSmokesFilled
+    - CrateVendingMachineRestockHappyHonkFilled
+    # Mats
+    - CrateMaterialGlass
+    - CrateMaterialSteel
+    - CrateMaterialPlastic
+    - CrateMaterialWood
+    - CrateMaterialTextiles
+    - CrateMaterialBiomass
+    # Filled crates
+    - CrateServiceReplacementLights
+    - CrateServiceReplacementColoredLights
+    - CrateFunArtSupplies
+    - CrateServiceJanitorialSupplies
+    - CrateServiceJanitorialSupplies2
+    - JanitorialTrolley
+    - FoodCartHot
+    - FoodCartCold
+    - CrateFoodDinnerware
+    - CrateFoodCooking
+    - CrateServiceCustomSmokable
+    - CrateServiceSmokeables
+    - CrateMousetrapBoxes
+    - CrateFoodBarSupply
+    - CrateServiceBoozeDispenser
+    - CrateServiceKitCleanades
+    chance: 0.9
+    offset: 0.0
+    rarePrototypes:
+    - CrateServiceKitKitchen
+    - CrateServiceKitHydroponics
+    rareChance: 0.005
+
+- type: entity
+  name: random crate (restock)
+  id: SpawnDungeonLootCrateRestockService
+  parent: MarkerBase
+  suffix: "Dungeon, Service"
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Structures/Storage/Crates/plastic.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: RandomSpawner
+    prototypes:
+    - CrateVendingMachineRestockBoozeFilled
+    - CrateVendingMachineRestockChefvendFilled
+    - CrateVendingMachineRestockCondimentStationFilled
+    - CrateVendingMachineRestockDinnerwareFilled
+    - CrateVendingMachineRestockSmokesFilled
+    - CrateVendingMachineRestockHappyHonkFilled
+    chance: 1.0
+    offset: 0.0
+
+- type: entity
+  name: random crate (empty)
+  id: SpawnDungeonLootCrateEmptyService
+  parent: MarkerBase
+  suffix: "Dungeon, Service"
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: Structures/Storage/Crates/plastic.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: RandomSpawner
+    prototypes:
+    - CrateFreezer
+    - CrateTrashCartJani
+    - CrateHydroponics
+    - CrateHydroSecure
+    - CratePlastic
+    - CratePlasticBiodegradable
+    chance: 1.0
+    offset: 0.0
+
 # Machines
 - type: entity
   name: random machine techfab
@@ -198,7 +309,6 @@
     - VendingMachineCondiments
     - BoozeDispenserEmpty
     - SodaDispenserEmpty
-    - SyndicateMicrowave # For real
     - SpawnDungeonLootFlatpacksService
     rareChance: 0.40
 
@@ -268,7 +378,7 @@
     - KitchenReagentGrinderFlatpack
     - MaterialReclaimerFlatpack
     - HydroponicsTrayEmptyFlatpack
-    - TilePrinterNFFlatpack
+    - CutterMachineFlatpack
     - DawInstrumentFlatpack
     - MinimoogInstrumentFlatpack
     - ComputerIFFFlatpack

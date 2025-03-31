@@ -1,25 +1,29 @@
-﻿<controls:FancyWindow xmlns="https://spacestation14.io"
-            xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-            xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-            xmlns:style="clr-namespace:Content.Client.Stylesheets"
-            SetSize="360 380"
-            MinSize="300 300">
-    <BoxContainer Margin="6 2 6 12" Orientation="Vertical">
-        <BoxContainer Margin ="0 2 0 4" Orientation="Horizontal">
-            <Label Text="{Loc 'bank-atm-menu-balance-label'}"
-                StyleClasses="LabelKeyText" />
-            <Label Name="BalanceLabel"
-                Text="{Loc 'bank-atm-menu-no-bank'}" />
-        </BoxContainer>
-        <LineEdit Name="SearchBar" PlaceHolder="{Loc 'vending-machine-component-search-filter'}" HorizontalExpand="True" Margin="0 4" Access="Public"/>
-        <ItemList Name="VendingContents"
-                  SizeFlagsStretchRatio="8"
-                  VerticalExpand="True"
-                  ItemSeparation="2"
-                  Margin="4 0"
-                  SelectMode="Button"
-                  StyleClasses="transparentBackgroundItemList">
-        </ItemList>
+<controls:FancyWindow
+    xmlns="https://spacestation14.io"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:co="clr-namespace:Content.Client.UserInterface.Controls"
+    SetSize="360 400"
+    MinSize="300 320"> <!-- Frontier: added SetSize, MinSize, remove MinHeight="210" -->
+    <BoxContainer Name="MainContainer" Orientation="Vertical">
+        <!-- Frontier: balance -->
+        <GridContainer Margin ="0 2 0 4" Columns="2" HorizontalExpand="True">
+            <BoxContainer Margin="4 0 2 0" Orientation="Horizontal" HorizontalExpand="True" HorizontalAlignment="Left">
+                <Label Text="{Loc 'bank-atm-menu-balance-label'}"
+                    StyleClasses="LabelKeyText" />
+                <Label Name="BalanceLabel"
+                    Text="{Loc 'bank-atm-menu-no-bank'}" />
+            </BoxContainer>
+            <BoxContainer Margin="2 0 4 0" Orientation="Horizontal" HorizontalExpand="True" HorizontalAlignment="Right" Name="CashSlotControls">
+                <Label Text="{Loc 'vending-machine-menu-cash-slot-label'}"
+                    StyleClasses="LabelKeyText" />
+                <Label Name="CashSlotLabel"
+                    Text="$0" />
+            </BoxContainer>
+        </GridContainer>
+        <!-- End Frontier: balance -->
+        <LineEdit Name="SearchBar" PlaceHolder="{Loc 'vending-machine-component-search-filter'}" HorizontalExpand="True"  Margin ="4 4"/>
+        <co:SearchListContainer Name="VendingContents" VerticalExpand="True" Margin="4 4"/>
          <!-- Footer -->
         <BoxContainer Orientation="Vertical">
             <PanelContainer StyleClasses="LowDivider" />

@@ -1,6 +1,6 @@
 - type: entity
   name: basic lighter
-  parent: BaseItem
+  parent: [BaseItem, RecyclableItemDeviceTiny] # Frontier: added ligters
   id: Lighter
   description: "A simple plastic cigarette lighter."
   components:
@@ -87,9 +87,10 @@
     netsync: false
     radius: 1.1 #smallest possible
     color: orange
-  - type: StaticPrice
-    price: 15
-
+  - type: ItemTogglePointLight
+  - type: StaticPrice # Frontier
+    price: 15 # Frontier
+  - type: NFLighter # Frontier
 
 - type: entity
   name: cheap lighter
@@ -208,9 +209,11 @@
     netsync: false
     radius: 1.2 #slightly stronger than the other lighters
     color: orange
+  - type: ItemTogglePointLight
   - type: UseDelay
   - type: IgnitionSource
     ignited: false
+  - type: Engraveable # Frontier
 
 - type: entity
   name: flippo engraved lighter

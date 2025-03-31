@@ -6,8 +6,8 @@
       edges:
         - to: girder
           completed:
-            - !type:SnapToGrid
-              southRotation: true
+            - !type:SnapToGrid {} # Frontier: use default ctor
+              # southRotation: true # Frontier
           steps:
             - material: Steel
               amount: 2
@@ -50,17 +50,6 @@
             - material: Plasteel
               amount: 2
               doAfter: 1
-
-        - to: woodWall
-          completed:
-            - !type:SnapToGrid
-              southRotation: true
-          conditions:
-            - !type:EntityAnchored {}
-          steps:
-            - material: WoodPlank
-              amount: 2
-              doAfter: 2
 
         - to: uraniumWall
           completed:
@@ -171,18 +160,6 @@
               amount: 2
           steps:
             - tool: Welding
-              doAfter: 10
-
-    - node: woodWall
-      entity: WallWood
-      edges:
-        - to: girder
-          completed:
-            - !type:GivePrototype
-              prototype: MaterialWoodPlank1
-              amount: 2
-          steps:
-            - tool: Prying
               doAfter: 10
 
     - node: uraniumWall
@@ -344,8 +321,8 @@
 
         - to: girder
           completed:
-            - !type:SnapToGrid
-              southRotation: true
+            - !type:SnapToGrid {} # Frontier: use default ctor
+              # southRotation: true # Frontier
             - !type:SpawnPrototype
               prototype: SheetPlasteel1
               amount: 2
